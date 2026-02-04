@@ -1,0 +1,23 @@
+{
+  "backend/main.mo": "Motoko canister actor that stores contact form submissions in memory with timestamping and exposes methods to submit a new entry and retrieve all submissions.",
+  "feature_evidence.json": "Feature evidence report documenting two WhatsApp CTA features, listing related frontend files, components, test requirements, and confidence levels.",
+  "frontend-file-summaries.txt": "Prewritten high-level summaries of key frontend files, components, hooks, styles, and utilities used in the React application.",
+  "frontend/index.css": "Global Tailwind CSS setup defining design tokens, light/dark theme variables, and base styles for the application.",
+  "frontend/index.html": "HTML entry point that sets up meta tags, page title, root div, and loads the React application bundle.",
+  "frontend/src/App.tsx": "Root React component that applies theme handling and renders all main sections, the floating WhatsApp CTA, and the notification toaster.",
+  "frontend/src/components/About.tsx": "About section component describing the company, goals, key features, and contact phone number using cards and iconography.",
+  "frontend/src/components/Contact.tsx": "Contact section with company contact details and a form that submits data to the backend using a React Query mutation and shows toast feedback.",
+  "frontend/src/components/FloatingWhatsAppCTA.tsx": "Fixed-position floating button that opens a WhatsApp chat to the business number using a centralized URL helper and safe-area-aware styling.",
+  "frontend/src/components/Footer.tsx": "Footer component displaying company branding, quick navigation links with smooth scrolling, contact information, and attribution.",
+  "frontend/src/components/Header.tsx": "Implements a fixed responsive site header with logo and navigation that changes style on scroll, supports smooth scrolling to sections, and includes a toggleable mobile menu.",
+  "frontend/src/components/Hero.tsx": "Defines the hero landing section with background imagery, branding, AMC highlight, call-to-action buttons, smooth scrolling to sections, and WhatsApp contact integration.",
+  "frontend/src/components/Services.tsx": "Renders a services section listing numerous electrical service offerings with icons, images, categories, and a helper to scroll to the contact section.",
+  "frontend/src/hooks/useActor.ts": "Provides a React Query hook that creates and caches a backend actor based on the current Internet Identity, recreating and invalidating dependent queries when identity changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Implements an authentication context and provider for Dfinity Internet Identity, handling login, logout, identity persistence, and detailed login status state.",
+  "frontend/src/hooks/useQueries.ts": "Defines React Query hooks for submitting a contact form to the backend and fetching contact submissions using the authenticated actor.",
+  "frontend/src/index.css": "Configures Tailwind CSS base styles, theme variables (including industrial color schemes and dark mode), global utilities, smooth scrolling, and custom animations.",
+  "frontend/src/lib/whatsapp.ts": "Centralizes WhatsApp business chat URL generation and defines a default booking inquiry message.",
+  "frontend/src/main.tsx": "Application entry point that mounts the React app with React Query and Internet Identity providers and imports global styles.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration enabling class-based dark mode, scanning frontend source files, and extending the theme with container settings, extensive CSS-variable-driven color tokens, custom radii, shadows, animations, and UI keyframes. It also integrates official plugins for typography, container queries, and animations.",
+  "project_state.json": "Machine-readable snapshot of the project describing a React + Tailwind single-page business website with theming, smooth navigation, and a contact form backed by an Internet Computer (Motoko) canister. It enumerates existing frontend features, integrations (Internet Identity, TanStack Query), and backend support modules with versioned metadata."
+}

@@ -1,0 +1,127 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: oklch(98% 0 0);
+    --foreground: oklch(15% 0 0);
+    --card: oklch(100% 0 0);
+    --card-foreground: oklch(15% 0 0);
+    --popover: oklch(100% 0 0);
+    --popover-foreground: oklch(15% 0 0);
+    --primary: oklch(45% 0.15 250);
+    --primary-foreground: oklch(98% 0 0);
+    --secondary: oklch(95% 0.01 250);
+    --secondary-foreground: oklch(15% 0 0);
+    --muted: oklch(95% 0.01 250);
+    --muted-foreground: oklch(45% 0.01 250);
+    --accent: oklch(95% 0.01 250);
+    --accent-foreground: oklch(15% 0 0);
+    --destructive: oklch(55% 0.22 25);
+    --destructive-foreground: oklch(98% 0 0);
+    --border: oklch(90% 0.01 250);
+    --input: oklch(90% 0.01 250);
+    --ring: oklch(45% 0.15 250);
+    --radius: 0.5rem;
+    --chart-1: oklch(60% 0.15 250);
+    --chart-2: oklch(70% 0.15 160);
+    --chart-3: oklch(55% 0.15 30);
+    --chart-4: oklch(65% 0.15 80);
+    --chart-5: oklch(60% 0.15 340);
+
+    /* Industrial Theme Colors */
+    --industrial-blue: oklch(45% 0.15 250);
+    --industrial-dark: oklch(20% 0.02 250);
+    --industrial-gray: oklch(60% 0.01 250);
+    --industrial-light: oklch(95% 0.01 250);
+    --industrial-orange: oklch(65% 0.20 40);
+    
+    /* Navy colors for hero section */
+    --industrial-navy: oklch(25% 0.05 250);
+    --industrial-navy-light: oklch(35% 0.08 250);
+  }
+
+  .dark {
+    --background: oklch(15% 0.02 250);
+    --foreground: oklch(98% 0 0);
+    --card: oklch(18% 0.02 250);
+    --card-foreground: oklch(98% 0 0);
+    --popover: oklch(15% 0.02 250);
+    --popover-foreground: oklch(98% 0 0);
+    --primary: oklch(65% 0.15 250);
+    --primary-foreground: oklch(15% 0 0);
+    --secondary: oklch(25% 0.02 250);
+    --secondary-foreground: oklch(98% 0 0);
+    --muted: oklch(25% 0.02 250);
+    --muted-foreground: oklch(65% 0.01 250);
+    --accent: oklch(25% 0.02 250);
+    --accent-foreground: oklch(98% 0 0);
+    --destructive: oklch(55% 0.22 25);
+    --destructive-foreground: oklch(98% 0 0);
+    --border: oklch(25% 0.02 250);
+    --input: oklch(25% 0.02 250);
+    --ring: oklch(65% 0.15 250);
+    --chart-1: oklch(60% 0.15 250);
+    --chart-2: oklch(70% 0.15 160);
+    --chart-3: oklch(55% 0.15 30);
+    --chart-4: oklch(65% 0.15 80);
+    --chart-5: oklch(60% 0.15 340);
+
+    /* Industrial Theme Colors - Dark Mode */
+    --industrial-blue: oklch(65% 0.15 250);
+    --industrial-dark: oklch(15% 0.02 250);
+    --industrial-gray: oklch(50% 0.01 250);
+    --industrial-light: oklch(25% 0.02 250);
+    --industrial-orange: oklch(70% 0.20 40);
+    
+    /* Navy colors for hero section - Dark Mode */
+    --industrial-navy: oklch(20% 0.05 250);
+    --industrial-navy-light: oklch(30% 0.08 250);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 80px;
+}
+
+/* Custom animations */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+/* Safe area support for floating elements */
+@supports (padding: max(0px)) {
+  .floating-safe-area {
+    padding-bottom: max(1.5rem, env(safe-area-inset-bottom, 1.5rem));
+    padding-right: max(1.5rem, env(safe-area-inset-right, 1.5rem));
+  }
+}

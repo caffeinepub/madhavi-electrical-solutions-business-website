@@ -1,0 +1,199 @@
+{
+  "schemaVersion": "1.0.0",
+  "projectStateVersion": 4,
+  "summary": "Madhavi Electrical Solutions business website: a React + Tailwind single-page marketing site (Hero/About/Services/Contact/Footer) with smooth-scrolling navigation, light/dark theming, and a contact form that submits lead messages to an Internet Computer (Motoko) backend canister. The frontend integrates Internet Identity authentication and TanStack React Query for actor creation, caching, and form submission. The backend also includes a separate Motoko blob-storage mixin/module for authorized gateway management, dead-blob pruning, and cycle top-ups (likely platform/infrastructure support).",
+  "existing_features": [
+    {
+      "id": "IF-1",
+      "title": "Single-page business website layout",
+      "synonyms": [
+        "SPA marketing site",
+        "landing page"
+      ],
+      "description": "Renders a full-page business website with sections for Hero, About, Services, Contact, and Footer in a single scrolling page.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-2",
+      "title": "Responsive header navigation with smooth scrolling",
+      "synonyms": [
+        "sticky header",
+        "section navigation"
+      ],
+      "description": "Fixed header with desktop and mobile menu; clicking nav items smoothly scrolls to the corresponding section with an offset for the fixed header.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-3",
+      "title": "Hero section with AMC highlight and CTAs",
+      "synonyms": [
+        "homepage hero",
+        "call-to-action hero"
+      ],
+      "description": "Hero area with background image and gradient overlays, animated headline/branding, a prominent AMC (Annual Maintenance Contract) highlight, and CTA buttons that scroll to Contact or Services.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-4",
+      "title": "About section with company overview and feature cards",
+      "synonyms": [
+        "about us",
+        "company highlights"
+      ],
+      "description": "Displays company description, goal statement, feature cards (Expert Team, Quality Assurance, etc.), and a prominent clickable phone number.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-5",
+      "title": "Services catalog with categorized service cards",
+      "synonyms": [
+        "services grid",
+        "service listings"
+      ],
+      "description": "Displays 23 services grouped into 7 categories, each with image, icon, description, and a \"Book Service\" button that scrolls to the Contact form; includes a CCTV sub-service entry under Camera Shop Services.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-6",
+      "title": "Contact info cards and lead capture form",
+      "synonyms": [
+        "contact form",
+        "lead form"
+      ],
+      "description": "Shows address/phone/email/working hours cards plus a consultation form (name/email/phone/message) with loading state and success/error toast notifications.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-7",
+      "title": "Footer with quick links, contact details, and attribution",
+      "synonyms": [
+        "site footer"
+      ],
+      "description": "Footer includes company info, smooth-scroll quick links to sections, contact details, and a caffeine.ai attribution line.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-8",
+      "title": "Light/dark theme support via next-themes",
+      "synonyms": [
+        "dark mode",
+        "theming"
+      ],
+      "description": "Uses next-themes with Tailwind class-based dark mode and CSS-variable color tokens to support light/dark styling.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-9",
+      "title": "React Query setup and cache invalidation patterns",
+      "synonyms": [
+        "TanStack Query integration"
+      ],
+      "description": "Provides a global QueryClient and custom hooks for mutations/queries; invalidates the contact submissions query after successful submission and refetches dependent queries when the actor changes.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-10",
+      "title": "Internet Identity authentication context",
+      "synonyms": [
+        "II auth",
+        "AuthClient integration"
+      ],
+      "description": "Implements an InternetIdentityProvider using @dfinity/auth-client, with login/logout, persisted identity loading on mount, and status flags (initializing/logging-in/success/error).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-11",
+      "title": "ICP canister actor creation with authenticated/anonymous identity",
+      "synonyms": [
+        "backend actor hook",
+        "actor factory"
+      ],
+      "description": "useActor creates an anonymous actor when unauthenticated and an identity-bound actor when authenticated, keyed by principal and cached indefinitely; triggers query invalidation/refetch when identity changes.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-12",
+      "title": "Backend contact submission API (Motoko canister)",
+      "synonyms": [
+        "lead storage backend",
+        "contact submissions backend"
+      ],
+      "description": "Motoko actor exposes submitContactForm (stores name/email/phone/message with timestamp) and getContactSubmissions (returns all stored submissions).",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "IF-13",
+      "title": "Blob storage management mixin for authorized gateways and cycle refills",
+      "synonyms": [
+        "storage gateway support",
+        "blob GC tooling"
+      ],
+      "description": "Motoko storage modules provide: fetching authorized gateway principals from a cashier canister, authorization checks, listing dead blobs, confirming/pruning deletions and triggering GC, and refilling cycles to the cashier based on available balance.",
+      "reqIds": [],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-user-facing-cta-labeled-book-now-on-whatsapp-that-opens-a-whatsapp-chat-to-the-business-number-9953854470",
+      "title": "Add a user-facing CTA labeled “Book Now on WhatsApp” that opens a WhatsApp chat to the business number 9953854470.",
+      "reqIds": [
+        "REQ-1"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-place-a-persistent-floating-whatsapp-cta-button-on-all-sections-of-the-single-page-site-so-users-can-start-a-whatsapp-chat-from-anywhere-on-the-page",
+      "title": "Place a persistent floating WhatsApp CTA button on all sections of the single-page site so users can start a WhatsApp chat from anywhere on the page.",
+      "reqIds": [
+        "REQ-2"
+      ],
+      "version": 1
+    }
+  ],
+  "new_feature_requests": [
+    {
+      "id": "AR-1",
+      "summary": "Add a \"Book Now on WhatsApp\" CTA button/link (e.g., in Hero/Services/Contact) that opens WhatsApp chat to the business number.",
+      "reqIds": [],
+      "status": "pending"
+    }
+  ],
+  "architectural_notes": [
+    "Frontend is a SPA composed of section components (Header/Hero/About/Services/Contact/Footer) rendered from App.tsx.",
+    "Styling uses TailwindCSS with CSS variables (OKLCH) for a custom industrial color system and custom animations (fade-in-up).",
+    "Theme switching is implemented via next-themes (class-based dark mode).",
+    "Data fetching/mutations use @tanstack/react-query; QueryClientProvider wraps the app and custom hooks encapsulate backend calls.",
+    "Internet Identity auth is implemented as a React context provider wrapping AuthClient, exposing identity + login/logout + status flags.",
+    "Backend access is abstracted through an ICP canister “actor”; useActor creates an authenticated or anonymous actor depending on identity and invalidates/refetches non-actor queries on identity changes.",
+    "Backend main canister provides a simple contact-submission API (submit + list) storing timestamped submissions.",
+    "Separate backend blob-storage code is organized as a library module (Storage.mo) and a mixin (Mixin.mo) exposing shared/query methods for authorization, blob lifecycle management, and cashier cycle refills.",
+    "Blob-storage authorization model: registry of authorized gateway principals fetched from a cashier canister defined via an environment variable.",
+    "UI uses component primitives consistent with shadcn/ui patterns (Button/Card/Input/Textarea/Label) plus lucide-react icons and sonner for toast notifications.",
+    "WhatsApp CTA button should use the business number 9953854470 (India, +91) when generating the wa.me / WhatsApp deep link."
+  ],
+  "known_issues": [
+    "backend/main.mo likely does not persist submissions as written: `contactSubmissions` is declared with `let` and uses `contactSubmissions.add(submission);` on a List; core/base List APIs are typically immutable and require reassignment to a `var` (or using proper mutable structure). This may be a compile/runtime logic bug causing submissions not to be stored.",
+    "backend/getContactSubmissions is publicly callable (no authorization), exposing all collected contact data to any caller; this is a privacy/security risk if deployed as-is.",
+    "frontend/useSubmitContactForm throws `Actor not initialized` if the actor query has not resolved yet; a fast submit before actor initialization could error (though typical user flow likely avoids it).",
+    "blob-storage mixin `_caffeineStorageUpdateGatewayPrincipals` is callable by any caller (no access control), allowing anyone to trigger registry refresh; may be intended but can be abused for unnecessary calls.",
+    "blob-storage `_caffeineStorageCreateCertificate` returns a static certificate-like object without verification/signing; appears to be a stub or placeholder.",
+    "Project contains both `frontend/src/index.css` and `frontend/index.css` with different content; depending on build tooling, this duplication can cause confusion or unintended styling conflicts.",
+    "Public deployment/live URL has repeatedly shown \"Canister ID Not Resolved (Error 400)\" / \"Your live site will appear here once you go live\" and drafts expiring, indicating the live publish/link resolution process may be unreliable or not persisting as expected."
+  ],
+  "isFixRequest": false,
+  "gameProjectType": "none",
+  "projectName": "Madhavi Electrical Solutions Business Website",
+  "clarification_mode": "instant",
+  "clarification_rounds": 0
+}

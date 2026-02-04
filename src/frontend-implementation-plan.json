@@ -1,0 +1,55 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "Add WhatsApp booking CTAs (main + floating) for 9953854470",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Add a visible “Book Now on WhatsApp” CTA that opens a WhatsApp chat to 9953854470.",
+      "acceptanceCriteria": [
+        "A visible CTA labeled “Book Now on WhatsApp” is present on the website.",
+        "Clicking/tapping the CTA opens WhatsApp (or WhatsApp Web) to start a chat with number 9953854470.",
+        "On mobile devices, tapping the CTA launches WhatsApp if installed; otherwise it opens WhatsApp Web in the browser.",
+        "All user-facing text is in English."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/lib/whatsapp.ts",
+          "operation": "create",
+          "description": "Create a small helper that centralizes the WhatsApp chat URL for business number 9953854470 (e.g., wa.me link) so both the main CTA and floating CTA reuse the exact same link."
+        },
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Add a user-facing CTA labeled “Book Now on WhatsApp” within the existing Hero CTA area, linking to the centralized WhatsApp URL (9953854470). Use existing shadcn-ui Button composition (do not modify files under frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Add a persistent floating WhatsApp CTA button available across the entire single-page site using the same chat link.",
+      "acceptanceCriteria": [
+        "A floating WhatsApp CTA remains available while scrolling (does not block core content on mobile).",
+        "The floating CTA uses the same WhatsApp chat link as the main “Book Now on WhatsApp” CTA (number 9953854470).",
+        "The floating CTA is accessible (keyboard focusable, has an accessible name)."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/FloatingWhatsAppCTA.tsx",
+          "operation": "create",
+          "description": "Create a fixed-position floating CTA component that links to the centralized WhatsApp URL (9953854470), is keyboard focusable, and includes an accessible name (e.g., aria-label “Book Now on WhatsApp”). Use existing shadcn-ui Button composition (do not modify files under frontend/src/components/ui). Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the floating WhatsApp CTA into the app layout so it renders on top of all sections of the single-page site (persistent while scrolling) and uses the same WhatsApp link helper as the main CTA."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Add minimal global styling support (if needed) for safe-area and mobile-friendly positioning of the floating CTA (e.g., respecting device safe-area insets) to help ensure it does not block core content on mobile."
+        }
+      ]
+    }
+  ]
+}

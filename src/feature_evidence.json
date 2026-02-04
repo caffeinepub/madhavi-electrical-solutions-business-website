@@ -1,0 +1,46 @@
+{
+  "kind": "feature_evidence_report",
+  "features": [
+    {
+      "featureId": "feature-add-a-user-facing-cta-labeled-book-now-on-whatsapp-that-opens-a-whatsapp-chat-to-the-business-number-9953854470",
+      "featureTitle": "Add a user-facing CTA labeled “Book Now on WhatsApp” that opens a WhatsApp chat to the business number 9953854470.",
+      "files": [
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/lib/whatsapp.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-1"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-place-a-persistent-floating-whatsapp-cta-button-on-all-sections-of-the-single-page-site-so-users-can-start-a-whatsapp-chat-from-anywhere-on-the-page",
+      "featureTitle": "Place a persistent floating WhatsApp CTA button on all sections of the single-page site so users can start a WhatsApp chat from anywhere on the page.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/FloatingWhatsAppCTA.tsx",
+        "frontend/src/index.css"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    }
+  ]
+}
