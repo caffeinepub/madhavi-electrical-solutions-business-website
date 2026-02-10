@@ -1,196 +1,38 @@
 {
   "kind": "build_request",
-  "title": "Improve electrician website: clear services, navigation, CTAs, SEO, reviews, and performance",
+  "title": "Publish the current website version",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Update the primary navigation to include only these menu items: Home | Services | About Us | Contact. Ensure both desktop and mobile navigation reflect this and that clicking each item smoothly scrolls to the correct section.",
-      "target": "frontend",
+      "text": "Trigger a build and publish/release of the current app version using the existing publishing flow, so the latest changes (including the GIF media updates already implemented) are deployed and available in the preview/production environment.",
+      "target": "unknown",
       "source": {
         "messageIds": [
           "msg-1"
         ],
         "quotes": [
-          "Menu me: Home | Services | About Us | Contact ye chaar sections zaroor ho."
+          "Prakashit kar do"
         ]
       },
       "acceptanceCriteria": [
-        "Header desktop navigation shows exactly 4 items: Home, Services, About Us, Contact.",
-        "Header mobile menu shows the same 4 items and closes after selection.",
-        "Footer \"Quick Links\" shows the same 4 items.",
-        "Each nav item scrolls to a visible section heading (not hidden under the fixed header)."
-      ]
-    },
-    {
-      "id": "REQ-2",
-      "text": "Make the Services offering easy to understand by presenting these services as clearly separated service entries (either as sub-sections within the Services section and/or as dedicated detail views): Home Wiring, Emergency Repairs, Fuse/Panel Upgrades, Light Fitting/LED Work, Appliance Installation. Each service entry must have a title, a short description, an icon, and a professional image.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Har service ko separate section ya page de do, for example: ✔ Home wiring ✔ Emergency repairs ✔ Fuse/Panel upgrades ✔ Light fitting/LED work ✔ Appliance installation"
-        ]
-      },
-      "acceptanceCriteria": [
-        "The Services area prominently includes the 5 listed services as distinct items (not buried among many unrelated categories).",
-        "Each of the 5 services displays: title, description, icon, and image.",
-        "Each service item includes a visible call-to-action (CTA) that leads the visitor to contact/booking (e.g., scroll to Contact or open a call link).",
-        "All service images include descriptive alt text in English."
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "text": "Add prominent CTAs across the site so users can take action from every major section (Home/Hero, Services, About Us, Contact): “Get a Free Quote”, “Book Now”, and “Call Us”. The “Call Us” CTA must use the existing phone number and a tel: link.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Har page pe visible CTA add karo: “Get a Free Quote”, “Book Now”, “Call Us”"
-        ]
-      },
-      "acceptanceCriteria": [
-        "Hero section contains clearly visible CTAs including “Get a Free Quote”, “Book Now”, and “Call Us”.",
-        "Services section provides at least one visible CTA per service (or per service card) that enables booking/quote/call.",
-        "“Call Us” opens the dialer using a tel: link and uses the existing number (9953854470).",
-        "CTAs are usable on mobile without overlapping the fixed header."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Implement a floating, always-available contact CTA component that improves conversions on mobile and desktop (e.g., a compact floating bar or buttons) with at least: Call and WhatsApp actions. Ensure it does not block key content or form fields.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Har page pe visible CTA add karo"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A floating CTA is visible on scroll (especially on mobile).",
-        "Floating CTA includes a Call action (tel:9953854470) and a WhatsApp action (using the existing WhatsApp URL helper).",
-        "Floating CTA does not cover the Contact form submit button or inputs on common screen sizes."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add a customer reviews / social proof section that displays multiple testimonials with names and star ratings. Place it in a sensible location in the single-page flow (e.g., after Services and before Contact) and ensure it is visually consistent with the rest of the site.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Customer Reviews / Social Proof Testimonials add karo — real feedback visitors par trust banata hai. Star ratings ya Google reviews bhi dikhane se credibility badhti hai."
-        ]
-      },
-      "acceptanceCriteria": [
-        "A new section for testimonials is visible on the page with a clear heading (in English).",
-        "At least 3 testimonials are shown with star ratings and short review text.",
-        "The section is responsive and readable on mobile.",
-        "No third-party review API integration is required (static testimonials are acceptable)."
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Implement basic on-page SEO improvements: set a keyword-focused page title and meta description (English), and ensure key images have meaningful alt text. Use the provided example format for the title as guidance.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Page titles & meta descriptions me keywords use karo. Example: “Electrician in Mumbai – Emergency Electrician Services” Images ke alt tags aur service pages ka SEO optimize karo."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The HTML page title is updated to a clean, keyword-focused English title (no extra/duplicate words).",
-        "A meta description tag is present and includes relevant electrician service keywords in English.",
-        "All service images and major hero imagery have non-empty, descriptive English alt attributes.",
-        "No broken meta tags are introduced (valid HTML head)."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Improve performance for fast loading by optimizing image loading behavior and preventing unnecessarily heavy above-the-fold assets. Use sensible defaults such as lazy-loading below-the-fold images and ensuring images are appropriately sized for their display containers.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Site fast load ho (images optimize karo)."
-        ]
-      },
-      "acceptanceCriteria": [
-        "Below-the-fold images (e.g., Services/Products cards) use lazy-loading behavior.",
-        "No layout-breaking changes are introduced while images load.",
-        "The site remains responsive and smooth on mobile devices."
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Ensure the site is served securely without mixed content: all external links opened from CTAs (e.g., WhatsApp) must use https URLs, and there must be no http resource references in the frontend.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "Browser me padlock ‘Secure’ dikhe (HTTPS)."
-        ]
-      },
-      "acceptanceCriteria": [
-        "No frontend code references http:// resources.",
-        "All external actions (e.g., WhatsApp link) open secure URLs.",
-        "No browser mixed-content warnings occur in a standard HTTPS deployment."
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Add the new professional images as static assets under frontend/public/assets/generated and wire them into the Hero/Services/About (team) areas where appropriate, using consistent styling and captions/alt text in English.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-1"
-        ],
-        "quotes": [
-          "High-quality photos use karo (electric work, team photo). Icons se services ko visually highlight karo."
-        ]
-      },
-      "acceptanceCriteria": [
-        "All newly generated images exist under frontend/public/assets/generated and are referenced by components via /assets/generated/... paths.",
-        "The Services section uses the new service-specific photos for the 5 highlighted services.",
-        "A team photo is displayed in an appropriate place (e.g., About section) with descriptive English alt text."
+        "A new build is created from the current codebase state without requiring additional code changes.",
+        "The deployed/published version reflects the latest frontend assets and pages already updated (e.g., Home/Hero and Services GIF usage).",
+        "No regressions: the site loads successfully and key pages render without runtime errors after publishing."
       ]
     }
   ],
   "constraints": [
-    "Frontend immutable paths must not be edited: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
-    "Keep existing contact details unchanged (phone 9953854470, email madhavielectricalsolutions@gmail.com).",
-    "Backend is single-actor Motoko; do not add additional backend services."
+    "Do not modify files under frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, frontend/src/components/ui.",
+    "Backend must remain a single Motoko actor in backend/main.mo; add backend/migration.mo only if a state migration is required."
   ],
   "nonGoals": [
-    "Do not integrate third-party review providers (e.g., live Google Reviews API); testimonials can be static.",
-    "Do not implement a full multi-page router unless required to satisfy the services clarity requirement; prioritize the existing single-page scroll model.",
-    "Do not change Internet Identity/authentication behavior.",
-    "Do not build an admin dashboard for managing testimonials or services in this request."
+    "Creating or editing GIF/video assets.",
+    "Changing which pages/components use GIFs (Home/Hero, Services) beyond what is already implemented.",
+    "Adding new features unrelated to publishing/deployment."
   ],
   "imageRequirements": {
-    "required": [
-      "Professional team photo, electrician team portrait (team-photo.dim_1200x800.jpg)",
-      "Electrician working on home wiring, indoor residential setting (service-home-wiring.dim_800x600.jpg)",
-      "Emergency electrical repair scene with electrician fixing a fault safely (service-emergency-repairs.dim_800x600.jpg)",
-      "Modern electrical panel/fuse box upgrade scene (service-fuse-panel-upgrades.dim_800x600.jpg)",
-      "LED light fitting installation scene, clean modern interior (service-led-light-fitting.dim_800x600.jpg)",
-      "Appliance installation scene, electrician installing a household appliance connection (service-appliance-installation.dim_800x600.jpg)"
-    ],
+    "required": [],
     "edits": []
   }
 }

@@ -47,6 +47,7 @@ export function Header() {
   const navItems = [
     { label: 'Home', id: 'home' },
     { label: 'Services', id: 'services' },
+    { label: 'Work Video', id: 'work-video' },
     { label: 'About Us', id: 'about' },
     { label: 'Contact', id: 'contact' }
   ];

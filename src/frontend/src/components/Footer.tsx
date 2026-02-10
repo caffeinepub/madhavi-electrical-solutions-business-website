@@ -37,6 +37,7 @@ export function Footer() {
               {[
                 { label: 'Home', id: 'home' },
                 { label: 'Services', id: 'services' },
+                { label: 'Work Video', id: 'work-video' },
                 { label: 'About Us', id: 'about' },
                 { label: 'Contact', id: 'contact' }
               ].map((item) => (

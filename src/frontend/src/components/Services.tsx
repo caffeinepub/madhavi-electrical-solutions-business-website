@@ -26,31 +26,31 @@ export function Services() {
       title: 'Home Wiring',
       description: 'Complete residential wiring solutions including new installations, rewiring, and electrical system upgrades. Safe, code-compliant wiring for your home with quality materials and expert workmanship.',
       icon: Home,
-      image: '/assets/generated/service-home-wiring.dim_800x600.jpg'
+      image: '/assets/generated/service-home-wiring.dim_800x600.gif'
     },
     {
       title: 'Emergency Repairs',
       description: '24/7 emergency electrical repair services for urgent issues. Fast response for power outages, electrical faults, short circuits, and any electrical emergencies to keep your property safe.',
       icon: Zap,
-      image: '/assets/generated/service-emergency-repairs.dim_800x600.jpg'
+      image: '/assets/generated/service-emergency-repairs.dim_800x600.gif'
     },
     {
       title: 'Fuse/Panel Upgrades',
       description: 'Professional electrical panel and fuse box upgrades to meet modern power demands. Safe installation of circuit breakers, load centers, and distribution panels with proper load balancing.',
       icon: Settings,
-      image: '/assets/generated/service-fuse-panel-upgrades.dim_800x600.jpg'
+      image: '/assets/generated/service-fuse-panel-upgrades.dim_800x600.gif'
     },
     {
       title: 'Light Fitting/LED Work',
       description: 'Expert installation and repair of all types of lighting fixtures including LED lights, chandeliers, recessed lighting, and outdoor lighting. Energy-efficient LED solutions for homes and businesses.',
       icon: Lightbulb,
-      image: '/assets/generated/service-led-light-fitting.dim_800x600.jpg'
+      image: '/assets/generated/service-led-light-fitting.dim_800x600.gif'
     },
     {
       title: 'Appliance Installation',
       description: 'Professional installation of electrical appliances including fans, air conditioners, water heaters, and kitchen appliances. Proper electrical connections ensuring safety and optimal performance.',
       icon: Fan,
-      image: '/assets/generated/service-appliance-installation.dim_800x600.jpg'
+      image: '/assets/generated/service-appliance-installation.dim_800x600.gif'
     }
   ];
 
@@ -59,84 +59,84 @@ export function Services() {
       title: 'Electrical Engineering',
       description: 'Complete electrical engineering services including comprehensive system design, detailed planning, and professional implementation. Expert solutions for complex electrical projects with focus on safety, efficiency, and reliability.',
       icon: Zap,
-      image: '/assets/generated/electrical-engineering-tools.dim_800x600.jpg',
+      image: '/assets/generated/electrical-engineering-tools.dim_800x600.gif',
       category: 'Engineering Services'
     },
     {
       title: 'Residential Engineering',
       description: 'Specialized residential electrical engineering and system design services. Custom solutions for homes including power distribution planning, lighting design, smart home integration, and energy-efficient electrical systems.',
       icon: Home,
-      image: '/assets/generated/residential-engineering.dim_800x600.jpg',
+      image: '/assets/generated/residential-engineering.dim_800x600.gif',
       category: 'Engineering Services'
     },
     {
       title: 'General Installation, Repair & Maintenance',
       description: 'Comprehensive electrical installation, repair, and preventive maintenance services. Regular inspections, testing, troubleshooting, and maintenance programs to ensure system reliability and prevent unexpected failures.',
       icon: Wrench,
-      image: '/assets/generated/electrical-maintenance.dim_800x600.jpg',
+      image: '/assets/generated/electrical-maintenance.dim_800x600.gif',
       category: 'Installation & Maintenance'
     },
     {
       title: 'Security System Installation',
       description: 'Professional security system installation and monitoring solutions. Complete security infrastructure including access control, alarm systems, surveillance integration, and 24/7 monitoring capabilities.',
       icon: Shield,
-      image: '/assets/generated/electrical-maintenance.dim_800x600.jpg',
+      image: '/assets/generated/electrical-maintenance.dim_800x600.gif',
       category: 'Specialized Systems'
     },
     {
       title: 'Electrical Socket & Switch Installation/Repair/Relocation',
       description: 'Complete socket and switch services including installation, repair, and relocation. Professional installation of outlets, switches, dimmers, and specialty receptacles with proper grounding and safety compliance.',
       icon: Plug,
-      image: '/assets/generated/socket-switch-installation.dim_800x600.jpg',
+      image: '/assets/generated/socket-switch-installation.dim_800x600.gif',
       category: 'Wiring & Components'
     },
     {
       title: 'Electrical Fuse Changing',
       description: 'Expert fuse replacement and electrical protection services. Professional assessment and replacement of fuses, circuit protection devices, and safety equipment to maintain electrical system integrity.',
       icon: Shield,
-      image: '/assets/generated/electrical-fuse-changing.dim_800x600.jpg',
+      image: '/assets/generated/electrical-fuse-changing.dim_800x600.gif',
       category: 'Wiring & Components'
     },
     {
       title: 'Cooler Installation',
       description: 'Complete air cooler installation and setup services. Professional installation of evaporative coolers with proper electrical connections, water supply setup, and ventilation requirements.',
       icon: Wind,
-      image: '/assets/generated/cooler-installation.dim_800x600.jpg',
+      image: '/assets/generated/cooler-installation.dim_800x600.gif',
       category: 'HVAC & Cooling'
     },
     {
       title: 'AC Service (Installation, Repair & Maintenance)',
       description: 'Comprehensive air conditioning services including installation, repair, and regular maintenance. Expert AC installation, troubleshooting, refrigerant charging, cleaning, and preventive maintenance for optimal cooling performance.',
       icon: Wind,
-      image: '/assets/generated/residential-ac-installation.dim_800x600.jpg',
+      image: '/assets/generated/residential-ac-installation.dim_800x600.gif',
       category: 'HVAC & Cooling'
     },
     {
       title: 'Outdoor Lighting Installation',
       description: 'Specialized outdoor lighting solutions for security, aesthetics, and functionality. Professional installation of landscape lighting, security lights, pathway lighting, and decorative outdoor fixtures.',
       icon: Lightbulb,
-      image: '/assets/generated/outdoor-lighting.dim_800x600.jpg',
+      image: '/assets/generated/outdoor-lighting.dim_800x600.gif',
       category: 'Lighting Solutions'
     },
     {
       title: 'CCTV Camera Installation',
       description: 'Professional CCTV camera installation and surveillance system setup. Complete security camera solutions with HD recording, remote viewing, and 24/7 monitoring capabilities for homes and businesses.',
       icon: Camera,
-      image: '/assets/generated/cctv-camera-installation.dim_800x600.jpg',
+      image: '/assets/generated/cctv-camera-installation.dim_800x600.gif',
       category: 'Security & Surveillance'
     },
     {
       title: 'Commercial Electrical Engineering',
       description: 'Comprehensive commercial electrical engineering services for businesses and industrial facilities. Expert design, installation, and maintenance of commercial electrical systems with focus on efficiency and reliability.',
       icon: ShoppingBag,
-      image: '/assets/generated/commercial-electrical-engineering.dim_800x600.jpg',
+      image: '/assets/generated/commercial-electrical-engineering.dim_800x600.gif',
       category: 'Commercial Services'
     },
     {
       title: 'Electrical Design',
       description: 'Professional electrical design services for new construction and renovation projects. Detailed electrical plans, load calculations, and system specifications ensuring code compliance and optimal performance.',
       icon: Palette,
-      image: '/assets/generated/electrical-design.dim_800x600.jpg',
+      image: '/assets/generated/electrical-design.dim_800x600.gif',
       category: 'Design Services'
     }
   ];

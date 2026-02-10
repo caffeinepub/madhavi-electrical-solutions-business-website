@@ -14,7 +14,7 @@ export function Hero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/assets/generated/hero-background.dim_1200x600.jpg"
+          src="/assets/generated/hero-background.dim_1200x600.gif"
           alt="Professional electrical services and solutions"
           className="w-full h-full object-cover"
         />

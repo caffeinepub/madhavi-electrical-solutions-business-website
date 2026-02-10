@@ -4,6 +4,7 @@ import { About } from './components/About';
 import { Services } from './components/Services';
 import { Products } from './components/Products';
 import { Certificates } from './components/Certificates';
+import { WorkVideo } from './components/WorkVideo';
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -22,6 +23,7 @@ function App() {
           <Services />
           <Products />
           <Certificates />
+          <WorkVideo />
           <Testimonials />
           <Contact />
         </main>

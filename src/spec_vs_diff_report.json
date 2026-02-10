@@ -1,63 +1,41 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T02:22:11.374Z",
-  "summary": "Most core requested UX improvements appear implemented: simplified 4-item navigation with scroll helper, prominent CTAs (including tel:), floating Call/WhatsApp CTA, testimonials section with star ratings, and SEO title/meta description. However, the diff summary does not show the required generated image assets being added under the specified public path, and it’s not possible to confirm the performance requirement (lazy-loading of below-the-fold images) from the truncated snippets. Several unrequested features/changes were also introduced (e.g., Certificates section and Products repricing/filtering).",
+  "generatedAt": "2026-02-10T17:25:27.159Z",
+  "summary": "The diff primarily adds a publishing runbook (frontend/PUBLISHING.md) and modifies backend/main.mo plus repo metadata files. It does not show any actual build/publish trigger or release artifact, and it introduces additional code/metadata changes despite the requirement to publish without extra code changes.",
   "missing_requirements": [
     {
-      "id": "REQ-7",
-      "requirement": "Improve performance by optimizing image loading behavior (e.g., lazy-load below-the-fold images) and ensure images are appropriately sized for their containers.",
-      "reason": "The diff shows some images with loading=\"lazy\" (e.g., About team photo), but does not provide evidence that below-the-fold images in Services/other sections are consistently lazy-loaded and sized appropriately. Services.tsx is truncated before any <img> rendering details are visible.",
+      "id": "REQ-1",
+      "requirement": "Trigger a build and publish/release of the current app version using the existing publishing flow so the latest changes are deployed and available in preview/production.",
+      "reason": "The diff contains documentation about how to build/deploy, but no evidence of an actual publish/release trigger (e.g., CI workflow change, release tag/version bump, deployment configuration change) or any deployment output. Acceptance criteria require a new build and deployed/published version reflecting current assets; the diff summary only shows code/docs changes.",
       "evidence": [
-        "frontend/src/components/About.tsx",
-        "frontend/src/components/Services.tsx (truncated)"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "requirement": "Add the new professional images as static assets under frontend/public/assets/generated and wire them into Hero/Services/About via /assets/generated/... paths.",
-      "reason": "Components reference multiple /assets/generated/... images, but the diff summary does not list any added files under frontend/public/assets/generated (only a TSX file was added). Without evidence of the actual assets being added at the required path, this requirement is not verifiably implemented.",
-      "evidence": [
-        "frontend/src/components/About.tsx",
-        "frontend/src/components/Hero.tsx",
-        "frontend/src/components/Services.tsx",
-        "<file-diff> ADDED FILES section (no frontend/public/assets/generated entries)"
+        "frontend/PUBLISHING.md",
+        "backend/main.mo"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Added a Certificates section showing an 'Udyam Registration Certificate' with view/download actions and a new navigation section id=\"certificates\" in the single-page flow.",
-      "reason": "BuildRequest does not request a Certificates section or certificate download/view functionality.",
+      "description": "Backend implementation for storing and retrieving contact form submissions (ContactSubmission type, submitContactForm, getContactSubmissions).",
+      "reason": "BuildRequest is only to publish the current version using the existing flow and explicitly targets no additional code changes; adding/altering backend application behavior is unrelated to publishing/deployment.",
       "evidence": [
-        "frontend-file-summaries.txt (Certificates.tsx summary)",
-        "frontend/src/App.tsx (renders <Certificates />)"
+        "backend/main.mo"
       ]
     },
     {
-      "description": "Modified Products section behavior including repricing (\"prices increased by 80%\"), filtering out \"Solar Power Kit\" products, and adding WhatsApp inquiry/quote functionality for products.",
-      "reason": "BuildRequest does not request product repricing, product filtering, or product inquiry features; focus is on services clarity, CTAs, testimonials, SEO, and performance.",
+      "description": "Addition of internal repo tracking/metadata files (project_state.json) and a generated-like frontend summary file (frontend-file-summaries.txt).",
+      "reason": "These are not requested by REQ-1 (publish current version) and constitute extra changes unrelated to triggering a build/publish.",
       "evidence": [
-        "frontend-file-summaries.txt (Products.tsx summary)",
-        "frontend/src/App.tsx (renders <Products />)"
+        "project_state.json",
+        "frontend-file-summaries.txt"
       ]
     }
   ],
   "confidence": 0.74,
   "changed_files": [
+    "backend/main.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
-    "frontend/src/components/About.tsx",
-    "frontend/src/components/Contact.tsx",
-    "frontend/src/components/FloatingWhatsAppCTA.tsx",
-    "frontend/src/components/Footer.tsx",
-    "frontend/src/components/Header.tsx",
-    "frontend/src/components/Hero.tsx",
-    "frontend/src/components/Services.tsx",
-    "frontend/src/components/Testimonials.tsx",
-    "frontend/src/index.css",
-    "frontend/src/lib/whatsapp.ts",
+    "frontend/PUBLISHING.md",
     "project_state.json"
   ]
 }

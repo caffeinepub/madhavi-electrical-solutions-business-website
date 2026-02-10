@@ -1,8 +1,12 @@
 import List "mo:core/List";
 import Time "mo:core/Time";
 import Text "mo:core/Text";
+import MixinStorage "blob-storage/Mixin";
+import Storage "blob-storage/Storage";
 
 actor {
+  include MixinStorage();
+
   type ContactSubmission = {
     name : Text;
     email : Text;

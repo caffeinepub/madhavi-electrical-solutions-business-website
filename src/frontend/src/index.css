@@ -129,3 +129,32 @@ section[id] {
 .animate-fade-in-up {
   animation: fade-in-up 0.5s ease-out;
 }
+
+/* Montage canvas animations */
+.montage-canvas {
+  animation: subtle-pulse 3s ease-in-out infinite;
+}
+
+@keyframes subtle-pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.95;
+  }
+}
+
+/* Montage overlay for smooth transitions */
+.montage-overlay {
+  background: radial-gradient(circle at center, transparent 60%, rgba(0, 0, 0, 0.1) 100%);
+  animation: overlay-fade 2s ease-in-out infinite;
+}
+
+@keyframes overlay-fade {
+  0%, 100% {
+    opacity: 0.3;
+  }
+  50% {
+    opacity: 0.1;
+  }
+}

@@ -1,85 +1,16 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Build/upgrade an electrician services website with clear service pages, professional visuals, simple navigation, strong CTAs, responsive design, SEO, reviews/social proof, and performance/security (SSL).",
-  "architectural_notes": [
-    "Site information architecture should include top-level pages: Home, Services, About Us, Contact, with optional individual service detail pages under Services.",
-    "CTA elements should be consistently visible across pages (header/hero and/or sticky actions on mobile).",
-    "SEO metadata (titles/descriptions) and image alt text should be managed per page/service."
-  ],
+  "summary": "Website/project publishing flow with an auto-play GIF/video asset placed on multiple pages (Home, Services, Banner).",
+  "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Professional team photo, electrician team portrait (team-photo.dim_1200x800.jpg)\n- Electrician working on home wiring, indoor residential setting (service-home-wiring.dim_800x600.jpg)\n- Emergency electrical repair scene with electrician fixing a fault safely (service-emergency-repairs.dim_800x600.jpg)\n- Modern electrical panel/fuse box upgrade scene (service-fuse-panel-upgrades.dim_800x600.jpg)\n- LED light fitting installation scene, clean modern interior (service-led-light-fitting.dim_800x600.jpg)\n- Appliance installation scene, electrician installing a household appliance connection (service-appliance-installation.dim_800x600.jpg)",
   "existing_features": [
     {
-      "id": "feature-update-the-primary-navigation-to-include-only-these-menu-items-home-services-about-us-contact-ensure-both-desktop-and-mobile-navigation-reflect-this-and-that-clicking-each-item-smoothly-scrolls-to-the-correct-section",
-      "title": "Update the primary navigation to include only these menu items: Home | Services | About Us | Contact. Ensure both desktop and mobile navigation reflect this and that clicking each item smoothly scrolls to the correct section.",
+      "id": "feature-trigger-a-build-and-publish-release-of-the-current-app-version-using-the-existing-publishing-flow-so-the-latest-changes-including-the-gif-media-updates-already-implemented-are-deployed-and-available-in-the-preview-production-environment",
+      "title": "Trigger a build and publish/release of the current app version using the existing publishing flow, so the latest changes (including the GIF media updates already implemented) are deployed and available in the preview/production environment.",
       "reqIds": [
         "REQ-1"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-make-the-services-offering-easy-to-understand-by-presenting-these-services-as-clearly-separated-service-entries-either-as-sub-sections-within-the-services-section-and-or-as-dedicated-detail-views-home-wiring-emergency-repairs-fuse-panel-upgrades-light-fitting-led-work-appliance-installation-each-service-entry-must-have-a-title-a-short-description-an-icon-and-a-professional-image",
-      "title": "Make the Services offering easy to understand by presenting these services as clearly separated service entries (either as sub-sections within the Services section and/or as dedicated detail views): Home Wiring, Emergency Repairs, Fuse/Panel Upgrades, Light Fitting/LED Work, Appliance Installation. Each service entry must have a title, a short description, an icon, and a professional image.",
-      "reqIds": [
-        "REQ-2"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-prominent-ctas-across-the-site-so-users-can-take-action-from-every-major-section-home-hero-services-about-us-contact-get-a-free-quote-book-now-and-call-us-the-call-us-cta-must-use-the-existing-phone-number-and-a-tel-link",
-      "title": "Add prominent CTAs across the site so users can take action from every major section (Home/Hero, Services, About Us, Contact): “Get a Free Quote”, “Book Now”, and “Call Us”. The “Call Us” CTA must use the existing phone number and a tel: link.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-a-floating-always-available-contact-cta-component-that-improves-conversions-on-mobile-and-desktop-e-g-a-compact-floating-bar-or-buttons-with-at-least-call-and-whatsapp-actions-ensure-it-does-not-block-key-content-or-form-fields",
-      "title": "Implement a floating, always-available contact CTA component that improves conversions on mobile and desktop (e.g., a compact floating bar or buttons) with at least: Call and WhatsApp actions. Ensure it does not block key content or form fields.",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-customer-reviews-social-proof-section-that-displays-multiple-testimonials-with-names-and-star-ratings-place-it-in-a-sensible-location-in-the-single-page-flow-e-g-after-services-and-before-contact-and-ensure-it-is-visually-consistent-with-the-rest-of-the-site",
-      "title": "Add a customer reviews / social proof section that displays multiple testimonials with names and star ratings. Place it in a sensible location in the single-page flow (e.g., after Services and before Contact) and ensure it is visually consistent with the rest of the site.",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-implement-basic-on-page-seo-improvements-set-a-keyword-focused-page-title-and-meta-description-english-and-ensure-key-images-have-meaningful-alt-text-use-the-provided-example-format-for-the-title-as-guidance",
-      "title": "Implement basic on-page SEO improvements: set a keyword-focused page title and meta description (English), and ensure key images have meaningful alt text. Use the provided example format for the title as guidance.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-improve-performance-for-fast-loading-by-optimizing-image-loading-behavior-and-preventing-unnecessarily-heavy-above-the-fold-assets-use-sensible-defaults-such-as-lazy-loading-below-the-fold-images-and-ensuring-images-are-appropriately-sized-for-their-display-containers",
-      "title": "Improve performance for fast loading by optimizing image loading behavior and preventing unnecessarily heavy above-the-fold assets. Use sensible defaults such as lazy-loading below-the-fold images and ensuring images are appropriately sized for their display containers.",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-the-site-is-served-securely-without-mixed-content-all-external-links-opened-from-ctas-e-g-whatsapp-must-use-https-urls-and-there-must-be-no-http-resource-references-in-the-frontend",
-      "title": "Ensure the site is served securely without mixed content: all external links opened from CTAs (e.g., WhatsApp) must use https URLs, and there must be no http resource references in the frontend.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-the-new-professional-images-as-static-assets-under-frontend-public-assets-generated-and-wire-them-into-the-hero-services-about-team-areas-where-appropriate-using-consistent-styling-and-captions-alt-text-in-english",
-      "title": "Add the new professional images as static assets under frontend/public/assets/generated and wire them into the Hero/Services/About (team) areas where appropriate, using consistent styling and captions/alt text in English.",
-      "reqIds": [
-        "REQ-9"
       ],
       "version": 1
     }
@@ -87,55 +18,18 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Create a clear Services list with each service as its own section and/or dedicated page (Home wiring, Emergency repairs, Fuse/Panel upgrades, Light fitting/LED work, Appliance installation)",
+      "summary": "Support auto-play GIF (or auto-play video) showing electrician/panel/light-testing scenes and place it on Home, Services, and Banner pages.",
       "reqIds": [],
       "status": "pending"
     },
     {
       "id": "AR-2",
-      "summary": "Add professional images and service icons (high-quality electrician/work photos, team photo) to visually highlight services",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Implement simple top navigation menu: Home | Services | About Us | Contact",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Add prominent call-to-action buttons across pages (Get a Free Quote, Book Now, Call Us)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Ensure fully mobile-friendly / responsive design across screen sizes",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Implement SEO basics: optimized page titles/meta descriptions with keywords, image alt tags, and service page SEO",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-7",
-      "summary": "Add customer reviews / social proof section (testimonials, star ratings, and/or Google reviews)",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-8",
-      "summary": "Improve fast loading and security: image optimization/performance and HTTPS/SSL enabled",
+      "summary": "Trigger build and publish/release the current version when requested (e.g., 'Prakashit kar do').",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "Improve electrician website: clear services, navigation, CTAs, SEO, reviews, and performance",
+  "projectName": "Publish the current website version",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
