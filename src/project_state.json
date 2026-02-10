@@ -1,162 +1,85 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 4,
-  "summary": "Madhavi Electrical Solutions business website: a React + Tailwind single-page marketing site (Hero/About/Services/Contact/Footer) with smooth-scrolling navigation, light/dark theming, and a contact form that submits lead messages to an Internet Computer (Motoko) backend canister. The frontend integrates Internet Identity authentication and TanStack React Query for actor creation, caching, and form submission. The backend also includes a separate Motoko blob-storage mixin/module for authorized gateway management, dead-blob pruning, and cycle top-ups (likely platform/infrastructure support).",
+  "projectStateVersion": 3,
+  "summary": "Build/upgrade an electrician services website with clear service pages, professional visuals, simple navigation, strong CTAs, responsive design, SEO, reviews/social proof, and performance/security (SSL).",
+  "architectural_notes": [
+    "Site information architecture should include top-level pages: Home, Services, About Us, Contact, with optional individual service detail pages under Services.",
+    "CTA elements should be consistently visible across pages (header/hero and/or sticky actions on mobile).",
+    "SEO metadata (titles/descriptions) and image alt text should be managed per page/service."
+  ],
+  "known_issues": [],
+  "isFixRequest": false,
+  "imageRequirements": "## Required Images\n- Professional team photo, electrician team portrait (team-photo.dim_1200x800.jpg)\n- Electrician working on home wiring, indoor residential setting (service-home-wiring.dim_800x600.jpg)\n- Emergency electrical repair scene with electrician fixing a fault safely (service-emergency-repairs.dim_800x600.jpg)\n- Modern electrical panel/fuse box upgrade scene (service-fuse-panel-upgrades.dim_800x600.jpg)\n- LED light fitting installation scene, clean modern interior (service-led-light-fitting.dim_800x600.jpg)\n- Appliance installation scene, electrician installing a household appliance connection (service-appliance-installation.dim_800x600.jpg)",
   "existing_features": [
     {
-      "id": "IF-1",
-      "title": "Single-page business website layout",
-      "synonyms": [
-        "SPA marketing site",
-        "landing page"
-      ],
-      "description": "Renders a full-page business website with sections for Hero, About, Services, Contact, and Footer in a single scrolling page.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-2",
-      "title": "Responsive header navigation with smooth scrolling",
-      "synonyms": [
-        "sticky header",
-        "section navigation"
-      ],
-      "description": "Fixed header with desktop and mobile menu; clicking nav items smoothly scrolls to the corresponding section with an offset for the fixed header.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-3",
-      "title": "Hero section with AMC highlight and CTAs",
-      "synonyms": [
-        "homepage hero",
-        "call-to-action hero"
-      ],
-      "description": "Hero area with background image and gradient overlays, animated headline/branding, a prominent AMC (Annual Maintenance Contract) highlight, and CTA buttons that scroll to Contact or Services.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-4",
-      "title": "About section with company overview and feature cards",
-      "synonyms": [
-        "about us",
-        "company highlights"
-      ],
-      "description": "Displays company description, goal statement, feature cards (Expert Team, Quality Assurance, etc.), and a prominent clickable phone number.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-5",
-      "title": "Services catalog with categorized service cards",
-      "synonyms": [
-        "services grid",
-        "service listings"
-      ],
-      "description": "Displays 23 services grouped into 7 categories, each with image, icon, description, and a \"Book Service\" button that scrolls to the Contact form; includes a CCTV sub-service entry under Camera Shop Services.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-6",
-      "title": "Contact info cards and lead capture form",
-      "synonyms": [
-        "contact form",
-        "lead form"
-      ],
-      "description": "Shows address/phone/email/working hours cards plus a consultation form (name/email/phone/message) with loading state and success/error toast notifications.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-7",
-      "title": "Footer with quick links, contact details, and attribution",
-      "synonyms": [
-        "site footer"
-      ],
-      "description": "Footer includes company info, smooth-scroll quick links to sections, contact details, and a caffeine.ai attribution line.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-8",
-      "title": "Light/dark theme support via next-themes",
-      "synonyms": [
-        "dark mode",
-        "theming"
-      ],
-      "description": "Uses next-themes with Tailwind class-based dark mode and CSS-variable color tokens to support light/dark styling.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-9",
-      "title": "React Query setup and cache invalidation patterns",
-      "synonyms": [
-        "TanStack Query integration"
-      ],
-      "description": "Provides a global QueryClient and custom hooks for mutations/queries; invalidates the contact submissions query after successful submission and refetches dependent queries when the actor changes.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-10",
-      "title": "Internet Identity authentication context",
-      "synonyms": [
-        "II auth",
-        "AuthClient integration"
-      ],
-      "description": "Implements an InternetIdentityProvider using @dfinity/auth-client, with login/logout, persisted identity loading on mount, and status flags (initializing/logging-in/success/error).",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-11",
-      "title": "ICP canister actor creation with authenticated/anonymous identity",
-      "synonyms": [
-        "backend actor hook",
-        "actor factory"
-      ],
-      "description": "useActor creates an anonymous actor when unauthenticated and an identity-bound actor when authenticated, keyed by principal and cached indefinitely; triggers query invalidation/refetch when identity changes.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-12",
-      "title": "Backend contact submission API (Motoko canister)",
-      "synonyms": [
-        "lead storage backend",
-        "contact submissions backend"
-      ],
-      "description": "Motoko actor exposes submitContactForm (stores name/email/phone/message with timestamp) and getContactSubmissions (returns all stored submissions).",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "IF-13",
-      "title": "Blob storage management mixin for authorized gateways and cycle refills",
-      "synonyms": [
-        "storage gateway support",
-        "blob GC tooling"
-      ],
-      "description": "Motoko storage modules provide: fetching authorized gateway principals from a cashier canister, authorization checks, listing dead blobs, confirming/pruning deletions and triggering GC, and refilling cycles to the cashier based on available balance.",
-      "reqIds": [],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-user-facing-cta-labeled-book-now-on-whatsapp-that-opens-a-whatsapp-chat-to-the-business-number-9953854470",
-      "title": "Add a user-facing CTA labeled “Book Now on WhatsApp” that opens a WhatsApp chat to the business number 9953854470.",
+      "id": "feature-update-the-primary-navigation-to-include-only-these-menu-items-home-services-about-us-contact-ensure-both-desktop-and-mobile-navigation-reflect-this-and-that-clicking-each-item-smoothly-scrolls-to-the-correct-section",
+      "title": "Update the primary navigation to include only these menu items: Home | Services | About Us | Contact. Ensure both desktop and mobile navigation reflect this and that clicking each item smoothly scrolls to the correct section.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-place-a-persistent-floating-whatsapp-cta-button-on-all-sections-of-the-single-page-site-so-users-can-start-a-whatsapp-chat-from-anywhere-on-the-page",
-      "title": "Place a persistent floating WhatsApp CTA button on all sections of the single-page site so users can start a WhatsApp chat from anywhere on the page.",
+      "id": "feature-make-the-services-offering-easy-to-understand-by-presenting-these-services-as-clearly-separated-service-entries-either-as-sub-sections-within-the-services-section-and-or-as-dedicated-detail-views-home-wiring-emergency-repairs-fuse-panel-upgrades-light-fitting-led-work-appliance-installation-each-service-entry-must-have-a-title-a-short-description-an-icon-and-a-professional-image",
+      "title": "Make the Services offering easy to understand by presenting these services as clearly separated service entries (either as sub-sections within the Services section and/or as dedicated detail views): Home Wiring, Emergency Repairs, Fuse/Panel Upgrades, Light Fitting/LED Work, Appliance Installation. Each service entry must have a title, a short description, an icon, and a professional image.",
       "reqIds": [
         "REQ-2"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-prominent-ctas-across-the-site-so-users-can-take-action-from-every-major-section-home-hero-services-about-us-contact-get-a-free-quote-book-now-and-call-us-the-call-us-cta-must-use-the-existing-phone-number-and-a-tel-link",
+      "title": "Add prominent CTAs across the site so users can take action from every major section (Home/Hero, Services, About Us, Contact): “Get a Free Quote”, “Book Now”, and “Call Us”. The “Call Us” CTA must use the existing phone number and a tel: link.",
+      "reqIds": [
+        "REQ-3"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-a-floating-always-available-contact-cta-component-that-improves-conversions-on-mobile-and-desktop-e-g-a-compact-floating-bar-or-buttons-with-at-least-call-and-whatsapp-actions-ensure-it-does-not-block-key-content-or-form-fields",
+      "title": "Implement a floating, always-available contact CTA component that improves conversions on mobile and desktop (e.g., a compact floating bar or buttons) with at least: Call and WhatsApp actions. Ensure it does not block key content or form fields.",
+      "reqIds": [
+        "REQ-4"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-customer-reviews-social-proof-section-that-displays-multiple-testimonials-with-names-and-star-ratings-place-it-in-a-sensible-location-in-the-single-page-flow-e-g-after-services-and-before-contact-and-ensure-it-is-visually-consistent-with-the-rest-of-the-site",
+      "title": "Add a customer reviews / social proof section that displays multiple testimonials with names and star ratings. Place it in a sensible location in the single-page flow (e.g., after Services and before Contact) and ensure it is visually consistent with the rest of the site.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-implement-basic-on-page-seo-improvements-set-a-keyword-focused-page-title-and-meta-description-english-and-ensure-key-images-have-meaningful-alt-text-use-the-provided-example-format-for-the-title-as-guidance",
+      "title": "Implement basic on-page SEO improvements: set a keyword-focused page title and meta description (English), and ensure key images have meaningful alt text. Use the provided example format for the title as guidance.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-improve-performance-for-fast-loading-by-optimizing-image-loading-behavior-and-preventing-unnecessarily-heavy-above-the-fold-assets-use-sensible-defaults-such-as-lazy-loading-below-the-fold-images-and-ensuring-images-are-appropriately-sized-for-their-display-containers",
+      "title": "Improve performance for fast loading by optimizing image loading behavior and preventing unnecessarily heavy above-the-fold assets. Use sensible defaults such as lazy-loading below-the-fold images and ensuring images are appropriately sized for their display containers.",
+      "reqIds": [
+        "REQ-7"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-site-is-served-securely-without-mixed-content-all-external-links-opened-from-ctas-e-g-whatsapp-must-use-https-urls-and-there-must-be-no-http-resource-references-in-the-frontend",
+      "title": "Ensure the site is served securely without mixed content: all external links opened from CTAs (e.g., WhatsApp) must use https URLs, and there must be no http resource references in the frontend.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-the-new-professional-images-as-static-assets-under-frontend-public-assets-generated-and-wire-them-into-the-hero-services-about-team-areas-where-appropriate-using-consistent-styling-and-captions-alt-text-in-english",
+      "title": "Add the new professional images as static assets under frontend/public/assets/generated and wire them into the Hero/Services/About (team) areas where appropriate, using consistent styling and captions/alt text in English.",
+      "reqIds": [
+        "REQ-9"
       ],
       "version": 1
     }
@@ -164,36 +87,55 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Add a \"Book Now on WhatsApp\" CTA button/link (e.g., in Hero/Services/Contact) that opens WhatsApp chat to the business number.",
+      "summary": "Create a clear Services list with each service as its own section and/or dedicated page (Home wiring, Emergency repairs, Fuse/Panel upgrades, Light fitting/LED work, Appliance installation)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-2",
+      "summary": "Add professional images and service icons (high-quality electrician/work photos, team photo) to visually highlight services",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-3",
+      "summary": "Implement simple top navigation menu: Home | Services | About Us | Contact",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Add prominent call-to-action buttons across pages (Get a Free Quote, Book Now, Call Us)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Ensure fully mobile-friendly / responsive design across screen sizes",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Implement SEO basics: optimized page titles/meta descriptions with keywords, image alt tags, and service page SEO",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-7",
+      "summary": "Add customer reviews / social proof section (testimonials, star ratings, and/or Google reviews)",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-8",
+      "summary": "Improve fast loading and security: image optimization/performance and HTTPS/SSL enabled",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "architectural_notes": [
-    "Frontend is a SPA composed of section components (Header/Hero/About/Services/Contact/Footer) rendered from App.tsx.",
-    "Styling uses TailwindCSS with CSS variables (OKLCH) for a custom industrial color system and custom animations (fade-in-up).",
-    "Theme switching is implemented via next-themes (class-based dark mode).",
-    "Data fetching/mutations use @tanstack/react-query; QueryClientProvider wraps the app and custom hooks encapsulate backend calls.",
-    "Internet Identity auth is implemented as a React context provider wrapping AuthClient, exposing identity + login/logout + status flags.",
-    "Backend access is abstracted through an ICP canister “actor”; useActor creates an authenticated or anonymous actor depending on identity and invalidates/refetches non-actor queries on identity changes.",
-    "Backend main canister provides a simple contact-submission API (submit + list) storing timestamped submissions.",
-    "Separate backend blob-storage code is organized as a library module (Storage.mo) and a mixin (Mixin.mo) exposing shared/query methods for authorization, blob lifecycle management, and cashier cycle refills.",
-    "Blob-storage authorization model: registry of authorized gateway principals fetched from a cashier canister defined via an environment variable.",
-    "UI uses component primitives consistent with shadcn/ui patterns (Button/Card/Input/Textarea/Label) plus lucide-react icons and sonner for toast notifications.",
-    "WhatsApp CTA button should use the business number 9953854470 (India, +91) when generating the wa.me / WhatsApp deep link."
-  ],
-  "known_issues": [
-    "backend/main.mo likely does not persist submissions as written: `contactSubmissions` is declared with `let` and uses `contactSubmissions.add(submission);` on a List; core/base List APIs are typically immutable and require reassignment to a `var` (or using proper mutable structure). This may be a compile/runtime logic bug causing submissions not to be stored.",
-    "backend/getContactSubmissions is publicly callable (no authorization), exposing all collected contact data to any caller; this is a privacy/security risk if deployed as-is.",
-    "frontend/useSubmitContactForm throws `Actor not initialized` if the actor query has not resolved yet; a fast submit before actor initialization could error (though typical user flow likely avoids it).",
-    "blob-storage mixin `_caffeineStorageUpdateGatewayPrincipals` is callable by any caller (no access control), allowing anyone to trigger registry refresh; may be intended but can be abused for unnecessary calls.",
-    "blob-storage `_caffeineStorageCreateCertificate` returns a static certificate-like object without verification/signing; appears to be a stub or placeholder.",
-    "Project contains both `frontend/src/index.css` and `frontend/index.css` with different content; depending on build tooling, this duplication can cause confusion or unintended styling conflicts.",
-    "Public deployment/live URL has repeatedly shown \"Canister ID Not Resolved (Error 400)\" / \"Your live site will appear here once you go live\" and drafts expiring, indicating the live publish/link resolution process may be unreliable or not persisting as expected."
-  ],
-  "isFixRequest": false,
   "gameProjectType": "none",
-  "projectName": "Madhavi Electrical Solutions Business Website",
+  "projectName": "Improve electrician website: clear services, navigation, CTAs, SEO, reviews, and performance",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

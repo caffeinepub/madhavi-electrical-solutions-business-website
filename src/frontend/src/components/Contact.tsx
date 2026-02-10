@@ -5,8 +5,10 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Label } from '@/components/ui/label';
 import { Phone, Mail, MapPin, Send, Loader2, Clock } from 'lucide-react';
+import { SiWhatsapp } from 'react-icons/si';
 import { toast } from 'sonner';
 import { useSubmitContactForm } from '@/hooks/useQueries';
+import { getWhatsAppChatURL } from '@/lib/whatsapp';
 
 export function Contact() {
   const [formData, setFormData] = useState({
@@ -41,6 +43,10 @@ export function Contact() {
       ...prev,
       [e.target.name]: e.target.value
     }));
+  };
+
+  const handleWhatsAppClick = () => {
+    window.open(getWhatsAppChatURL(), '_blank', 'noopener,noreferrer');
   };
 
   const contactInfo = [
@@ -81,9 +87,31 @@ export function Contact() {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
             Contact <span className="text-industrial-blue">Us</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
+          <p className="text-lg text-muted-foreground mb-6">
             Get in touch with us for professional electrical services and solutions
           </p>
+          
+          {/* Quick Contact CTAs */}
+          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+            <Button
+              asChild
+              size="lg"
+              className="bg-industrial-orange hover:bg-industrial-orange/90 text-white"
+            >
+              <a href="tel:9953854470">
+                <Phone className="mr-2 h-5 w-5" />
+                Call Us
+              </a>
+            </Button>
+            <Button
+              onClick={handleWhatsAppClick}
+              size="lg"
+              className="bg-[#25D366] hover:bg-[#20BA5A] text-white"
+            >
+              <SiWhatsapp className="mr-2 h-5 w-5" />
+              Book Now
+            </Button>
+          </div>
         </div>
 
         <div className="max-w-6xl mx-auto mb-12">
@@ -107,7 +135,9 @@ export function Contact() {
                         {info.value}
                       </a>
                     ) : (
-                      <p className="text-foreground break-words font-medium">{info.value}</p>
+                      <p className="text-foreground font-medium break-words">
+                        {info.value}
+                      </p>
                     )}
                   </div>
                 </CardContent>
@@ -116,81 +146,86 @@ export function Contact() {
           </div>
         </div>
 
-        <div className="max-w-3xl mx-auto">
-          <Card className="border-2 border-industrial-orange/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardHeader className="text-center">
-              <CardTitle className="text-2xl">Get a Free Consultation</CardTitle>
-              <CardDescription>
-                Fill out the form below and we will contact you shortly
+        <div className="max-w-2xl mx-auto">
+          <Card className="border-2 shadow-xl">
+            <CardHeader className="text-center pb-6">
+              <CardTitle className="text-3xl font-bold mb-2">
+                Get a <span className="text-industrial-orange">Free Consultation</span>
+              </CardTitle>
+              <CardDescription className="text-base">
+                Fill out the form below and we'll get back to you shortly. Request quotes for any of our services including home wiring, emergency repairs, panel upgrades, LED work, and appliance installation.
               </CardDescription>
             </CardHeader>
             <CardContent>
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <div className="space-y-2">
-                    <Label htmlFor="name">Name *</Label>
-                    <Input
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      placeholder="Your name"
-                      required
-                      disabled={submitContactForm.isPending}
-                      className="border-2 focus:border-industrial-orange transition-colors duration-300"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="phone">Phone *</Label>
-                    <Input
-                      id="phone"
-                      name="phone"
-                      type="tel"
-                      value={formData.phone}
-                      onChange={handleChange}
-                      placeholder="Your phone number"
-                      required
-                      disabled={submitContactForm.isPending}
-                      className="border-2 focus:border-industrial-orange transition-colors duration-300"
-                    />
-                  </div>
-                </div>
-
                 <div className="space-y-2">
-                  <Label htmlFor="email">Email *</Label>
+                  <Label htmlFor="name" className="text-base font-semibold">
+                    Name <span className="text-destructive">*</span>
+                  </Label>
                   <Input
-                    id="email"
-                    name="email"
-                    type="email"
-                    value={formData.email}
+                    id="name"
+                    name="name"
+                    type="text"
+                    placeholder="Your full name"
+                    value={formData.name}
                     onChange={handleChange}
-                    placeholder="your.email@example.com"
                     required
-                    disabled={submitContactForm.isPending}
-                    className="border-2 focus:border-industrial-orange transition-colors duration-300"
+                    className="h-12 border-2 focus:border-industrial-orange transition-colors"
                   />
                 </div>
 
                 <div className="space-y-2">
-                  <Label htmlFor="message">Message *</Label>
+                  <Label htmlFor="email" className="text-base font-semibold">
+                    Email <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="your.email@example.com"
+                    value={formData.email}
+                    onChange={handleChange}
+                    required
+                    className="h-12 border-2 focus:border-industrial-orange transition-colors"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="phone" className="text-base font-semibold">
+                    Phone <span className="text-destructive">*</span>
+                  </Label>
+                  <Input
+                    id="phone"
+                    name="phone"
+                    type="tel"
+                    placeholder="Your phone number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    required
+                    className="h-12 border-2 focus:border-industrial-orange transition-colors"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <Label htmlFor="message" className="text-base font-semibold">
+                    Message <span className="text-destructive">*</span>
+                  </Label>
                   <Textarea
                     id="message"
                     name="message"
+                    placeholder="Tell us about your service needs (e.g., home wiring, emergency repair, panel upgrade, LED installation, or appliance setup)..."
                     value={formData.message}
                     onChange={handleChange}
-                    placeholder="Tell us about your electrical service needs..."
-                    rows={6}
                     required
-                    disabled={submitContactForm.isPending}
-                    className="border-2 focus:border-industrial-orange resize-none transition-colors duration-300"
+                    rows={5}
+                    className="border-2 focus:border-industrial-orange transition-colors resize-none"
                   />
                 </div>
 
                 <Button
                   type="submit"
-                  size="lg"
                   disabled={submitContactForm.isPending}
-                  className="w-full bg-industrial-orange hover:bg-industrial-orange/90 text-white shadow-md hover:shadow-lg transition-all duration-300"
+                  className="w-full h-12 bg-industrial-orange hover:bg-industrial-orange/90 text-white text-lg font-semibold shadow-lg hover:shadow-xl transition-all duration-300"
                 >
                   {submitContactForm.isPending ? (
                     <>
@@ -199,8 +234,8 @@ export function Contact() {
                     </>
                   ) : (
                     <>
+                      <Send className="mr-2 h-5 w-5" />
                       Send Message
-                      <Send className="ml-2 h-5 w-5" />
                     </>
                   )}
                 </Button>

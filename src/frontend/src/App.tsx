@@ -2,6 +2,9 @@ import { Header } from './components/Header';
 import { Hero } from './components/Hero';
 import { About } from './components/About';
 import { Services } from './components/Services';
+import { Products } from './components/Products';
+import { Certificates } from './components/Certificates';
+import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
 import { FloatingWhatsAppCTA } from './components/FloatingWhatsAppCTA';
@@ -17,6 +20,9 @@ function App() {
           <Hero />
           <About />
           <Services />
+          <Products />
+          <Certificates />
+          <Testimonials />
           <Contact />
         </main>
         <Footer />

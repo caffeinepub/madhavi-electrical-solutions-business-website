@@ -1,46 +1,21 @@
 import { Button } from '@/components/ui/button';
-import { ArrowRight, Shield } from 'lucide-react';
+import { ArrowRight, Shield, Phone } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import { getWhatsAppChatURL, DEFAULT_BOOKING_MESSAGE } from '@/lib/whatsapp';
+import { scrollToSection } from '@/lib/scroll';
 
 export function Hero() {
-  const scrollToContact = () => {
-    const element = document.getElementById('contact');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
-  const scrollToServices = () => {
-    const element = document.getElementById('services');
-    if (element) {
-      const offset = 80;
-      const elementPosition = element.getBoundingClientRect().top;
-      const offsetPosition = elementPosition + window.pageYOffset - offset;
-      window.scrollTo({
-        top: offsetPosition,
-        behavior: 'smooth'
-      });
-    }
-  };
-
   const handleWhatsAppClick = () => {
     window.open(getWhatsAppChatURL(DEFAULT_BOOKING_MESSAGE), '_blank', 'noopener,noreferrer');
   };
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
+    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: 'var(--header-height, 120px)' }}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img
           src="/assets/generated/hero-background.dim_1200x600.jpg"
-          alt="Electrical Solutions"
+          alt="Professional electrical services and solutions"
           className="w-full h-full object-cover"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-industrial-navy/95 via-industrial-navy/92 to-industrial-navy-light/85" />
@@ -81,33 +56,36 @@ export function Hero() {
           </p>
           
           <p className="text-lg text-gray-300 mb-10 max-w-2xl mx-auto animate-fade-in-up" style={{ animationDelay: '0.4s' }}>
-            Expert electrical engineering, installation, maintenance, and specialized systems for residential, commercial, and industrial applications in Noida
+            Expert electrical engineering, installation, maintenance, and specialized systems for residential, commercial, and industrial applications in Ghaziabad
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center animate-fade-in-up" style={{ animationDelay: '0.5s' }}>
+            <Button
+              size="lg"
+              onClick={() => scrollToSection('contact')}
+              className="bg-industrial-orange hover:bg-industrial-orange/90 text-white text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
+            >
+              Get a Free Quote
+              <ArrowRight className="ml-2 h-5 w-5" />
+            </Button>
             <Button
               size="lg"
               onClick={handleWhatsAppClick}
               className="bg-[#25D366] hover:bg-[#20BA5A] text-white text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
             >
               <SiWhatsapp className="mr-2 h-5 w-5" />
-              Book Now on WhatsApp
+              Book Now
             </Button>
             <Button
-              size="lg"
-              onClick={scrollToContact}
-              className="bg-industrial-orange hover:bg-industrial-orange/90 text-white text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
-            >
-              Get Free Consultation
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button
+              asChild
               size="lg"
               variant="outline"
-              onClick={scrollToServices}
               className="border-2 border-industrial-gray/60 text-white hover:bg-industrial-gray/20 hover:border-industrial-orange text-lg px-8 py-6 h-auto shadow-lg hover:shadow-xl transition-all duration-300"
             >
-              View Services
+              <a href="tel:9953854470">
+                <Phone className="mr-2 h-5 w-5" />
+                Call Us
+              </a>
             </Button>
           </div>
         </div>

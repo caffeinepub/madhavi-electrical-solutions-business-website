@@ -2,11 +2,12 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-user-facing-cta-labeled-book-now-on-whatsapp-that-opens-a-whatsapp-chat-to-the-business-number-9953854470",
-      "featureTitle": "Add a user-facing CTA labeled “Book Now on WhatsApp” that opens a WhatsApp chat to the business number 9953854470.",
+      "featureId": "feature-update-the-primary-navigation-to-include-only-these-menu-items-home-services-about-us-contact-ensure-both-desktop-and-mobile-navigation-reflect-this-and-that-clicking-each-item-smoothly-scrolls-to-the-correct-section",
+      "featureTitle": "Update the primary navigation to include only these menu items: Home | Services | About Us | Contact. Ensure both desktop and mobile navigation reflect this and that clicking each item smoothly scrolls to the correct section.",
       "files": [
-        "frontend/src/components/Hero.tsx",
-        "frontend/src/lib/whatsapp.ts"
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/index.css"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -22,8 +23,50 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-place-a-persistent-floating-whatsapp-cta-button-on-all-sections-of-the-single-page-site-so-users-can-start-a-whatsapp-chat-from-anywhere-on-the-page",
-      "featureTitle": "Place a persistent floating WhatsApp CTA button on all sections of the single-page site so users can start a WhatsApp chat from anywhere on the page.",
+      "featureId": "feature-make-the-services-offering-easy-to-understand-by-presenting-these-services-as-clearly-separated-service-entries-either-as-sub-sections-within-the-services-section-and-or-as-dedicated-detail-views-home-wiring-emergency-repairs-fuse-panel-upgrades-light-fitting-led-work-appliance-installation-each-service-entry-must-have-a-title-a-short-description-an-icon-and-a-professional-image",
+      "featureTitle": "Make the Services offering easy to understand by presenting these services as clearly separated service entries (either as sub-sections within the Services section and/or as dedicated detail views): Home Wiring, Emergency Repairs, Fuse/Panel Upgrades, Light Fitting/LED Work, Appliance Installation. Each service entry must have a title, a short description, an icon, and a professional image.",
+      "files": [
+        "frontend/src/components/Contact.tsx",
+        "frontend/src/components/Services.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-2"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-prominent-ctas-across-the-site-so-users-can-take-action-from-every-major-section-home-hero-services-about-us-contact-get-a-free-quote-book-now-and-call-us-the-call-us-cta-must-use-the-existing-phone-number-and-a-tel-link",
+      "featureTitle": "Add prominent CTAs across the site so users can take action from every major section (Home/Hero, Services, About Us, Contact): “Get a Free Quote”, “Book Now”, and “Call Us”. The “Call Us” CTA must use the existing phone number and a tel: link.",
+      "files": [
+        "frontend/src/components/About.tsx",
+        "frontend/src/components/Contact.tsx",
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/components/Services.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-3"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-a-floating-always-available-contact-cta-component-that-improves-conversions-on-mobile-and-desktop-e-g-a-compact-floating-bar-or-buttons-with-at-least-call-and-whatsapp-actions-ensure-it-does-not-block-key-content-or-form-fields",
+      "featureTitle": "Implement a floating, always-available contact CTA component that improves conversions on mobile and desktop (e.g., a compact floating bar or buttons) with at least: Call and WhatsApp actions. Ensure it does not block key content or form fields.",
       "files": [
         "frontend/src/App.tsx",
         "frontend/src/components/FloatingWhatsAppCTA.tsx",
@@ -38,7 +81,112 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-4"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-customer-reviews-social-proof-section-that-displays-multiple-testimonials-with-names-and-star-ratings-place-it-in-a-sensible-location-in-the-single-page-flow-e-g-after-services-and-before-contact-and-ensure-it-is-visually-consistent-with-the-rest-of-the-site",
+      "featureTitle": "Add a customer reviews / social proof section that displays multiple testimonials with names and star ratings. Place it in a sensible location in the single-page flow (e.g., after Services and before Contact) and ensure it is visually consistent with the rest of the site.",
+      "files": [
+        "frontend/src/App.tsx",
+        "frontend/src/components/Testimonials.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-5"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-implement-basic-on-page-seo-improvements-set-a-keyword-focused-page-title-and-meta-description-english-and-ensure-key-images-have-meaningful-alt-text-use-the-provided-example-format-for-the-title-as-guidance",
+      "featureTitle": "Implement basic on-page SEO improvements: set a keyword-focused page title and meta description (English), and ensure key images have meaningful alt text. Use the provided example format for the title as guidance.",
+      "files": [
+        "frontend/index.html",
+        "frontend/src/components/About.tsx",
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/components/Services.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-improve-performance-for-fast-loading-by-optimizing-image-loading-behavior-and-preventing-unnecessarily-heavy-above-the-fold-assets-use-sensible-defaults-such-as-lazy-loading-below-the-fold-images-and-ensuring-images-are-appropriately-sized-for-their-display-containers",
+      "featureTitle": "Improve performance for fast loading by optimizing image loading behavior and preventing unnecessarily heavy above-the-fold assets. Use sensible defaults such as lazy-loading below-the-fold images and ensuring images are appropriately sized for their display containers.",
+      "files": [
+        "frontend/src/components/About.tsx",
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/components/Services.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-7"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-ensure-the-site-is-served-securely-without-mixed-content-all-external-links-opened-from-ctas-e-g-whatsapp-must-use-https-urls-and-there-must-be-no-http-resource-references-in-the-frontend",
+      "featureTitle": "Ensure the site is served securely without mixed content: all external links opened from CTAs (e.g., WhatsApp) must use https URLs, and there must be no http resource references in the frontend.",
+      "files": [
+        "frontend/src/components/FloatingWhatsAppCTA.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/lib/whatsapp.ts"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-the-new-professional-images-as-static-assets-under-frontend-public-assets-generated-and-wire-them-into-the-hero-services-about-team-areas-where-appropriate-using-consistent-styling-and-captions-alt-text-in-english",
+      "featureTitle": "Add the new professional images as static assets under frontend/public/assets/generated and wire them into the Hero/Services/About (team) areas where appropriate, using consistent styling and captions/alt text in English.",
+      "files": [
+        "frontend/src/components/About.tsx",
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/components/Services.tsx"
+      ],
+      "components": [
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "blob-storage@4.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
       ],
       "confidence": "high"
     }

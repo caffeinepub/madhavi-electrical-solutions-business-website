@@ -1,7 +1,15 @@
 import { Award, Users, Wrench, Shield, Phone } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
+import { SiWhatsapp } from 'react-icons/si';
+import { scrollToSection } from '@/lib/scroll';
+import { getWhatsAppChatURL } from '@/lib/whatsapp';
 
 export function About() {
+  const handleWhatsAppClick = () => {
+    window.open(getWhatsAppChatURL(), '_blank', 'noopener,noreferrer');
+  };
+
   const features = [
     {
       icon: Award,
@@ -33,9 +41,23 @@ export function About() {
             About <span className="text-industrial-blue">Us</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Madhavi Electrical Solutions is a trusted provider of comprehensive electrical services in Noida, Uttar Pradesh. 
+            Madhavi Electrical Solutions is a trusted provider of comprehensive electrical services in Ghaziabad, Uttar Pradesh. 
             We specialize in electrical engineering, installation, maintenance, and specialized systems across residential, commercial, and industrial sectors.
           </p>
+        </div>
+
+        {/* Team Photo */}
+        <div className="max-w-4xl mx-auto mb-12">
+          <Card className="border-2 border-industrial-blue/20 shadow-lg overflow-hidden">
+            <div className="aspect-[3/2] relative">
+              <img
+                src="/assets/generated/team-photo.dim_1200x800.jpg"
+                alt="Madhavi Electrical Solutions professional team of certified electricians and engineers"
+                loading="lazy"
+                className="w-full h-full object-cover"
+              />
+            </div>
+          </Card>
         </div>
 
         <div className="max-w-4xl mx-auto mb-16">
@@ -51,17 +73,34 @@ export function About() {
                 Our team of certified electricians, engineers, and technicians takes pride in delivering exceptional service quality, 
                 maintaining the highest safety standards, and building long-term relationships with our clients. From residential 
                 projects to large-scale commercial and industrial installations, Madhavi Electrical Solutions is your trusted partner 
-                for all electrical and engineering needs in the Noida area.
+                for all electrical and engineering needs in the Ghaziabad area.
               </p>
-              <div className="flex items-center justify-center gap-3 p-4 bg-industrial-orange/5 rounded-lg border-2 border-industrial-orange/20">
-                <Phone className="w-5 h-5 text-industrial-orange" />
-                <span className="text-muted-foreground font-medium">Contact Us:</span>
-                <a 
-                  href="tel:9953854470" 
-                  className="text-xl font-bold text-industrial-orange hover:text-industrial-orange/80 transition-colors"
+              
+              {/* CTA Buttons */}
+              <div className="flex flex-col sm:flex-row gap-3 mt-8">
+                <Button
+                  onClick={() => scrollToSection('contact')}
+                  className="bg-industrial-orange hover:bg-industrial-orange/90 text-white"
                 >
-                  9953854470
-                </a>
+                  Get a Free Quote
+                </Button>
+                <Button
+                  onClick={handleWhatsAppClick}
+                  className="bg-[#25D366] hover:bg-[#20BA5A] text-white"
+                >
+                  <SiWhatsapp className="mr-2 h-5 w-5" />
+                  Book Now
+                </Button>
+                <Button
+                  asChild
+                  variant="outline"
+                  className="border-industrial-orange text-industrial-orange hover:bg-industrial-orange hover:text-white"
+                >
+                  <a href="tel:9953854470">
+                    <Phone className="mr-2 h-5 w-5" />
+                    Call Us
+                  </a>
+                </Button>
               </div>
             </CardContent>
           </Card>
@@ -84,4 +123,3 @@ export function About() {
     </section>
   );
 }
-

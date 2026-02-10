@@ -8,6 +8,7 @@ const WHATSAPP_BUSINESS_NUMBER = '919953854470'; // India country code + number
 /**
  * Returns the WhatsApp chat URL for the business
  * Opens WhatsApp app on mobile or WhatsApp Web on desktop
+ * Uses secure HTTPS protocol
  */
 export function getWhatsAppChatURL(message?: string): string {
   const baseURL = `https://wa.me/${WHATSAPP_BUSINESS_NUMBER}`;

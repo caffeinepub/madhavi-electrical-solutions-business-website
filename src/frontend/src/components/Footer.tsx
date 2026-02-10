@@ -1,7 +1,12 @@
 import { Heart } from 'lucide-react';
+import { scrollToSection } from '@/lib/scroll';
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+
+  const handleNavClick = (id: string) => {
+    scrollToSection(id);
+  };
 
   return (
     <footer className="bg-industrial-dark text-gray-300 py-12">
@@ -31,24 +36,13 @@ export function Footer() {
             <ul className="space-y-2">
               {[
                 { label: 'Home', id: 'home' },
-                { label: 'About Us', id: 'about' },
                 { label: 'Services', id: 'services' },
+                { label: 'About Us', id: 'about' },
                 { label: 'Contact', id: 'contact' }
               ].map((item) => (
                 <li key={item.id}>
                   <button
-                    onClick={() => {
-                      const element = document.getElementById(item.id);
-                      if (element) {
-                        const offset = 80;
-                        const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - offset;
-                        window.scrollTo({
-                          top: offsetPosition,
-                          behavior: 'smooth'
-                        });
-                      }
-                    }}
+                    onClick={() => handleNavClick(item.id)}
                     className="text-gray-400 hover:text-industrial-orange transition-colors"
                   >
                     {item.label}
@@ -92,7 +86,7 @@ export function Footer() {
             © {currentYear}. Built with{' '}
             <Heart className="h-4 w-4 text-red-500 fill-red-500 inline-block" /> using{' '}
             <a
-              href="https://caffeine.ai"
+              href={`https://caffeine.ai/?utm_source=Caffeine-footer&utm_medium=referral&utm_content=${encodeURIComponent(window.location.hostname)}`}
               target="_blank"
               rel="noopener noreferrer"
               className="text-industrial-orange hover:underline"

@@ -1,31 +1,63 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-04T11:33:40.395Z",
+  "generatedAt": "2026-02-10T02:22:11.377Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 2,
-    "implemented": 2,
+    "total": 9,
+    "implemented": 9,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add a user-facing CTA labeled “Book Now on WhatsApp” that opens a WhatsApp chat to the business number 9953854470.",
+        "summary": "Update the primary navigation to include only these menu items: Home | Services | About Us | Contact. Ensure both desktop and mobile navigation reflect this and that clicking each item smoothly scrolls to the correct section.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/lib/whatsapp.ts",
-          "frontend/src/components/Hero.tsx"
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/index.css"
         ],
         "matchedFiles": [
-          "frontend/src/lib/whatsapp.ts",
-          "frontend/src/components/Hero.tsx"
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/index.css"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Place a persistent floating WhatsApp CTA button on all sections of the single-page site so users can start a WhatsApp chat from anywhere on the page.",
+        "summary": "Make the Services offering easy to understand by presenting these services as clearly separated service entries (either as sub-sections within the Services section and/or as dedicated detail views): Home Wiring, Emergency Repairs, Fuse/Panel Upgrades, Light Fitting/LED Work, Appliance Installation. Each service entry must have a title, a short description, an icon, and a professional image.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/Contact.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/Contact.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add prominent CTAs across the site so users can take action from every major section (Home/Hero, Services, About Us, Contact): “Get a Free Quote”, “Book Now”, and “Call Us”. The “Call Us” CTA must use the existing phone number and a tel: link.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx",
+          "frontend/src/components/Contact.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx",
+          "frontend/src/components/Contact.tsx"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Implement a floating, always-available contact CTA component that improves conversions on mobile and desktop (e.g., a compact floating bar or buttons) with at least: Call and WhatsApp actions. Ensure it does not block key content or form fields.",
         "status": "implemented",
         "plannedFiles": [
           "frontend/src/components/FloatingWhatsAppCTA.tsx",
@@ -36,27 +68,118 @@
           "frontend/src/components/FloatingWhatsAppCTA.tsx",
           "frontend/src/App.tsx",
           "frontend/src/index.css"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add a customer reviews / social proof section that displays multiple testimonials with names and star ratings. Place it in a sensible location in the single-page flow (e.g., after Services and before Contact) and ensure it is visually consistent with the rest of the site.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Testimonials.tsx",
+          "frontend/src/App.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Testimonials.tsx",
+          "frontend/src/App.tsx"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Implement basic on-page SEO improvements: set a keyword-focused page title and meta description (English), and ensure key images have meaningful alt text. Use the provided example format for the title as guidance.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/index.html",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/index.html",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Improve performance for fast loading by optimizing image loading behavior and preventing unnecessarily heavy above-the-fold assets. Use sensible defaults such as lazy-loading below-the-fold images and ensuring images are appropriately sized for their display containers.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Ensure the site is served securely without mixed content: all external links opened from CTAs (e.g., WhatsApp) must use https URLs, and there must be no http resource references in the frontend.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/lib/whatsapp.ts",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/FloatingWhatsAppCTA.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/lib/whatsapp.ts",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/FloatingWhatsAppCTA.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add the new professional images as static assets under frontend/public/assets/generated and wire them into the Hero/Services/About (team) areas where appropriate, using consistent styling and captions/alt text in English.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/team-photo.dim_1200x800.jpg",
+          "frontend/public/assets/generated/service-home-wiring.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-emergency-repairs.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-fuse-panel-upgrades.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-led-light-fitting.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-appliance-installation.dim_800x600.jpg",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx",
+          "frontend/src/components/Hero.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/team-photo.dim_1200x800.jpg",
+          "frontend/public/assets/generated/service-home-wiring.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-emergency-repairs.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-fuse-panel-upgrades.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-led-light-fitting.dim_800x600.jpg",
+          "frontend/public/assets/generated/service-appliance-installation.dim_800x600.jpg",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/About.tsx",
+          "frontend/src/components/Hero.tsx"
         ]
       }
     ]
   },
   "changedFiles": [
     "build-request.json",
-    "build-template/Dockerfile",
-    "build-template/LICENSE",
-    "build-template/README.md",
-    "build-template/deploy.sh",
-    "build-template/icp.yaml",
-    "build-template/src/backend/canister.yaml",
-    "build-template/src/frontend/canister.yaml",
-    "caffeine.lock.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/index.html",
+    "frontend/public/assets/generated/service-appliance-installation.dim_800x600.jpg",
+    "frontend/public/assets/generated/service-emergency-repairs.dim_800x600.jpg",
+    "frontend/public/assets/generated/service-fuse-panel-upgrades.dim_800x600.jpg",
+    "frontend/public/assets/generated/service-home-wiring.dim_800x600.jpg",
+    "frontend/public/assets/generated/service-led-light-fitting.dim_800x600.jpg",
+    "frontend/public/assets/generated/team-photo.dim_1200x800.jpg",
     "frontend/src/App.tsx",
+    "frontend/src/components/About.tsx",
+    "frontend/src/components/Contact.tsx",
     "frontend/src/components/FloatingWhatsAppCTA.tsx",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
     "frontend/src/components/Hero.tsx",
-    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/components/Services.tsx",
+    "frontend/src/components/Testimonials.tsx",
     "frontend/src/index.css",
     "frontend/src/lib/whatsapp.ts",
     "project_state.json",
