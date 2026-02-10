@@ -3,6 +3,7 @@ import { ArrowRight, Shield, Phone } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import { getWhatsAppChatURL, DEFAULT_BOOKING_MESSAGE } from '@/lib/whatsapp';
 import { scrollToSection } from '@/lib/scroll';
+import { ReducedMotionMedia } from '@/components/ReducedMotionMedia';
 
 export function Hero() {
   const handleWhatsAppClick = () => {
@@ -13,10 +14,12 @@ export function Hero() {
     <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden" style={{ paddingTop: 'var(--header-height, 120px)' }}>
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img
-          src="/assets/generated/hero-background.dim_1200x600.gif"
-          alt="Professional electrical services and solutions"
+        <ReducedMotionMedia
+          animatedSrc="/assets/generated/hero-electrician-distribution-board.dim_1600x900.gif"
+          staticSrc="/assets/generated/hero-background.dim_1200x600.jpg"
+          alt="Professional electrician working inside modern electrical distribution board"
           className="w-full h-full object-cover"
+          loading="eager"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-industrial-navy/95 via-industrial-navy/92 to-industrial-navy-light/85" />
         <div className="absolute inset-0 bg-gradient-to-t from-industrial-orange/10 via-transparent to-transparent" />

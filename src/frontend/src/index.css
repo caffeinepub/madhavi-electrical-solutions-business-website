@@ -158,3 +158,228 @@ section[id] {
     opacity: 0.1;
   }
 }
+
+/* Electrician Work Animations */
+
+/* Wire flow animation */
+@keyframes wire-flow {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -12;
+  }
+}
+
+.electrician-wire-flow .wire-animate {
+  animation: wire-flow 1s linear infinite;
+}
+
+.electrician-wire-flow .wire-delay-1 {
+  animation-delay: 0.2s;
+}
+
+.electrician-wire-flow .wire-delay-2 {
+  animation-delay: 0.4s;
+}
+
+/* Spark effect */
+@keyframes spark-pulse {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.3);
+  }
+}
+
+.electrician-spark {
+  animation: spark-pulse 1.5s ease-in-out infinite;
+}
+
+/* Tester movement */
+@keyframes tester-move {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+.electrician-tester-move {
+  animation: tester-move 2s ease-in-out infinite;
+}
+
+/* LED blink */
+@keyframes led-blink {
+  0%, 40%, 100% {
+    fill: oklch(30% 0.02 240);
+  }
+  45%, 95% {
+    fill: oklch(60% 0.18 150);
+  }
+}
+
+.electrician-led-blink {
+  animation: led-blink 2s ease-in-out infinite;
+}
+
+/* Voltage display pulse */
+@keyframes voltage-pulse {
+  0%, 100% {
+    fill: oklch(40% 0.05 240);
+    opacity: 1;
+  }
+  50% {
+    fill: oklch(60% 0.18 150);
+    opacity: 0.8;
+  }
+}
+
+.electrician-voltage-display {
+  animation: voltage-pulse 2s ease-in-out infinite;
+}
+
+/* Status indicator pulse */
+@keyframes status-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.electrician-status-pulse {
+  animation: status-pulse 1s ease-in-out infinite;
+}
+
+/* Screw rotation */
+@keyframes screw-rotate {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(90deg);
+  }
+  50% {
+    transform: rotate(180deg);
+  }
+  75% {
+    transform: rotate(270deg);
+  }
+}
+
+.electrician-screw-rotate {
+  animation: screw-rotate 3s linear infinite;
+  transform-origin: center;
+}
+
+.electrician-delay-1 {
+  animation-delay: 0.3s;
+}
+
+.electrician-delay-2 {
+  animation-delay: 0.6s;
+}
+
+.electrician-delay-3 {
+  animation-delay: 0.9s;
+}
+
+/* Screwdriver movement */
+@keyframes screwdriver-move {
+  0%, 100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.7;
+  }
+  25% {
+    transform: translate(-15px, 15px) rotate(-15deg);
+    opacity: 1;
+  }
+  50% {
+    transform: translate(-30px, 30px) rotate(-30deg);
+    opacity: 1;
+  }
+  75% {
+    transform: translate(-15px, 15px) rotate(-15deg);
+    opacity: 1;
+  }
+}
+
+.electrician-screwdriver-move {
+  animation: screwdriver-move 4s ease-in-out infinite;
+}
+
+/* Beacon pulse */
+@keyframes beacon-pulse {
+  0%, 100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.4;
+    transform: scale(1.1);
+  }
+}
+
+.electrician-beacon-pulse {
+  animation: beacon-pulse 1s ease-in-out infinite;
+}
+
+/* Spark flicker */
+@keyframes spark-flicker {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  10%, 30%, 50%, 70%, 90% {
+    opacity: 0.3;
+  }
+  20%, 40%, 60%, 80% {
+    opacity: 1;
+  }
+}
+
+.electrician-spark-flicker {
+  animation: spark-flicker 1.5s ease-in-out infinite;
+}
+
+/* Wobble effect */
+@keyframes wobble {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-5deg);
+  }
+  75% {
+    transform: rotate(5deg);
+  }
+}
+
+.electrician-wobble {
+  animation: wobble 0.5s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .electrician-wire-flow .wire-animate,
+  .electrician-spark,
+  .electrician-tester-move,
+  .electrician-led-blink,
+  .electrician-voltage-display,
+  .electrician-status-pulse,
+  .electrician-screw-rotate,
+  .electrician-screwdriver-move,
+  .electrician-beacon-pulse,
+  .electrician-spark-flicker,
+  .electrician-wobble {
+    animation: none;
+  }
+}

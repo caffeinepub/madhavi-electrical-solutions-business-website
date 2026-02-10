@@ -1,14 +1,15 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { 
-  Zap, Home, 
+  Home, 
   Wrench, Plug, Settings, Fan, Lightbulb, 
-  Shield, Camera, ShoppingBag, Package,
+  Shield, Camera,
   Wind, Palette, Phone
 } from 'lucide-react';
 import { SiWhatsapp } from 'react-icons/si';
 import { scrollToSection } from '@/lib/scroll';
 import { getWhatsAppChatURL } from '@/lib/whatsapp';
+import { ReducedMotionMedia } from '@/components/ReducedMotionMedia';
 
 export function Services() {
   const handleBookService = () => {
@@ -20,37 +21,35 @@ export function Services() {
     window.open(getWhatsAppChatURL(message), '_blank', 'noopener,noreferrer');
   };
 
-  // Core 5 services highlighted at the top
+  // Core 4 services highlighted at the top
   const coreServices = [
     {
       title: 'Home Wiring',
       description: 'Complete residential wiring solutions including new installations, rewiring, and electrical system upgrades. Safe, code-compliant wiring for your home with quality materials and expert workmanship.',
       icon: Home,
-      image: '/assets/generated/service-home-wiring.dim_800x600.gif'
-    },
-    {
-      title: 'Emergency Repairs',
-      description: '24/7 emergency electrical repair services for urgent issues. Fast response for power outages, electrical faults, short circuits, and any electrical emergencies to keep your property safe.',
-      icon: Zap,
-      image: '/assets/generated/service-emergency-repairs.dim_800x600.gif'
+      animatedImage: '/assets/generated/service-home-wiring.dim_800x600.gif',
+      staticImage: '/assets/generated/service-home-wiring.dim_800x600.jpg'
     },
     {
       title: 'Fuse/Panel Upgrades',
       description: 'Professional electrical panel and fuse box upgrades to meet modern power demands. Safe installation of circuit breakers, load centers, and distribution panels with proper load balancing.',
       icon: Settings,
-      image: '/assets/generated/service-fuse-panel-upgrades.dim_800x600.gif'
+      animatedImage: '/assets/generated/services-panel-wiring-closeup.dim_1200x800.gif',
+      staticImage: '/assets/generated/service-fuse-panel-upgrades.dim_800x600.jpg'
     },
     {
       title: 'Light Fitting/LED Work',
       description: 'Expert installation and repair of all types of lighting fixtures including LED lights, chandeliers, recessed lighting, and outdoor lighting. Energy-efficient LED solutions for homes and businesses.',
       icon: Lightbulb,
-      image: '/assets/generated/service-led-light-fitting.dim_800x600.gif'
+      animatedImage: '/assets/generated/light-installation-led-ceiling.dim_1200x800.gif',
+      staticImage: '/assets/generated/service-led-light-fitting.dim_800x600.jpg'
     },
     {
       title: 'Appliance Installation',
       description: 'Professional installation of electrical appliances including fans, air conditioners, water heaters, and kitchen appliances. Proper electrical connections ensuring safety and optimal performance.',
       icon: Fan,
-      image: '/assets/generated/service-appliance-installation.dim_800x600.gif'
+      animatedImage: '/assets/generated/service-appliance-installation.dim_800x600.gif',
+      staticImage: '/assets/generated/service-appliance-installation.dim_800x600.jpg'
     }
   ];
 
@@ -58,15 +57,8 @@ export function Services() {
     {
       title: 'Electrical Engineering',
       description: 'Complete electrical engineering services including comprehensive system design, detailed planning, and professional implementation. Expert solutions for complex electrical projects with focus on safety, efficiency, and reliability.',
-      icon: Zap,
+      icon: Lightbulb,
       image: '/assets/generated/electrical-engineering-tools.dim_800x600.gif',
-      category: 'Engineering Services'
-    },
-    {
-      title: 'Residential Engineering',
-      description: 'Specialized residential electrical engineering and system design services. Custom solutions for homes including power distribution planning, lighting design, smart home integration, and energy-efficient electrical systems.',
-      icon: Home,
-      image: '/assets/generated/residential-engineering.dim_800x600.gif',
       category: 'Engineering Services'
     },
     {
@@ -75,13 +67,6 @@ export function Services() {
       icon: Wrench,
       image: '/assets/generated/electrical-maintenance.dim_800x600.gif',
       category: 'Installation & Maintenance'
-    },
-    {
-      title: 'Security System Installation',
-      description: 'Professional security system installation and monitoring solutions. Complete security infrastructure including access control, alarm systems, surveillance integration, and 24/7 monitoring capabilities.',
-      icon: Shield,
-      image: '/assets/generated/electrical-maintenance.dim_800x600.gif',
-      category: 'Specialized Systems'
     },
     {
       title: 'Electrical Socket & Switch Installation/Repair/Relocation',
@@ -126,13 +111,6 @@ export function Services() {
       category: 'Security & Surveillance'
     },
     {
-      title: 'Commercial Electrical Engineering',
-      description: 'Comprehensive commercial electrical engineering services for businesses and industrial facilities. Expert design, installation, and maintenance of commercial electrical systems with focus on efficiency and reliability.',
-      icon: ShoppingBag,
-      image: '/assets/generated/commercial-electrical-engineering.dim_800x600.gif',
-      category: 'Commercial Services'
-    },
-    {
       title: 'Electrical Design',
       description: 'Professional electrical design services for new construction and renovation projects. Detailed electrical plans, load calculations, and system specifications ensuring code compliance and optimal performance.',
       icon: Palette,
@@ -168,11 +146,12 @@ export function Services() {
             {coreServices.map((service, index) => (
               <Card key={index} className="border-2 hover:border-industrial-orange/50 transition-all duration-300 hover:shadow-xl group overflow-hidden">
                 <div className="aspect-video relative overflow-hidden">
-                  <img
-                    src={service.image}
+                  <ReducedMotionMedia
+                    animatedSrc={service.animatedImage}
+                    staticSrc={service.staticImage}
                     alt={`${service.title} - Professional electrical service`}
-                    loading="lazy"
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
                 <CardHeader>

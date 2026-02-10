@@ -4,6 +4,7 @@ import { Button } from '@/components/ui/button';
 import { SiWhatsapp } from 'react-icons/si';
 import { scrollToSection } from '@/lib/scroll';
 import { getWhatsAppChatURL } from '@/lib/whatsapp';
+import { ReducedMotionMedia } from '@/components/ReducedMotionMedia';
 
 export function About() {
   const handleWhatsAppClick = () => {
@@ -41,76 +42,103 @@ export function About() {
             About <span className="text-industrial-blue">Us</span>
           </h2>
           <p className="text-lg text-muted-foreground leading-relaxed">
-            Madhavi Electrical Solutions is a trusted provider of comprehensive electrical services in Ghaziabad, Uttar Pradesh. 
-            We specialize in electrical engineering, installation, maintenance, and specialized systems across residential, commercial, and industrial sectors.
+            Madhavi Electrical Solutions is a trusted provider of comprehensive electrical services in Ghaziabad. With years of experience and a commitment to excellence, we deliver reliable, safe, and efficient electrical solutions for residential, commercial, and industrial clients.
           </p>
         </div>
 
-        {/* Team Photo */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <Card className="border-2 border-industrial-blue/20 shadow-lg overflow-hidden">
-            <div className="aspect-[3/2] relative">
-              <img
-                src="/assets/generated/team-photo.dim_1200x800.jpg"
-                alt="Madhavi Electrical Solutions professional team of certified electricians and engineers"
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
+          <div className="order-2 lg:order-1">
+            <h3 className="text-3xl font-bold text-foreground mb-6">
+              Why Choose <span className="text-industrial-orange">Madhavi Electrical</span>
+            </h3>
+            <p className="text-muted-foreground mb-6 leading-relaxed">
+              Our team of certified electricians brings expertise, professionalism, and dedication to every project. From routine maintenance to complex installations, we ensure the highest standards of safety and quality in all our work.
+            </p>
+            <p className="text-muted-foreground mb-8 leading-relaxed">
+              We pride ourselves on transparent pricing, timely service, and building long-term relationships with our clients. Your satisfaction and safety are our top priorities.
+            </p>
+
+            {/* CTA Row */}
+            <div className="flex flex-col sm:flex-row gap-4 mb-8">
+              <Button
+                size="lg"
+                onClick={() => scrollToSection('contact')}
+                className="bg-industrial-orange hover:bg-industrial-orange/90 text-white"
+              >
+                Get a Free Quote
+              </Button>
+              <Button
+                size="lg"
+                onClick={handleWhatsAppClick}
+                className="bg-[#25D366] hover:bg-[#20BA5A] text-white"
+              >
+                <SiWhatsapp className="mr-2 h-5 w-5" />
+                Book Now
+              </Button>
+              <Button
+                asChild
+                size="lg"
+                variant="outline"
+                className="border-2 border-industrial-orange text-industrial-orange hover:bg-industrial-orange hover:text-white"
+              >
+                <a href="tel:9953854470">
+                  <Phone className="mr-2 h-5 w-5" />
+                  Call Us
+                </a>
+              </Button>
+            </div>
+          </div>
+
+          <div className="order-1 lg:order-2">
+            <div className="rounded-2xl overflow-hidden shadow-2xl border-4 border-industrial-orange/20">
+              <ReducedMotionMedia
+                animatedSrc="/assets/generated/team-photo.dim_1200x800.gif"
+                staticSrc="/assets/generated/team-photo.dim_1200x800.jpg"
+                alt="Madhavi Electrical Solutions team at work"
+                className="w-full h-auto"
                 loading="lazy"
-                className="w-full h-full object-cover"
               />
             </div>
-          </Card>
+          </div>
         </div>
 
-        <div className="max-w-4xl mx-auto mb-16">
-          <Card className="border-2 border-industrial-blue/20 shadow-lg hover:shadow-xl transition-shadow duration-300">
-            <CardContent className="p-8">
-              <h3 className="text-2xl font-bold text-foreground mb-4">Our Goal</h3>
-              <p className="text-muted-foreground leading-relaxed mb-4">
-                Our primary goal is to provide customer satisfaction and reliable service. We bring comprehensive expertise in 
-                electrical engineering solutions, panel installation and repair, wiring systems, solar energy, security systems, 
-                HVAC installations, and specialized electrical services.
-              </p>
-              <p className="text-muted-foreground leading-relaxed mb-6">
-                Our team of certified electricians, engineers, and technicians takes pride in delivering exceptional service quality, 
-                maintaining the highest safety standards, and building long-term relationships with our clients. From residential 
-                projects to large-scale commercial and industrial installations, Madhavi Electrical Solutions is your trusted partner 
-                for all electrical and engineering needs in the Ghaziabad area.
-              </p>
-              
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-8">
-                <Button
-                  onClick={() => scrollToSection('contact')}
-                  className="bg-industrial-orange hover:bg-industrial-orange/90 text-white"
-                >
-                  Get a Free Quote
-                </Button>
-                <Button
-                  onClick={handleWhatsAppClick}
-                  className="bg-[#25D366] hover:bg-[#20BA5A] text-white"
-                >
-                  <SiWhatsapp className="mr-2 h-5 w-5" />
-                  Book Now
-                </Button>
-                <Button
-                  asChild
-                  variant="outline"
-                  className="border-industrial-orange text-industrial-orange hover:bg-industrial-orange hover:text-white"
-                >
-                  <a href="tel:9953854470">
-                    <Phone className="mr-2 h-5 w-5" />
-                    Call Us
-                  </a>
-                </Button>
+        {/* Trust & Quality Section */}
+        <div className="mb-16">
+          <div className="max-w-4xl mx-auto">
+            <Card className="border-2 border-industrial-blue/30 overflow-hidden">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                <div className="aspect-video md:aspect-auto">
+                  <ReducedMotionMedia
+                    animatedSrc="/assets/generated/trust-quality-panel-inspection.dim_1200x800.gif"
+                    staticSrc="/assets/generated/electrical-panel-installation.dim_800x600.jpg"
+                    alt="Professional electrician inspecting organized electrical panel"
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+                <div className="p-8 flex flex-col justify-center bg-gradient-to-br from-industrial-blue/5 to-transparent">
+                  <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                    Quality & <span className="text-industrial-blue">Trust</span>
+                  </h3>
+                  <p className="text-muted-foreground leading-relaxed mb-6">
+                    Our skilled electricians inspect every installation with meticulous attention to detail. We ensure well-organized electrical panels, proper safety compliance, and premium professional standards in every project we undertake.
+                  </p>
+                  <div className="flex items-center gap-3 text-industrial-blue">
+                    <Shield className="h-8 w-8" />
+                    <span className="font-semibold text-lg">Certified & Trusted Professionals</span>
+                  </div>
+                </div>
               </div>
-            </CardContent>
-          </Card>
+            </Card>
+          </div>
         </div>
 
+        {/* Features Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <Card key={index} className="border-2 hover:border-industrial-blue/50 transition-all duration-300 hover:shadow-lg group">
-              <CardContent className="p-6 text-center">
-                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-industrial-blue/10 mb-4 group-hover:bg-industrial-blue/20 transition-colors duration-300">
+            <Card key={index} className="border-2 hover:border-industrial-blue/50 transition-all duration-300 hover:shadow-lg">
+              <CardContent className="pt-6 text-center">
+                <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-industrial-blue/10 mb-4">
                   <feature.icon className="w-8 h-8 text-industrial-blue" />
                 </div>
                 <h3 className="text-xl font-bold text-foreground mb-2">{feature.title}</h3>

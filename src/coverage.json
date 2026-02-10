@@ -1,39 +1,161 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-10T17:25:27.161Z",
+  "generatedAt": "2026-02-10T18:19:31.771Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 1,
-    "implemented": 1,
+    "total": 11,
+    "implemented": 11,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Trigger a build and publish/release of the current app version using the existing publishing flow, so the latest changes (including the GIF media updates already implemented) are deployed and available in the preview/production environment.",
+        "summary": "Add a new premium, ultra-realistic looping hero animation asset for the Home page showing a professional electrician in a clean blue uniform working inside a modern electrical distribution board (slow smooth hand movements, color-coded wires, precision tools, soft professional lighting, shallow depth of field, realistic textures, seamless loop, no text, no logo).",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/PUBLISHING.md"
+          "frontend/public/assets/generated/hero-electrician-distribution-board.dim_1600x900.gif"
         ],
         "matchedFiles": [
-          "frontend/PUBLISHING.md"
+          "frontend/public/assets/generated/hero-electrician-distribution-board.dim_1600x900.gif"
+        ]
+      },
+      {
+        "id": "REQ-10",
+        "summary": "Integrate the trust/quality animation into a brand-building section of the page (e.g., About section media area or a new dedicated Trust/Quality subsection) while keeping user-facing headings/body text in English and maintaining the site’s existing visual system.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/About.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/About.tsx"
+        ]
+      },
+      {
+        "id": "REQ-11",
+        "summary": "Ensure all newly added looping animations respect reduced-motion preference by providing a non-animated fallback behavior at the component level (e.g., render a static frame/alternate still asset or suppress animated presentation when prefers-reduced-motion is enabled), without editing any immutable hook files.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ReducedMotionMedia.tsx",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/ElectricianWorkAnimations.tsx",
+          "frontend/src/components/About.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ReducedMotionMedia.tsx",
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Services.tsx",
+          "frontend/src/components/ElectricianWorkAnimations.tsx",
+          "frontend/src/components/About.tsx"
+        ]
+      },
+      {
+        "id": "REQ-2",
+        "summary": "Update the Home (Hero) section to use the new premium hero animation as the hero background media, replacing the current hero background GIF while preserving the existing hero overlay gradients and text legibility.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Hero.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Hero.tsx"
+        ]
+      },
+      {
+        "id": "REQ-3",
+        "summary": "Add a new ultra-realistic looping animation asset for the Services page focus: close-up of an electrician’s hands installing/tightening organized wiring inside a circuit breaker panel (safety gloves, premium components, realistic shadows, professional indoor lighting, seamless loop, no text/logo).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/services-panel-wiring-closeup.dim_1200x800.gif"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/services-panel-wiring-closeup.dim_1200x800.gif"
+        ]
+      },
+      {
+        "id": "REQ-4",
+        "summary": "Integrate the new Services panel & wiring animation into the Services section UI in a prominent placement consistent with existing service media (e.g., as the visual for the relevant panel/fuse service card or as a featured media block within the Services section).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Services.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Services.tsx"
+        ]
+      },
+      {
+        "id": "REQ-5",
+        "summary": "Add a new high-impact, realistic looping emergency repair animation asset showing an electrician performing emergency electrical repair inside a power panel with a softly glowing voltage tester (subtle urgency, cinematic lighting, smooth transitions, seamless loop, no text/logo).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/emergency-repair-voltage-tester.dim_1200x800.gif"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/emergency-repair-voltage-tester.dim_1200x800.gif"
+        ]
+      },
+      {
+        "id": "REQ-6",
+        "summary": "Integrate the new emergency repair animation into an appropriate on-page section (either within Services as the emergency-related visual highlight or within the existing animations showcase section), ensuring it fits the current layout and styling.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/ElectricianWorkAnimations.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/ElectricianWorkAnimations.tsx"
+        ]
+      },
+      {
+        "id": "REQ-7",
+        "summary": "Add a new ultra-clean looping light installation animation asset showing an electrician installing a modern LED ceiling light where the light smoothly turns on and a voltage tester is used carefully (calm professional motion, modern home interior, realistic illumination, seamless loop, no text/logo).",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/light-installation-led-ceiling.dim_1200x800.gif"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/light-installation-led-ceiling.dim_1200x800.gif"
+        ]
+      },
+      {
+        "id": "REQ-8",
+        "summary": "Integrate the new light installation animation into the Services section (e.g., the Light Fitting/LED Work card) by updating the media to use the new premium light-install animation while keeping existing service text and CTAs unchanged.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/src/components/Services.tsx"
+        ],
+        "matchedFiles": [
+          "frontend/src/components/Services.tsx"
+        ]
+      },
+      {
+        "id": "REQ-9",
+        "summary": "Add a new cinematic looping trust/quality animation asset showing a skilled electrician inspecting a well-organized electrical panel with confident, calm body language, neat tools, realistic lighting, modern environment, premium professional look, seamless loop, no text/logo.",
+        "status": "implemented",
+        "plannedFiles": [
+          "frontend/public/assets/generated/trust-quality-panel-inspection.dim_1200x800.gif"
+        ],
+        "matchedFiles": [
+          "frontend/public/assets/generated/trust-quality-panel-inspection.dim_1200x800.gif"
         ]
       }
     ]
   },
   "changedFiles": [
-    "backend/main.mo",
     "build-request.json",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/PUBLISHING.md",
-    "frontend/src/backend.d.ts",
-    "frontend/src/backend.ts",
-    "frontend/src/declarations/backend.did.d.ts",
-    "frontend/src/declarations/backend.did.js",
+    "frontend/public/assets/generated/emergency-repair-voltage-tester.dim_1200x800.gif",
+    "frontend/public/assets/generated/hero-electrician-distribution-board.dim_1600x900.gif",
+    "frontend/public/assets/generated/light-installation-led-ceiling.dim_1200x800.gif",
+    "frontend/public/assets/generated/services-panel-wiring-closeup.dim_1200x800.gif",
+    "frontend/public/assets/generated/trust-quality-panel-inspection.dim_1200x800.gif",
+    "frontend/src/components/About.tsx",
+    "frontend/src/components/ElectricianWorkAnimations.tsx",
+    "frontend/src/components/Hero.tsx",
+    "frontend/src/components/ReducedMotionMedia.tsx",
+    "frontend/src/components/Services.tsx",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -5,6 +5,7 @@ import { Services } from './components/Services';
 import { Products } from './components/Products';
 import { Certificates } from './components/Certificates';
 import { WorkVideo } from './components/WorkVideo';
+import { ElectricianWorkAnimations } from './components/ElectricianWorkAnimations';
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -24,6 +25,7 @@ function App() {
           <Products />
           <Certificates />
           <WorkVideo />
+          <ElectricianWorkAnimations />
           <Testimonials />
           <Contact />
         </main>

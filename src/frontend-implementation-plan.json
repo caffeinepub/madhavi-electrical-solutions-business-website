@@ -1,21 +1,196 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Publish the current website version (frontend-only)",
+  "title": "Add 5 premium ultra-realistic electrician looping GIFs and integrate across Hero/Services/Trust sections with reduced-motion fallbacks",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Document and validate the existing build/publish flow so the current site version (including existing GIF updates) can be released without further feature changes.",
+      "summary": "Add a new premium ultra-realistic looping hero GIF asset for the Home page.",
       "acceptanceCriteria": [
-        "A new build is created from the current codebase state without requiring additional code changes.",
-        "The deployed/published version reflects the latest frontend assets and pages already updated (e.g., Home/Hero and Services GIF usage).",
-        "No regressions: the site loads successfully and key pages render without runtime errors after publishing."
+        "A new generated GIF exists under frontend/public/assets/generated with the specified visual characteristics.",
+        "The animation loops seamlessly (no visible jump cut).",
+        "The asset contains no embedded text or logos."
       ],
       "file_operations": [
         {
-          "path": "frontend/PUBLISHING.md",
+          "path": "frontend/public/assets/generated/hero-electrician-distribution-board.dim_1600x900.gif",
           "operation": "create",
-          "description": "Add a concise runbook for triggering the existing build and publish/release flow for this project, including a pre-publish checklist that confirms the already-implemented GIF assets are present and referenced (e.g., frontend/src/components/Hero.tsx and frontend/src/components/Services.tsx), and a post-publish smoke-test checklist to ensure key sections render without runtime errors. Reference the repo’s existing publishing tooling/template (e.g., github-export-icp-cli) as the source of the publish flow and remind maintainers to Verify the component's usage instructions before implementing."
+          "description": "Add the generated premium hero looping GIF asset (ultra-realistic electrician working inside a modern electrical distribution board; seamless loop; no text/logo)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Update the Home Hero background media to use the new premium hero animation while preserving overlays and CTA behavior.",
+      "acceptanceCriteria": [
+        "Hero section renders the new generated hero GIF from /assets/generated/ as the background media.",
+        "Overlay gradients remain in place and hero text remains readable on top of the animation.",
+        "No regressions to Hero CTAs (Get a Free Quote / Book Now / Call Us) and layout remains responsive."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Replace the Hero background media source to use frontend/public/assets/generated/hero-electrician-distribution-board.dim_1600x900.gif while keeping the existing overlay gradient layers and all CTA behaviors unchanged; wrap background rendering with the new reduced-motion media helper (static fallback should use an existing still asset already in the repo, e.g., the current hero JPG)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "summary": "Add a new ultra-realistic looping Services panel-wiring close-up GIF asset.",
+      "acceptanceCriteria": [
+        "A new generated GIF exists under frontend/public/assets/generated matching the described close-up panel wiring scene.",
+        "The animation loops seamlessly and contains no text/logos."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/services-panel-wiring-closeup.dim_1200x800.gif",
+          "operation": "create",
+          "description": "Add the generated Services panel & wiring close-up looping GIF asset (hands tightening organized wiring in breaker panel; seamless loop; no text/logo)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Integrate the new Services panel-wiring animation into the Services UI using existing styling patterns.",
+      "acceptanceCriteria": [
+        "The Services section displays the new panel & wiring GIF from /assets/generated/.",
+        "The integration is responsive (mobile/desktop) and uses existing card/media styling patterns.",
+        "All existing Services CTAs continue to work."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Services.tsx",
+          "operation": "modify",
+          "description": "Update the Services media mapping to prominently display frontend/public/assets/generated/services-panel-wiring-closeup.dim_1200x800.gif for the most relevant service placement (e.g., Fuse/Panel Upgrades card) while preserving existing titles/descriptions/CTAs and existing responsive card layout; use the new reduced-motion media helper so prefers-reduced-motion users see a non-animated still (use an existing relevant JPG already in the repo as fallback)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-5",
+      "summary": "Add a new high-impact realistic looping emergency repair GIF asset with a softly glowing voltage tester.",
+      "acceptanceCriteria": [
+        "A new generated GIF exists under frontend/public/assets/generated matching the emergency repair description.",
+        "The voltage tester glow is visible but not distracting; loop is seamless; no text/logos."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/emergency-repair-voltage-tester.dim_1200x800.gif",
+          "operation": "create",
+          "description": "Add the generated emergency repair looping GIF asset (electrician working inside power panel; softly glowing voltage tester; cinematic lighting; seamless loop; no text/logo)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-6",
+      "summary": "Integrate the new emergency repair animation into an existing on-page section consistent with current styling.",
+      "acceptanceCriteria": [
+        "The new emergency repair GIF is rendered on the page from /assets/generated/.",
+        "Placement is consistent with existing section styling and remains responsive.",
+        "No layout overlap or CLS issues are introduced."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ElectricianWorkAnimations.tsx",
+          "operation": "modify",
+          "description": "Extend the existing electrician animations showcase section to include a new card that renders frontend/public/assets/generated/emergency-repair-voltage-tester.dim_1200x800.gif as a premium media tile (without introducing new routes); ensure the card follows existing Card spacing/styling patterns and uses the reduced-motion media helper to suppress animation for prefers-reduced-motion users (fallback to an existing still asset already in the repo)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-7",
+      "summary": "Add a new ultra-clean looping LED ceiling light installation GIF asset with a smooth light-on transition.",
+      "acceptanceCriteria": [
+        "A new generated GIF exists under frontend/public/assets/generated matching the LED ceiling light installation description.",
+        "The light-on transition is smooth and loops seamlessly; no text/logos."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/light-installation-led-ceiling.dim_1200x800.gif",
+          "operation": "create",
+          "description": "Add the generated light installation looping GIF asset (electrician installing modern LED ceiling light; smooth light-on; voltage tester; seamless loop; no text/logo)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-8",
+      "summary": "Update the light-related service media to use the new light installation animation while keeping existing text/CTAs unchanged.",
+      "acceptanceCriteria": [
+        "The Light Fitting/LED Work service card (or equivalent light-related placement) uses the new light installation GIF from /assets/generated/.",
+        "Existing service title/description and booking actions remain unchanged and functional.",
+        "Media loads with lazy-loading where already used in the Services section."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Services.tsx",
+          "operation": "modify",
+          "description": "Replace the Light Fitting/LED Work service card image with frontend/public/assets/generated/light-installation-led-ceiling.dim_1200x800.gif while preserving the existing service title/description/CTAs and keeping lazy-loading behavior; ensure prefers-reduced-motion uses the reduced-motion media helper with an existing still fallback already in the repo."
+        }
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "summary": "Add a new cinematic looping trust/quality inspection GIF asset for brand-building.",
+      "acceptanceCriteria": [
+        "A new generated GIF exists under frontend/public/assets/generated matching the trust/quality inspection scene.",
+        "The animation loops seamlessly and contains no text/logos."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/public/assets/generated/trust-quality-panel-inspection.dim_1200x800.gif",
+          "operation": "create",
+          "description": "Add the generated trust/quality looping GIF asset (electrician inspecting organized panel; calm/confident; premium professional lighting; seamless loop; no text/logo)."
+        }
+      ]
+    },
+    {
+      "id": "REQ-10",
+      "summary": "Integrate the trust/quality animation into a brand-building section while keeping all user-facing text in English and matching the existing visual system.",
+      "acceptanceCriteria": [
+        "The trust/quality GIF is displayed on the page from /assets/generated/.",
+        "Any new user-facing text added for this integration is in English.",
+        "The section remains responsive and matches existing spacing/card styles."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/About.tsx",
+          "operation": "modify",
+          "description": "Integrate frontend/public/assets/generated/trust-quality-panel-inspection.dim_1200x800.gif into the existing About section as a brand-building media block (or media+text card) using existing Card styling and spacing; ensure any newly added headings/body text are in English; use the reduced-motion media helper with an existing still fallback already in the repo."
+        }
+      ]
+    },
+    {
+      "id": "REQ-11",
+      "summary": "Ensure all newly added animations respect prefers-reduced-motion with non-animated fallbacks, without editing immutable hook files.",
+      "acceptanceCriteria": [
+        "When the user has prefers-reduced-motion enabled, the UI does not present motion-heavy animation for the newly integrated media (fallback behavior is applied).",
+        "No changes are made to any frontend immutablePaths files."
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ReducedMotionMedia.tsx",
+          "operation": "create",
+          "description": "Create a small reusable media component that uses the existing usePrefersReducedMotion hook to switch between an animated GIF source and a non-animated fallback source (existing still assets already present in frontend/public/assets/generated); ensure it can be used for hero/service/about/showcase media without requiring changes to any immutable hook files."
+        },
+        {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Adopt the new ReducedMotionMedia helper for the new hero background animation so prefers-reduced-motion users receive a non-animated fallback while preserving overlay gradients and layout."
+        },
+        {
+          "path": "frontend/src/components/Services.tsx",
+          "operation": "modify",
+          "description": "Adopt the new ReducedMotionMedia helper for any cards updated to use the new premium GIFs (panel wiring and LED light installation) so prefers-reduced-motion users see non-animated fallbacks; preserve existing lazy-loading where applicable."
+        },
+        {
+          "path": "frontend/src/components/ElectricianWorkAnimations.tsx",
+          "operation": "modify",
+          "description": "Use the new ReducedMotionMedia helper for the newly added emergency repair GIF tile so prefers-reduced-motion users do not see motion-heavy animation."
+        },
+        {
+          "path": "frontend/src/components/About.tsx",
+          "operation": "modify",
+          "description": "Use the new ReducedMotionMedia helper for the newly added trust/quality GIF integration so prefers-reduced-motion users see a non-animated fallback."
         }
       ]
     }
