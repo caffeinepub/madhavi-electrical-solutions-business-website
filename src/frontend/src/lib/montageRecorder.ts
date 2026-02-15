@@ -10,12 +10,38 @@ export function isRecordingSupported(): boolean {
   }
 }
 
+function getSupportedMimeType(): string | null {
+  const types = [
+    'video/webm;codecs=vp9',
+    'video/webm;codecs=vp8',
+    'video/webm',
+  ];
+
+  for (const type of types) {
+    if (MediaRecorder.isTypeSupported(type)) {
+      return type;
+    }
+  }
+
+  return null;
+}
+
 export async function recordMontage(
   imagePaths: string[],
-  speed: number = 1
+  secondsPerPhoto: number = 2,
+  transitionMs: number = 500
 ): Promise<Blob> {
   if (!isRecordingSupported()) {
     throw new Error('Recording is not supported in this browser');
+  }
+
+  const mimeType = getSupportedMimeType();
+  if (!mimeType) {
+    throw new Error('No supported video codec found');
+  }
+
+  if (imagePaths.length === 0) {
+    throw new Error('No images provided for recording');
   }
 
   const canvas = document.createElement('canvas');
@@ -29,10 +55,16 @@ export async function recordMontage(
 
   // Capture stream from canvas
   const stream = canvas.captureStream(30); // 30 fps
-  const mediaRecorder = new MediaRecorder(stream, {
-    mimeType: 'video/webm;codecs=vp9',
-    videoBitsPerSecond: 2500000, // 2.5 Mbps
-  });
+  
+  let mediaRecorder: MediaRecorder;
+  try {
+    mediaRecorder = new MediaRecorder(stream, {
+      mimeType,
+      videoBitsPerSecond: 2500000, // 2.5 Mbps
+    });
+  } catch (error) {
+    throw new Error('Failed to initialize MediaRecorder: ' + (error instanceof Error ? error.message : 'Unknown error'));
+  }
 
   const chunks: Blob[] = [];
 
@@ -49,24 +81,41 @@ export async function recordMontage(
     };
 
     mediaRecorder.onerror = (event) => {
-      reject(new Error('MediaRecorder error'));
+      reject(new Error('MediaRecorder error during recording'));
     };
   });
 
   // Start recording
-  mediaRecorder.start();
+  try {
+    mediaRecorder.start();
+  } catch (error) {
+    throw new Error('Failed to start recording: ' + (error instanceof Error ? error.message : 'Unknown error'));
+  }
 
   // Render each image with transitions
-  const baseDuration = 2000 / speed; // Duration per image in ms
-  const transitionDuration = 500; // Crossfade duration
+  const photoDuration = secondsPerPhoto * 1000; // Convert to ms
+  const displayDuration = photoDuration - transitionMs;
 
   for (let i = 0; i < imagePaths.length; i++) {
-    const currentImg = await loadImage(imagePaths[i]);
-    const nextImg = i < imagePaths.length - 1 ? await loadImage(imagePaths[i + 1]) : null;
+    let currentImg: HTMLImageElement;
+    try {
+      currentImg = await loadImage(imagePaths[i]);
+    } catch (error) {
+      console.warn(`Skipping failed image: ${imagePaths[i]}`);
+      continue;
+    }
+
+    let nextImg: HTMLImageElement | null = null;
+    if (i < imagePaths.length - 1) {
+      try {
+        nextImg = await loadImage(imagePaths[i + 1]);
+      } catch (error) {
+        console.warn(`Failed to preload next image: ${imagePaths[i + 1]}`);
+      }
+    }
 
     // Draw current image with zoom animation
     const startTime = Date.now();
-    const displayDuration = baseDuration - transitionDuration;
 
     while (Date.now() - startTime < displayDuration) {
       const progress = (Date.now() - startTime) / displayDuration;
@@ -82,8 +131,8 @@ export async function recordMontage(
     if (nextImg) {
       const fadeStart = Date.now();
       
-      while (Date.now() - fadeStart < transitionDuration) {
-        const fadeProgress = (Date.now() - fadeStart) / transitionDuration;
+      while (Date.now() - fadeStart < transitionMs) {
+        const fadeProgress = (Date.now() - fadeStart) / transitionMs;
         
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         
@@ -113,7 +162,7 @@ function loadImage(src: string): Promise<HTMLImageElement> {
     const img = new Image();
     img.crossOrigin = 'anonymous';
     img.onload = () => resolve(img);
-    img.onerror = reject;
+    img.onerror = () => reject(new Error(`Failed to load image: ${src}`));
     img.src = src;
   });
 }

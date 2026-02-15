@@ -3,19 +3,25 @@ import { useState, useEffect, useRef, useCallback } from 'react';
 interface MontagePlayerState {
   currentIndex: number;
   isPlaying: boolean;
-  speed: number;
+  secondsPerPhoto: number;
+  transitionMs: number;
   play: () => void;
   pause: () => void;
   restart: () => void;
-  setSpeed: (speed: number) => void;
+  setSecondsPerPhoto: (seconds: number) => void;
+  setTransitionMs: (ms: number) => void;
 }
 
-const BASE_DURATION = 2000; // 2 seconds per image
-
-export function useMontagePlayer(totalImages: number): MontagePlayerState {
+export function useMontagePlayer(
+  totalImages: number,
+  initialPlaying: boolean = true,
+  initialSecondsPerPhoto: number = 2,
+  initialTransitionMs: number = 500
+): MontagePlayerState {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [isPlaying, setIsPlaying] = useState(true);
-  const [speed, setSpeed] = useState(1);
+  const [isPlaying, setIsPlaying] = useState(initialPlaying);
+  const [secondsPerPhoto, setSecondsPerPhoto] = useState(initialSecondsPerPhoto);
+  const [transitionMs, setTransitionMs] = useState(initialTransitionMs);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
 
   const clearTimer = useCallback(() => {
@@ -30,18 +36,18 @@ export function useMontagePlayer(totalImages: number): MontagePlayerState {
     
     if (!isPlaying) return;
 
-    const duration = BASE_DURATION / speed;
+    const duration = secondsPerPhoto * 1000;
     
     timerRef.current = setTimeout(() => {
       setCurrentIndex((prev) => (prev + 1) % totalImages);
     }, duration);
-  }, [isPlaying, speed, totalImages, clearTimer]);
+  }, [isPlaying, secondsPerPhoto, totalImages, clearTimer]);
 
-  // Schedule next transition when index, playing state, or speed changes
+  // Schedule next transition when index, playing state, or duration changes
   useEffect(() => {
     scheduleNext();
     return clearTimer;
-  }, [currentIndex, isPlaying, speed, scheduleNext, clearTimer]);
+  }, [currentIndex, isPlaying, secondsPerPhoto, scheduleNext, clearTimer]);
 
   const play = useCallback(() => {
     setIsPlaying(true);
@@ -57,17 +63,23 @@ export function useMontagePlayer(totalImages: number): MontagePlayerState {
     setIsPlaying(true);
   }, []);
 
-  const changeSpeed = useCallback((newSpeed: number) => {
-    setSpeed(newSpeed);
+  const changeSecondsPerPhoto = useCallback((seconds: number) => {
+    setSecondsPerPhoto(seconds);
+  }, []);
+
+  const changeTransitionMs = useCallback((ms: number) => {
+    setTransitionMs(ms);
   }, []);
 
   return {
     currentIndex,
     isPlaying,
-    speed,
+    secondsPerPhoto,
+    transitionMs,
     play,
     pause,
     restart,
-    setSpeed: changeSpeed,
+    setSecondsPerPhoto: changeSecondsPerPhoto,
+    setTransitionMs: changeTransitionMs,
   };
 }

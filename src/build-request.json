@@ -1,234 +1,76 @@
 {
   "kind": "build_request",
-  "title": "Add 5 premium ultra-realistic looping electrician animations and integrate into key site sections",
+  "title": "Ensure Work Video is actually added and visible (video upload + robust defaults)",
   "priority": "normal",
   "requirements": [
     {
       "id": "REQ-1",
-      "text": "Add a new premium, ultra-realistic looping hero animation asset for the Home page showing a professional electrician in a clean blue uniform working inside a modern electrical distribution board (slow smooth hand movements, color-coded wires, precision tools, soft professional lighting, shallow depth of field, realistic textures, seamless loop, no text, no logo).",
+      "text": "Add a clear, user-facing way to add a real video to the Work Video section by supporting local video file upload (e.g., .mp4/.webm) and playing it inline with standard controls.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "recent-msg-8"
         ],
         "quotes": [
-          "1️⃣ Home Page – Premium Hero Animation\nCinematic, ultra-realistic looping animation of a professional electrician in a clean blue uniform working inside a modern electrical distribution board... seamless loop, no text, no logo"
+          "Ye video add karo"
         ]
       },
       "acceptanceCriteria": [
-        "A new generated GIF exists under frontend/public/assets/generated with the specified visual characteristics.",
-        "The animation loops seamlessly (no visible jump cut).",
-        "The asset contains no embedded text or logos."
+        "In the Work Video section, users can choose a video file from their device via a file picker.",
+        "After selecting a video, the page shows an inline HTML5 <video> player with Play/Pause, seek, volume, and fullscreen controls.",
+        "If the user clears/removes the selected video, the UI returns to the default Work Video experience (montage or placeholder).",
+        "All user-facing labels and messages in this feature are in English."
       ]
     },
     {
       "id": "REQ-2",
-      "text": "Update the Home (Hero) section to use the new premium hero animation as the hero background media, replacing the current hero background GIF while preserving the existing hero overlay gradients and text legibility.",
+      "text": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when an image fails to load.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "recent-msg-8"
         ],
         "quotes": [
-          "Home Page – Premium Hero Animation ... corporate electrical services style."
+          "Ye video add karo"
         ]
       },
       "acceptanceCriteria": [
-        "Hero section renders the new generated hero GIF from /assets/generated/ as the background media.",
-        "Overlay gradients remain in place and hero text remains readable on top of the animation.",
-        "No regressions to Hero CTAs (Get a Free Quote / Book Now / Call Us) and layout remains responsive."
+        "If any default montage image URL from WORK_PHOTOS fails to load, the Work Video section shows a clear English fallback state (e.g., “Work video is not available yet. Please upload a video or add photos.”) instead of a blank/black canvas.",
+        "The app does not crash if one or more montage images are missing or fail to load.",
+        "WORK_PHOTOS is updated to only reference files that actually exist in the frontend public assets, or the code is updated to avoid relying on missing paths."
       ]
     },
     {
       "id": "REQ-3",
-      "text": "Add a new ultra-realistic looping animation asset for the Services page focus: close-up of an electrician’s hands installing/tightening organized wiring inside a circuit breaker panel (safety gloves, premium components, realistic shadows, professional indoor lighting, seamless loop, no text/logo).",
+      "text": "Update the Work Video UI so it is obvious what content is being shown (uploaded video vs. photo montage), and provide a simple control to switch/clear the current selection.",
       "target": "frontend",
       "source": {
         "messageIds": [
-          "msg-user-1"
+          "recent-msg-8"
         ],
         "quotes": [
-          "🟢 2️⃣ Services Page – Panel & Wiring Focus\nHigh-detail close-up looping animation of an electrician’s hands carefully installing and tightening wires inside a circuit breaker panel... seamless GIF loop"
+          "Ye video add karo"
         ]
       },
       "acceptanceCriteria": [
-        "A new generated GIF exists under frontend/public/assets/generated matching the described close-up panel wiring scene.",
-        "The animation loops seamlessly and contains no text/logos."
-      ]
-    },
-    {
-      "id": "REQ-4",
-      "text": "Integrate the new Services panel & wiring animation into the Services section UI in a prominent placement consistent with existing service media (e.g., as the visual for the relevant panel/fuse service card or as a featured media block within the Services section).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "Services Page – Panel & Wiring Focus ... modern electrical service aesthetic."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The Services section displays the new panel & wiring GIF from /assets/generated/.",
-        "The integration is responsive (mobile/desktop) and uses existing card/media styling patterns.",
-        "All existing Services CTAs continue to work."
-      ]
-    },
-    {
-      "id": "REQ-5",
-      "text": "Add a new high-impact, realistic looping emergency repair animation asset showing an electrician performing emergency electrical repair inside a power panel with a softly glowing voltage tester (subtle urgency, cinematic lighting, smooth transitions, seamless loop, no text/logo).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "🟢 3️⃣ Emergency Electrical Repair (High Impact)\nRealistic looping animation of an electrician performing emergency electrical repair inside a power panel. Voltage tester glowing softly... seamless loop"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A new generated GIF exists under frontend/public/assets/generated matching the emergency repair description.",
-        "The voltage tester glow is visible but not distracting; loop is seamless; no text/logos."
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "text": "Integrate the new emergency repair animation into an appropriate on-page section (either within Services as the emergency-related visual highlight or within the existing animations showcase section), ensuring it fits the current layout and styling.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "Emergency Electrical Repair (High Impact) ... professional emergency electrician service."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The new emergency repair GIF is rendered on the page from /assets/generated/.",
-        "Placement is consistent with existing section styling and remains responsive.",
-        "No layout overlap or CLS issues are introduced."
-      ]
-    },
-    {
-      "id": "REQ-7",
-      "text": "Add a new ultra-clean looping light installation animation asset showing an electrician installing a modern LED ceiling light where the light smoothly turns on and a voltage tester is used carefully (calm professional motion, modern home interior, realistic illumination, seamless loop, no text/logo).",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "🟢 4️⃣ Light Installation – Clean & Trustworthy\nUltra-clean looping animation of an electrician installing a modern LED ceiling light. Light smoothly turns on... smooth loop"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A new generated GIF exists under frontend/public/assets/generated matching the LED ceiling light installation description.",
-        "The light-on transition is smooth and loops seamlessly; no text/logos."
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "text": "Integrate the new light installation animation into the Services section (e.g., the Light Fitting/LED Work card) by updating the media to use the new premium light-install animation while keeping existing service text and CTAs unchanged.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "Light Installation – Clean & Trustworthy ... premium electrical installation style."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The Light Fitting/LED Work service card (or equivalent light-related placement) uses the new light installation GIF from /assets/generated/.",
-        "Existing service title/description and booking actions remain unchanged and functional.",
-        "Media loads with lazy-loading where already used in the Services section."
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "text": "Add a new cinematic looping trust/quality animation asset showing a skilled electrician inspecting a well-organized electrical panel with confident, calm body language, neat tools, realistic lighting, modern environment, premium professional look, seamless loop, no text/logo.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "🟢 5️⃣ Trust / Quality Section (Brand Building)\nCinematic looping animation showing a skilled electrician inspecting a well-organized electrical panel with confidence... seamless loop"
-        ]
-      },
-      "acceptanceCriteria": [
-        "A new generated GIF exists under frontend/public/assets/generated matching the trust/quality inspection scene.",
-        "The animation loops seamlessly and contains no text/logos."
-      ]
-    },
-    {
-      "id": "REQ-10",
-      "text": "Integrate the trust/quality animation into a brand-building section of the page (e.g., About section media area or a new dedicated Trust/Quality subsection) while keeping user-facing headings/body text in English and maintaining the site’s existing visual system.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "Trust / Quality Section (Brand Building) ... premium professional electrical engineering service look."
-        ]
-      },
-      "acceptanceCriteria": [
-        "The trust/quality GIF is displayed on the page from /assets/generated/.",
-        "Any new user-facing text added for this integration is in English.",
-        "The section remains responsive and matches existing spacing/card styles."
-      ]
-    },
-    {
-      "id": "REQ-11",
-      "text": "Ensure all newly added looping animations respect reduced-motion preference by providing a non-animated fallback behavior at the component level (e.g., render a static frame/alternate still asset or suppress animated presentation when prefers-reduced-motion is enabled), without editing any immutable hook files.",
-      "target": "frontend",
-      "source": {
-        "messageIds": [
-          "msg-user-1"
-        ],
-        "quotes": [
-          "seamless loop"
-        ]
-      },
-      "acceptanceCriteria": [
-        "When the user has prefers-reduced-motion enabled, the UI does not present motion-heavy animation for the newly integrated media (fallback behavior is applied).",
-        "No changes are made to any frontend immutablePaths files."
+        "The Work Video section indicates whether the user is viewing an uploaded video or the photo montage.",
+        "There is an explicit control to remove/clear the uploaded video selection and revert to montage mode.",
+        "The section remains responsive and visually consistent with the existing site styling (Tailwind + existing UI components)."
       ]
     }
   ],
   "constraints": [
-    "Do not modify files under frontend/src/components/ui (read-only shadcn sources must be composed, not edited).",
-    "Do not edit any immutable paths listed in SYSTEM_CONTEXT (e.g., frontend/src/hooks/useInternetIdentity.ts(x), frontend/src/hooks/useActor.ts, frontend/src/main.tsx).",
-    "Keep all backend logic within the existing single Motoko actor (backend/main.mo); no new backend canisters/services."
+    "Do not edit files under frontend/src/components/ui (compose these components instead).",
+    "Do not modify frontend immutable paths: frontend/src/hooks/useInternetIdentity.ts, frontend/src/hooks/useInternetIdentity.tsx, frontend/src/hooks/useActor.ts, frontend/src/main.tsx, and all files in frontend/src/components/ui.",
+    "Keep the backend as a single Motoko actor; do not introduce additional backend services."
   ],
   "nonGoals": [
-    "Do not implement new authentication, payments, real-time messaging, or external API integrations.",
-    "Do not change contact-form backend storage behavior or add persistence beyond existing in-memory behavior.",
-    "Do not introduce new routing frameworks (keep current single-page scroll sections)."
+    "Do not implement third-party video hosting/streaming or external storage integrations.",
+    "Do not add real-time features (no WebSockets).",
+    "Do not add non-Internet-Identity auth providers."
   ],
   "imageRequirements": {
-    "required": [
-      "Cinematic ultra-realistic electrician working inside a modern electrical distribution board, blue uniform, color-coded wires, shallow depth of field, soft professional lighting, seamless loop, no text, no logo (hero-electrician-distribution-board.dim_1600x900.gif)",
-      "High-detail close-up of electrician hands installing/tightening organized wiring inside a circuit breaker panel, safety gloves, premium components, realistic shadows, seamless loop, no text, no logo (services-panel-wiring-closeup.dim_1200x800.gif)",
-      "Realistic emergency electrical repair inside a power panel with softly glowing voltage tester, subtle urgency, cinematic lighting, seamless loop, no text, no logo (emergency-repair-voltage-tester.dim_1200x800.gif)",
-      "Ultra-clean electrician installing modern LED ceiling light, light smoothly turns on, voltage tester used carefully, modern home interior, realistic illumination, seamless loop, no text, no logo (light-installation-led-ceiling.dim_1200x800.gif)",
-      "Cinematic electrician inspecting a well-organized electrical panel confidently, neat tools, realistic lighting, modern environment, seamless loop, no text, no logo (trust-quality-panel-inspection.dim_1200x800.gif)"
-    ],
-    "edits": [
-      "Replace hero background with new premium hero animation (hero-background.dim_1200x600.gif > hero-electrician-distribution-board.dim_1600x900.gif)"
-    ]
-  },
-  "userProfileUpdate": {
-    "goalsToAdd": [],
-    "goalsToRemove": [],
-    "preferencesToAdd": [
-      "Use English for all user-facing text."
-    ],
-    "preferencesToRemove": [],
-    "miscToAdd": [],
-    "miscToRemove": [],
-    "fieldsToSet": {},
-    "fieldsToDelete": []
+    "required": [],
+    "edits": []
   }
 }

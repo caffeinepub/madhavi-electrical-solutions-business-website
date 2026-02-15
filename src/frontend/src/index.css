@@ -382,4 +382,14 @@ section[id] {
   .electrician-wobble {
     animation: none;
   }
+
+  /* Disable montage animations for reduced motion */
+  .montage-canvas {
+    animation: none;
+  }
+
+  .montage-overlay {
+    animation: none;
+    opacity: 0.2;
+  }
 }

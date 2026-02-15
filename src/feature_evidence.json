@@ -2,9 +2,11 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-new-premium-ultra-realistic-looping-hero-animation-asset-for-the-home-page-showing-a-professional-electrician-in-a-clean-blue-uniform-working-inside-a-modern-electrical-distribution-board-slow-smooth-hand-movements-color-coded-wires-precision-tools-soft-professional-lighting-shallow-depth-of-field-realistic-textures-seamless-loop-no-text-no-logo",
-      "featureTitle": "Add a new premium, ultra-realistic looping hero animation asset for the Home page showing a professional electrician in a clean blue uniform working inside a modern electrical distribution board (slow smooth hand movements, color-coded wires, precision tools, soft professional lighting, shallow depth of field, realistic textures, seamless loop, no text, no logo).",
-      "files": [],
+      "featureId": "feature-add-a-clear-user-facing-way-to-add-a-real-video-to-the-work-video-section-by-supporting-local-video-file-upload-e-g-mp4-webm-and-playing-it-inline-with-standard-controls",
+      "featureTitle": "Add a clear, user-facing way to add a real video to the Work Video section by supporting local video file upload (e.g., .mp4/.webm) and playing it inline with standard controls.",
+      "files": [
+        "frontend/src/components/WorkVideo.tsx"
+      ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -19,10 +21,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-update-the-home-hero-section-to-use-the-new-premium-hero-animation-as-the-hero-background-media-replacing-the-current-hero-background-gif-while-preserving-the-existing-hero-overlay-gradients-and-text-legibility",
-      "featureTitle": "Update the Home (Hero) section to use the new premium hero animation as the hero background media, replacing the current hero background GIF while preserving the existing hero overlay gradients and text legibility.",
+      "featureId": "feature-make-the-default-work-video-montage-reliably-render-by-validating-default-asset-paths-and-adding-a-graceful-fallback-when-an-image-fails-to-load",
+      "featureTitle": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when an image fails to load.",
       "files": [
-        "frontend/src/components/Hero.tsx"
+        "frontend/src/components/WorkVideo.tsx",
+        "frontend/src/lib/montageRecorder.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -38,9 +41,11 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-add-a-new-ultra-realistic-looping-animation-asset-for-the-services-page-focus-close-up-of-an-electrician-s-hands-installing-tightening-organized-wiring-inside-a-circuit-breaker-panel-safety-gloves-premium-components-realistic-shadows-professional-indoor-lighting-seamless-loop-no-text-logo",
-      "featureTitle": "Add a new ultra-realistic looping animation asset for the Services page focus: close-up of an electrician’s hands installing/tightening organized wiring inside a circuit breaker panel (safety gloves, premium components, realistic shadows, professional indoor lighting, seamless loop, no text/logo).",
-      "files": [],
+      "featureId": "feature-update-the-work-video-ui-so-it-is-obvious-what-content-is-being-shown-uploaded-video-vs-photo-montage-and-provide-a-simple-control-to-switch-clear-the-current-selection",
+      "featureTitle": "Update the Work Video UI so it is obvious what content is being shown (uploaded video vs. photo montage), and provide a simple control to switch/clear the current selection.",
+      "files": [
+        "frontend/src/components/WorkVideo.tsx"
+      ],
       "components": [
         "core-infrastructure@1.0.2",
         "shadcn-ui@1.0.0",
@@ -51,156 +56,6 @@
       ],
       "testIds": [
         "REQ-3"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-integrate-the-new-services-panel-wiring-animation-into-the-services-section-ui-in-a-prominent-placement-consistent-with-existing-service-media-e-g-as-the-visual-for-the-relevant-panel-fuse-service-card-or-as-a-featured-media-block-within-the-services-section",
-      "featureTitle": "Integrate the new Services panel & wiring animation into the Services section UI in a prominent placement consistent with existing service media (e.g., as the visual for the relevant panel/fuse service card or as a featured media block within the Services section).",
-      "files": [
-        "frontend/src/components/Services.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-4"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-new-high-impact-realistic-looping-emergency-repair-animation-asset-showing-an-electrician-performing-emergency-electrical-repair-inside-a-power-panel-with-a-softly-glowing-voltage-tester-subtle-urgency-cinematic-lighting-smooth-transitions-seamless-loop-no-text-logo",
-      "featureTitle": "Add a new high-impact, realistic looping emergency repair animation asset showing an electrician performing emergency electrical repair inside a power panel with a softly glowing voltage tester (subtle urgency, cinematic lighting, smooth transitions, seamless loop, no text/logo).",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-5"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-integrate-the-new-emergency-repair-animation-into-an-appropriate-on-page-section-either-within-services-as-the-emergency-related-visual-highlight-or-within-the-existing-animations-showcase-section-ensuring-it-fits-the-current-layout-and-styling",
-      "featureTitle": "Integrate the new emergency repair animation into an appropriate on-page section (either within Services as the emergency-related visual highlight or within the existing animations showcase section), ensuring it fits the current layout and styling.",
-      "files": [
-        "frontend/src/components/ElectricianWorkAnimations.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-6"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-new-ultra-clean-looping-light-installation-animation-asset-showing-an-electrician-installing-a-modern-led-ceiling-light-where-the-light-smoothly-turns-on-and-a-voltage-tester-is-used-carefully-calm-professional-motion-modern-home-interior-realistic-illumination-seamless-loop-no-text-logo",
-      "featureTitle": "Add a new ultra-clean looping light installation animation asset showing an electrician installing a modern LED ceiling light where the light smoothly turns on and a voltage tester is used carefully (calm professional motion, modern home interior, realistic illumination, seamless loop, no text/logo).",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-7"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-integrate-the-new-light-installation-animation-into-the-services-section-e-g-the-light-fitting-led-work-card-by-updating-the-media-to-use-the-new-premium-light-install-animation-while-keeping-existing-service-text-and-ctas-unchanged",
-      "featureTitle": "Integrate the new light installation animation into the Services section (e.g., the Light Fitting/LED Work card) by updating the media to use the new premium light-install animation while keeping existing service text and CTAs unchanged.",
-      "files": [
-        "frontend/src/components/Services.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-8"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-add-a-new-cinematic-looping-trust-quality-animation-asset-showing-a-skilled-electrician-inspecting-a-well-organized-electrical-panel-with-confident-calm-body-language-neat-tools-realistic-lighting-modern-environment-premium-professional-look-seamless-loop-no-text-logo",
-      "featureTitle": "Add a new cinematic looping trust/quality animation asset showing a skilled electrician inspecting a well-organized electrical panel with confident, calm body language, neat tools, realistic lighting, modern environment, premium professional look, seamless loop, no text/logo.",
-      "files": [],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-9"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-integrate-the-trust-quality-animation-into-a-brand-building-section-of-the-page-e-g-about-section-media-area-or-a-new-dedicated-trust-quality-subsection-while-keeping-user-facing-headings-body-text-in-english-and-maintaining-the-site-s-existing-visual-system",
-      "featureTitle": "Integrate the trust/quality animation into a brand-building section of the page (e.g., About section media area or a new dedicated Trust/Quality subsection) while keeping user-facing headings/body text in English and maintaining the site’s existing visual system.",
-      "files": [
-        "frontend/src/components/About.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-10"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-ensure-all-newly-added-looping-animations-respect-reduced-motion-preference-by-providing-a-non-animated-fallback-behavior-at-the-component-level-e-g-render-a-static-frame-alternate-still-asset-or-suppress-animated-presentation-when-prefers-reduced-motion-is-enabled-without-editing-any-immutable-hook-files",
-      "featureTitle": "Ensure all newly added looping animations respect reduced-motion preference by providing a non-animated fallback behavior at the component level (e.g., render a static frame/alternate still asset or suppress animated presentation when prefers-reduced-motion is enabled), without editing any immutable hook files.",
-      "files": [
-        "frontend/src/components/About.tsx",
-        "frontend/src/components/ElectricianWorkAnimations.tsx",
-        "frontend/src/components/Hero.tsx",
-        "frontend/src/components/ReducedMotionMedia.tsx",
-        "frontend/src/components/Services.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-11"
       ],
       "confidence": "high"
     }

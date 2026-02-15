@@ -1,13 +1,12 @@
 # Specification
 
 ## Summary
-**Goal:** Add 5 premium, ultra-realistic looping electrician animations and integrate them into key site sections with reduced-motion fallbacks.
+**Goal:** Make the Work Video section reliably show content by supporting local video upload with inline playback, and ensuring the default photo montage has robust fallbacks when assets fail to load.
 
 **Planned changes:**
-- Generate 5 new ultra-realistic, seamless-loop GIF animation assets (hero, services panel wiring close-up, emergency repair, LED ceiling light installation, trust/quality panel inspection) with no embedded text/logos.
-- Update the Home page Hero section to use the new premium hero animation as the background media while preserving existing overlay gradients, CTA behavior, and responsiveness.
-- Integrate the new Services-related animations into the Services UI in prominent, style-consistent placements (panel/wiring, emergency repair highlight, and light fitting/LED work), keeping existing text and CTAs unchanged.
-- Add a trust/quality animation placement in a brand-building section (e.g., About media area or a dedicated trust/quality subsection) with any new user-facing text in English.
-- Ensure newly added animations respect prefers-reduced-motion via component-level non-animated fallback behavior (without editing immutable hook files).
+- Add a local video file picker in the Work Video section (e.g., .mp4/.webm) and render the selected file in an inline HTML5 video player with standard controls.
+- Add a clear control to remove/clear the uploaded video and revert back to the default montage/placeholder experience.
+- Improve the default montage reliability by validating referenced asset paths and adding an English fallback UI if montage images are missing or fail to load (no blank/black canvas; no crashes).
+- Update the Work Video UI labels so it’s obvious whether the user is viewing an uploaded video or the photo montage, while keeping the section responsive and consistent with existing styling.
 
-**User-visible outcome:** The site displays new premium looping electrician animations in the Hero and key sections (Services and trust/quality) with responsive layout and accessible reduced-motion behavior.
+**User-visible outcome:** Users can upload and play a real work video directly on the page, clearly see whether they’re viewing an uploaded video or the montage, and if montage assets fail to load they see a helpful English fallback message instead of a broken/blank section.

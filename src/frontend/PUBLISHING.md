@@ -8,7 +8,7 @@ Before triggering a build, verify the following:
 
 ### 1. Asset Verification
 - [ ] Confirm GIF assets are present in `frontend/public/assets/generated/`:
-  - `hero-background.dim_1200x600.gif` (Hero section background)
+  - `hero-electrician-distribution-board.dim_1600x900.gif` (Hero section background - ultra-realistic electrician working animation)
   - Core service GIFs (5 files):
     - `service-home-wiring.dim_800x600.gif`
     - `service-emergency-repairs.dim_800x600.gif`
@@ -19,7 +19,8 @@ Before triggering a build, verify the following:
   - Work video GIFs: `walking.dim_600x600.gif`, `working.dim_600x600.gif`
 
 ### 2. Component Integration
-- [ ] Verify `frontend/src/components/Hero.tsx` references `hero-background.dim_1200x600.gif`
+- [ ] Verify `frontend/src/components/Hero.tsx` references `hero-electrician-distribution-board.dim_1600x900.gif` as animated source
+- [ ] Verify `frontend/src/components/Hero.tsx` has proper reduced-motion fallback to static image
 - [ ] Verify `frontend/src/components/Services.tsx` references all core and additional service GIFs
 - [ ] Verify `frontend/src/components/WorkVideo.tsx` references walking and working GIFs
 
@@ -63,3 +64,6 @@ This project uses the Internet Computer (IC) platform for deployment. The build 
    This deploys both backend and frontend canisters to the IC network.
 
 ### Full Setup & Deploy (First Time)
+
+If this is your first deployment or you need to set up from scratch:
+

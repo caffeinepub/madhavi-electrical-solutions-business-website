@@ -1,97 +1,34 @@
 {
   "schemaVersion": "1.0.0",
   "projectStateVersion": 3,
-  "summary": "Project to create premium, ultra-realistic looping animation scenes for an electrical services website (home hero + service/emergency/light-install/trust sections).",
+  "summary": "New project",
   "architectural_notes": [],
-  "known_issues": [],
-  "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Cinematic ultra-realistic electrician working inside a modern electrical distribution board, blue uniform, color-coded wires, shallow depth of field, soft professional lighting, seamless loop, no text, no logo (hero-electrician-distribution-board.dim_1600x900.gif)\n- High-detail close-up of electrician hands installing/tightening organized wiring inside a circuit breaker panel, safety gloves, premium components, realistic shadows, seamless loop, no text, no logo (services-panel-wiring-closeup.dim_1200x800.gif)\n- Realistic emergency electrical repair inside a power panel with softly glowing voltage tester, subtle urgency, cinematic lighting, seamless loop, no text, no logo (emergency-repair-voltage-tester.dim_1200x800.gif)\n- Ultra-clean electrician installing modern LED ceiling light, light smoothly turns on, voltage tester used carefully, modern home interior, realistic illumination, seamless loop, no text, no logo (light-installation-led-ceiling.dim_1200x800.gif)\n- Cinematic electrician inspecting a well-organized electrical panel confidently, neat tools, realistic lighting, modern environment, seamless loop, no text, no logo (trust-quality-panel-inspection.dim_1200x800.gif)\n\n## Edit Images\n- Replace hero background with new premium hero animation (hero-background.dim_1200x600.gif > hero-electrician-distribution-board.dim_1600x900.gif)",
+  "known_issues": [
+    "Build/update failed due to an internal configuration error; video was not added as expected"
+  ],
+  "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-add-a-new-premium-ultra-realistic-looping-hero-animation-asset-for-the-home-page-showing-a-professional-electrician-in-a-clean-blue-uniform-working-inside-a-modern-electrical-distribution-board-slow-smooth-hand-movements-color-coded-wires-precision-tools-soft-professional-lighting-shallow-depth-of-field-realistic-textures-seamless-loop-no-text-no-logo",
-      "title": "Add a new premium, ultra-realistic looping hero animation asset for the Home page showing a professional electrician in a clean blue uniform working inside a modern electrical distribution board (slow smooth hand movements, color-coded wires, precision tools, soft professional lighting, shallow depth of field, realistic textures, seamless loop, no text, no logo).",
+      "id": "feature-add-a-clear-user-facing-way-to-add-a-real-video-to-the-work-video-section-by-supporting-local-video-file-upload-e-g-mp4-webm-and-playing-it-inline-with-standard-controls",
+      "title": "Add a clear, user-facing way to add a real video to the Work Video section by supporting local video file upload (e.g., .mp4/.webm) and playing it inline with standard controls.",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-update-the-home-hero-section-to-use-the-new-premium-hero-animation-as-the-hero-background-media-replacing-the-current-hero-background-gif-while-preserving-the-existing-hero-overlay-gradients-and-text-legibility",
-      "title": "Update the Home (Hero) section to use the new premium hero animation as the hero background media, replacing the current hero background GIF while preserving the existing hero overlay gradients and text legibility.",
+      "id": "feature-make-the-default-work-video-montage-reliably-render-by-validating-default-asset-paths-and-adding-a-graceful-fallback-when-an-image-fails-to-load",
+      "title": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when an image fails to load.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
     },
     {
-      "id": "feature-add-a-new-ultra-realistic-looping-animation-asset-for-the-services-page-focus-close-up-of-an-electrician-s-hands-installing-tightening-organized-wiring-inside-a-circuit-breaker-panel-safety-gloves-premium-components-realistic-shadows-professional-indoor-lighting-seamless-loop-no-text-logo",
-      "title": "Add a new ultra-realistic looping animation asset for the Services page focus: close-up of an electrician’s hands installing/tightening organized wiring inside a circuit breaker panel (safety gloves, premium components, realistic shadows, professional indoor lighting, seamless loop, no text/logo).",
+      "id": "feature-update-the-work-video-ui-so-it-is-obvious-what-content-is-being-shown-uploaded-video-vs-photo-montage-and-provide-a-simple-control-to-switch-clear-the-current-selection",
+      "title": "Update the Work Video UI so it is obvious what content is being shown (uploaded video vs. photo montage), and provide a simple control to switch/clear the current selection.",
       "reqIds": [
         "REQ-3"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-integrate-the-new-services-panel-wiring-animation-into-the-services-section-ui-in-a-prominent-placement-consistent-with-existing-service-media-e-g-as-the-visual-for-the-relevant-panel-fuse-service-card-or-as-a-featured-media-block-within-the-services-section",
-      "title": "Integrate the new Services panel & wiring animation into the Services section UI in a prominent placement consistent with existing service media (e.g., as the visual for the relevant panel/fuse service card or as a featured media block within the Services section).",
-      "reqIds": [
-        "REQ-4"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-high-impact-realistic-looping-emergency-repair-animation-asset-showing-an-electrician-performing-emergency-electrical-repair-inside-a-power-panel-with-a-softly-glowing-voltage-tester-subtle-urgency-cinematic-lighting-smooth-transitions-seamless-loop-no-text-logo",
-      "title": "Add a new high-impact, realistic looping emergency repair animation asset showing an electrician performing emergency electrical repair inside a power panel with a softly glowing voltage tester (subtle urgency, cinematic lighting, smooth transitions, seamless loop, no text/logo).",
-      "reqIds": [
-        "REQ-5"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-integrate-the-new-emergency-repair-animation-into-an-appropriate-on-page-section-either-within-services-as-the-emergency-related-visual-highlight-or-within-the-existing-animations-showcase-section-ensuring-it-fits-the-current-layout-and-styling",
-      "title": "Integrate the new emergency repair animation into an appropriate on-page section (either within Services as the emergency-related visual highlight or within the existing animations showcase section), ensuring it fits the current layout and styling.",
-      "reqIds": [
-        "REQ-6"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-ultra-clean-looping-light-installation-animation-asset-showing-an-electrician-installing-a-modern-led-ceiling-light-where-the-light-smoothly-turns-on-and-a-voltage-tester-is-used-carefully-calm-professional-motion-modern-home-interior-realistic-illumination-seamless-loop-no-text-logo",
-      "title": "Add a new ultra-clean looping light installation animation asset showing an electrician installing a modern LED ceiling light where the light smoothly turns on and a voltage tester is used carefully (calm professional motion, modern home interior, realistic illumination, seamless loop, no text/logo).",
-      "reqIds": [
-        "REQ-7"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-integrate-the-new-light-installation-animation-into-the-services-section-e-g-the-light-fitting-led-work-card-by-updating-the-media-to-use-the-new-premium-light-install-animation-while-keeping-existing-service-text-and-ctas-unchanged",
-      "title": "Integrate the new light installation animation into the Services section (e.g., the Light Fitting/LED Work card) by updating the media to use the new premium light-install animation while keeping existing service text and CTAs unchanged.",
-      "reqIds": [
-        "REQ-8"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-add-a-new-cinematic-looping-trust-quality-animation-asset-showing-a-skilled-electrician-inspecting-a-well-organized-electrical-panel-with-confident-calm-body-language-neat-tools-realistic-lighting-modern-environment-premium-professional-look-seamless-loop-no-text-logo",
-      "title": "Add a new cinematic looping trust/quality animation asset showing a skilled electrician inspecting a well-organized electrical panel with confident, calm body language, neat tools, realistic lighting, modern environment, premium professional look, seamless loop, no text/logo.",
-      "reqIds": [
-        "REQ-9"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-integrate-the-trust-quality-animation-into-a-brand-building-section-of-the-page-e-g-about-section-media-area-or-a-new-dedicated-trust-quality-subsection-while-keeping-user-facing-headings-body-text-in-english-and-maintaining-the-site-s-existing-visual-system",
-      "title": "Integrate the trust/quality animation into a brand-building section of the page (e.g., About section media area or a new dedicated Trust/Quality subsection) while keeping user-facing headings/body text in English and maintaining the site’s existing visual system.",
-      "reqIds": [
-        "REQ-10"
-      ],
-      "version": 1
-    },
-    {
-      "id": "feature-ensure-all-newly-added-looping-animations-respect-reduced-motion-preference-by-providing-a-non-animated-fallback-behavior-at-the-component-level-e-g-render-a-static-frame-alternate-still-asset-or-suppress-animated-presentation-when-prefers-reduced-motion-is-enabled-without-editing-any-immutable-hook-files",
-      "title": "Ensure all newly added looping animations respect reduced-motion preference by providing a non-animated fallback behavior at the component level (e.g., render a static frame/alternate still asset or suppress animated presentation when prefers-reduced-motion is enabled), without editing any immutable hook files.",
-      "reqIds": [
-        "REQ-11"
       ],
       "version": 1
     }
@@ -99,37 +36,12 @@
   "new_feature_requests": [
     {
       "id": "AR-1",
-      "summary": "Home page premium hero: ultra-realistic seamless looping animation of professional electrician working inside modern distribution board (no text/logo).",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-2",
-      "summary": "Services page: close-up seamless looping animation of electrician hands installing/tightening organized wiring in circuit breaker panel.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-3",
-      "summary": "Emergency electrical repair: seamless looping animation of electrician performing urgent repair in power panel with softly glowing voltage tester.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Light installation section: ultra-clean seamless looping animation of electrician installing modern LED ceiling light that smoothly turns on.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Trust/quality section: cinematic seamless looping animation of electrician confidently inspecting a well-organized electrical panel.",
+      "summary": "Add the requested video to the project/update so it appears in the final output",
       "reqIds": [],
       "status": "pending"
     }
   ],
-  "gameProjectType": "none",
-  "projectName": "Add 5 premium ultra-realistic looping electrician animations and integrate into key site sections",
+  "projectName": "Ensure Work Video is actually added and visible (video upload + robust defaults)",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }
