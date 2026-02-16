@@ -16,7 +16,7 @@ export function Footer() {
           <div>
             <div className="flex items-center space-x-3 mb-4">
               <img
-                src="/assets/Logo design for Madh.png"
+                src="/assets/generated/madhavi-logo-transparent.dim_200x200.png"
                 alt="Madhavi Electrical Solutions"
                 className="h-14 w-auto"
               />
@@ -37,7 +37,6 @@ export function Footer() {
               {[
                 { label: 'Home', id: 'home' },
                 { label: 'Services', id: 'services' },
-                { label: 'Work Video', id: 'work-video' },
                 { label: 'About Us', id: 'about' },
                 { label: 'Contact', id: 'contact' }
               ].map((item) => (

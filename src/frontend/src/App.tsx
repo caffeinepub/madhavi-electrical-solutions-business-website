@@ -4,7 +4,6 @@ import { About } from './components/About';
 import { Services } from './components/Services';
 import { Products } from './components/Products';
 import { Certificates } from './components/Certificates';
-import { WorkVideo } from './components/WorkVideo';
 import { ElectricianWorkAnimations } from './components/ElectricianWorkAnimations';
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
@@ -20,11 +19,10 @@ function App() {
         <Header />
         <main>
           <Hero />
-          <About />
           <Services />
+          <About />
           <Products />
           <Certificates />
-          <WorkVideo />
           <ElectricianWorkAnimations />
           <Testimonials />
           <Contact />

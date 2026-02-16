@@ -91,106 +91,99 @@ export function Services() {
     },
     {
       title: 'AC Service (Installation, Repair & Maintenance)',
-      description: 'Comprehensive air conditioning services including installation, repair, and regular maintenance. Expert AC installation, troubleshooting, refrigerant charging, cleaning, and preventive maintenance for optimal cooling performance.',
-      icon: Wind,
+      description: 'Comprehensive air conditioning services including installation, repair, and regular maintenance. Expert technicians for all AC types with proper electrical connections, refrigerant handling, and performance optimization.',
+      icon: Fan,
       image: '/assets/generated/residential-ac-installation.dim_800x600.gif',
       category: 'HVAC & Cooling'
     },
     {
-      title: 'Outdoor Lighting Installation',
-      description: 'Specialized outdoor lighting solutions for security, aesthetics, and functionality. Professional installation of landscape lighting, security lights, pathway lighting, and decorative outdoor fixtures.',
+      title: 'CCTV Camera Installation',
+      description: 'Professional CCTV camera installation and security system setup. Complete surveillance solutions with proper camera placement, wiring, network configuration, and remote viewing capabilities.',
+      icon: Camera,
+      image: '/assets/generated/cctv-camera-installation.dim_800x600.gif',
+      category: 'Security Systems'
+    },
+    {
+      title: 'Outdoor Lighting',
+      description: 'Expert outdoor lighting installation including landscape lighting, security lights, pathway illumination, and decorative outdoor fixtures. Weather-resistant installations with proper electrical protection.',
       icon: Lightbulb,
       image: '/assets/generated/outdoor-lighting.dim_800x600.gif',
       category: 'Lighting Solutions'
     },
     {
-      title: 'CCTV Camera Installation',
-      description: 'Professional CCTV camera installation and surveillance system setup. Complete security camera solutions with HD recording, remote viewing, and 24/7 monitoring capabilities for homes and businesses.',
-      icon: Camera,
-      image: '/assets/generated/cctv-camera-installation.dim_800x600.gif',
-      category: 'Security & Surveillance'
-    },
-    {
-      title: 'Electrical Design',
-      description: 'Professional electrical design services for new construction and renovation projects. Detailed electrical plans, load calculations, and system specifications ensuring code compliance and optimal performance.',
+      title: 'Decorative Lighting',
+      description: 'Creative decorative lighting solutions for homes and businesses. Installation of chandeliers, pendant lights, accent lighting, and custom lighting designs to enhance ambiance and aesthetics.',
       icon: Palette,
-      image: '/assets/generated/electrical-design.dim_800x600.gif',
-      category: 'Design Services'
+      image: '/assets/generated/light-fixture-repair.dim_800x600.gif',
+      category: 'Lighting Solutions'
     }
   ];
 
   return (
-    <section id="services" className="py-20 bg-background">
+    <section id="services" className="section-spacing bg-background">
       <div className="container mx-auto px-4">
+        {/* Section Header */}
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Our <span className="text-industrial-blue">Services</span>
+            Our <span className="text-industrial-orange">Services</span>
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Professional electrical services for residential, commercial, and industrial needs
+          <p className="text-lg text-muted-foreground leading-relaxed">
+            Professional electrical services tailored to meet your residential, commercial, and industrial needs
           </p>
         </div>
 
-        {/* Core Services Section */}
+        {/* Core Services Grid */}
         <div className="mb-20">
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              <span className="text-industrial-orange">Core Services</span>
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Our most popular electrical services — trusted by hundreds of satisfied customers
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <h3 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-10">
+            Core Services
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-6xl mx-auto">
             {coreServices.map((service, index) => (
-              <Card key={index} className="border-2 hover:border-industrial-orange/50 transition-all duration-300 hover:shadow-xl group overflow-hidden">
-                <div className="aspect-video relative overflow-hidden">
+              <Card key={index} className="group border-2 hover:border-industrial-orange/50 transition-all duration-300 hover:shadow-2xl overflow-hidden">
+                <div className="aspect-video overflow-hidden">
                   <ReducedMotionMedia
                     animatedSrc={service.animatedImage}
                     staticSrc={service.staticImage}
-                    alt={`${service.title} - Professional electrical service`}
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    alt={service.title}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
                 </div>
                 <CardHeader>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 rounded-lg bg-industrial-orange/10">
-                      <service.icon className="w-6 h-6 text-industrial-orange" />
+                    <div className="p-2 bg-industrial-orange/10 rounded-lg">
+                      <service.icon className="h-6 w-6 text-industrial-orange" />
                     </div>
                     <CardTitle className="text-xl">{service.title}</CardTitle>
                   </div>
-                  <CardDescription className="text-sm leading-relaxed">
+                  <CardDescription className="text-base leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="space-y-2">
-                  <Button
-                    onClick={handleBookService}
-                    className="w-full bg-industrial-orange hover:bg-industrial-orange/90 text-white"
-                  >
-                    Get a Free Quote
-                  </Button>
-                  <div className="grid grid-cols-2 gap-2">
+                <CardContent className="pt-0">
+                  <div className="flex flex-col sm:flex-row gap-3">
+                    <Button
+                      onClick={handleBookService}
+                      className="flex-1 bg-industrial-orange hover:bg-industrial-orange/90"
+                    >
+                      Get Quote
+                    </Button>
                     <Button
                       onClick={() => handleWhatsAppClick(service.title)}
                       variant="outline"
-                      size="sm"
-                      className="border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white"
+                      className="flex-1 border-[#25D366] text-[#25D366] hover:bg-[#25D366] hover:text-white"
                     >
-                      <SiWhatsapp className="mr-1.5 h-4 w-4" />
-                      Book Now
+                      <SiWhatsapp className="mr-2 h-4 w-4" />
+                      WhatsApp
                     </Button>
                     <Button
                       asChild
                       variant="outline"
-                      size="sm"
-                      className="border-industrial-orange text-industrial-orange hover:bg-industrial-orange hover:text-white"
+                      className="flex-1"
                     >
                       <a href="tel:9953854470">
-                        <Phone className="mr-1.5 h-4 w-4" />
-                        Call Us
+                        <Phone className="mr-2 h-4 w-4" />
+                        Call
                       </a>
                     </Button>
                   </div>
@@ -200,47 +193,53 @@ export function Services() {
           </div>
         </div>
 
-        {/* Additional Services Section */}
+        {/* Additional Services */}
         <div>
-          <div className="text-center mb-12">
-            <h3 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
-              Additional <span className="text-industrial-blue">Services</span>
-            </h3>
-            <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-              Comprehensive electrical solutions for all your needs
-            </p>
-          </div>
-
+          <h3 className="text-2xl md:text-3xl font-bold text-center text-foreground mb-10">
+            Additional Services
+          </h3>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {additionalServices.map((service, index) => (
-              <Card key={index} className="border-2 hover:border-industrial-blue/50 transition-all duration-300 hover:shadow-lg group overflow-hidden">
-                <div className="aspect-video relative overflow-hidden">
+              <Card key={index} className="group border-2 hover:border-industrial-blue/50 transition-all duration-300 hover:shadow-lg">
+                <div className="aspect-video overflow-hidden">
                   <img
                     src={service.image}
-                    alt={`${service.title} - ${service.category}`}
-                    loading="lazy"
+                    alt={service.title}
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                    loading="lazy"
                   />
                 </div>
                 <CardHeader>
+                  <div className="text-xs font-semibold text-industrial-blue uppercase tracking-wide mb-2">
+                    {service.category}
+                  </div>
                   <div className="flex items-center gap-3 mb-2">
-                    <div className="p-2 rounded-lg bg-industrial-blue/10">
-                      <service.icon className="w-5 h-5 text-industrial-blue" />
-                    </div>
+                    <service.icon className="h-5 w-5 text-industrial-blue flex-shrink-0" />
                     <CardTitle className="text-lg">{service.title}</CardTitle>
                   </div>
-                  <CardDescription className="text-sm leading-relaxed line-clamp-3">
+                  <CardDescription className="text-sm leading-relaxed">
                     {service.description}
                   </CardDescription>
                 </CardHeader>
-                <CardContent>
-                  <Button
-                    onClick={handleBookService}
-                    variant="outline"
-                    className="w-full border-industrial-blue text-industrial-blue hover:bg-industrial-blue hover:text-white"
-                  >
-                    Book Service
-                  </Button>
+                <CardContent className="pt-0">
+                  <div className="flex gap-2">
+                    <Button
+                      onClick={handleBookService}
+                      size="sm"
+                      className="flex-1 bg-industrial-blue hover:bg-industrial-blue/90"
+                    >
+                      Book Now
+                    </Button>
+                    <Button
+                      onClick={() => handleWhatsAppClick(service.title)}
+                      size="sm"
+                      variant="outline"
+                      className="flex-1"
+                    >
+                      <SiWhatsapp className="mr-1 h-4 w-4" />
+                      Chat
+                    </Button>
+                  </div>
                 </CardContent>
               </Card>
             ))}

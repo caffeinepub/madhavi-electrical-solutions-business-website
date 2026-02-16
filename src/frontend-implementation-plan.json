@@ -1,64 +1,57 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Work Video: local video upload playback + resilient montage fallback",
+  "title": "Resolve frontend build/runtime deployment blockers and update publishing troubleshooting notes",
   "requirements": [
     {
       "id": "REQ-1",
-      "summary": "Support local video file upload for the Work Video section and play the selected video inline with native controls.",
+      "summary": "Make minimal frontend code/asset reference adjustments to ensure build + deploy succeeds and the deployed site renders without runtime blank screens.",
       "acceptanceCriteria": [
-        "In the Work Video section, users can choose a video file from their device via a file picker.",
-        "After selecting a video, the page shows an inline HTML5 <video> player with Play/Pause, seek, volume, and fullscreen controls.",
-        "If the user clears/removes the selected video, the UI returns to the default Work Video experience (montage or placeholder).",
-        "All user-facing labels and messages in this feature are in English."
+        "Running `dfx generate backend` completes without errors.",
+        "Running `pnpm build:skip-bindings` completes without errors.",
+        "Running `dfx deploy` completes without errors and publishes updated frontend + backend canisters.",
+        "The deployed site loads successfully in a browser with no blank screen caused by runtime errors."
       ],
       "file_operations": [
         {
+          "path": "frontend/src/components/Hero.tsx",
+          "operation": "modify",
+          "description": "Replace the logo image reference that uses a spaced filename (\"/assets/Logo design for Madh.png\") with a stable generated asset path to prevent missing-static-asset deployment failures; use the existing generated logo at frontend/public/assets/generated/madhavi-logo-transparent.dim_200x200.png. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "modify",
+          "description": "Update header logo to reference the same stable generated logo asset (frontend/public/assets/generated/madhavi-logo-transparent.dim_200x200.png) to avoid runtime broken images and reduce risk of deploy-time missing asset errors. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "modify",
+          "description": "Update footer logo to reference the same stable generated logo asset (frontend/public/assets/generated/madhavi-logo-transparent.dim_200x200.png) to avoid missing static assets after deploy. Verify the component's usage instructions before implementing."
+        },
+        {
+          "path": "frontend/src/lib/workVideoPhotos.ts",
+          "operation": "modify",
+          "description": "Validate that all default montage image paths correspond to assets that exist under frontend/public/assets/generated/ and adjust any paths that are inconsistent (e.g., prefer .jpg when a referenced .gif is not present) to avoid runtime warnings/errors that could contribute to a blank screen. Verify the component's usage instructions before implementing."
+        },
+        {
           "path": "frontend/src/components/WorkVideo.tsx",
           "operation": "modify",
-          "description": "Add a dedicated local video upload control (accepting common formats like .mp4/.webm) that creates an object URL and renders an inline HTML5 video element with standard controls; ensure cleanup by revoking the object URL when replaced/cleared/unmounted. Use existing shadcn-ui components (Button, Card, Input, Label) to keep styling consistent—verify the component's usage instructions before implementing."
+          "description": "Harden montage initialization against missing/failed default assets so the section gracefully shows its existing error-state UI rather than risking unhandled runtime issues; keep behavior minimal and avoid new features. Verify the component's usage instructions before implementing."
         }
       ]
     },
     {
       "id": "REQ-2",
-      "summary": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when montage images fail to load.",
+      "summary": "Update frontend/PUBLISHING.md with concise, English-only deployment troubleshooting notes reflecting current build/deploy prerequisites and likely failure points.",
       "acceptanceCriteria": [
-        "If any default montage image URL from WORK_PHOTOS fails to load, the Work Video section shows a clear English fallback state (e.g., “Work video is not available yet. Please upload a video or add photos.”) instead of a blank/black canvas.",
-        "The app does not crash if one or more montage images are missing or fail to load.",
-        "WORK_PHOTOS is updated to only reference files that actually exist in the frontend public assets, or the code is updated to avoid relying on missing paths."
+        "`frontend/PUBLISHING.md` includes a concise troubleshooting section with at least: (1) how to identify missing static assets, (2) what to do if `dfx generate backend` outputs outdated bindings, and (3) what to check when `dfx deploy` fails.",
+        "All added documentation text is in English."
       ],
       "file_operations": [
         {
-          "path": "frontend/src/lib/workVideoPhotos.ts",
+          "path": "frontend/PUBLISHING.md",
           "operation": "modify",
-          "description": "Review and adjust WORK_PHOTOS so it only contains valid public asset paths that exist; keep paths consistent with the current public assets structure to avoid broken montage sources."
-        },
-        {
-          "path": "frontend/src/components/WorkVideo.tsx",
-          "operation": "modify",
-          "description": "Add robust montage image loading error handling (e.g., track failed loads via Image.onerror, skip broken images where possible, and show a clear English fallback message overlay/state instead of rendering a blank canvas). Use existing shadcn-ui components (Card/Button) for fallback UI actions—verify the component's usage instructions before implementing."
-        },
-        {
-          "path": "frontend/src/lib/montageRecorder.ts",
-          "operation": "modify",
-          "description": "Harden montage recording against missing/broken image paths by handling image load failures gracefully (e.g., skip failed images and/or provide a user-friendly error if no images can be loaded) so recording does not crash the app."
-        }
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "summary": "Clarify whether the Work Video section is showing an uploaded video or the montage, and provide explicit controls to switch/clear selection.",
-      "acceptanceCriteria": [
-        "The Work Video section indicates whether the user is viewing an uploaded video or the photo montage.",
-        "There is an explicit control to remove/clear the uploaded video selection and revert to montage mode.",
-        "The section remains responsive and visually consistent with the existing site styling (Tailwind + existing UI components)."
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/WorkVideo.tsx",
-          "operation": "modify",
-          "description": "Update the Work Video UI to include an obvious mode indicator (Uploaded video vs Photo montage), add an explicit 'Clear/Remove video' control that reverts to montage mode, and ensure responsive layout continuity. Compose existing shadcn-ui components (Button/Card/Label/Input) rather than editing ui component files—verify the component's usage instructions before implementing."
+          "description": "Complete the currently truncated document and add an English-only 'Troubleshooting' section covering: (1) identifying missing static assets referenced by UI (especially frontend/public/assets/generated/* and any logo references), (2) steps to resolve mismatched/outdated generated bindings after `dfx generate backend` (including cleaning/re-running generation and rebuilding), and (3) checks to perform when `dfx deploy` fails (e.g., build output present, correct Node/pnpm/dfx versions, successful `pnpm build:skip-bindings`, and verifying no runtime errors after deploy)."
         }
       ]
     }

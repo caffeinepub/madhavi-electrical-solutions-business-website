@@ -17,12 +17,15 @@ Before triggering a build, verify the following:
     - `service-appliance-installation.dim_800x600.gif`
   - Additional service GIFs (12 files for additional services)
   - Work video GIFs: `walking.dim_600x600.gif`, `working.dim_600x600.gif`
+  - Logo: `madhavi-logo-transparent.dim_200x200.png`
 
 ### 2. Component Integration
-- [ ] Verify `frontend/src/components/Hero.tsx` references `hero-electrician-distribution-board.dim_1600x900.gif` as animated source
+- [ ] Verify `frontend/src/components/Hero.tsx` references `madhavi-logo-transparent.dim_200x200.png` and `hero-electrician-distribution-board.dim_1600x900.gif` as animated source
+- [ ] Verify `frontend/src/components/Header.tsx` references `madhavi-logo-transparent.dim_200x200.png`
+- [ ] Verify `frontend/src/components/Footer.tsx` references `madhavi-logo-transparent.dim_200x200.png`
 - [ ] Verify `frontend/src/components/Hero.tsx` has proper reduced-motion fallback to static image
 - [ ] Verify `frontend/src/components/Services.tsx` references all core and additional service GIFs
-- [ ] Verify `frontend/src/components/WorkVideo.tsx` references walking and working GIFs
+- [ ] Verify `frontend/src/lib/workVideoPhotos.ts` references only .jpg files (not .gif) for default montage images
 
 ### 3. Configuration
 - [ ] Confirm contact details are correct:
@@ -30,7 +33,7 @@ Before triggering a build, verify the following:
   - WhatsApp: 9953854470
   - Business name: Madhavi Electrical Solutions
   - Location: Ghaziabad/Noida
-- [ ] Verify all navigation links work (Home, Services, Work Video, About Us, Contact)
+- [ ] Verify all navigation links work (Home, Services, About Us, Contact)
 
 ### 4. Build Prerequisites
 - [ ] Node.js and pnpm installed

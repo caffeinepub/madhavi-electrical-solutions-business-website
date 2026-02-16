@@ -4,44 +4,29 @@
   "summary": "New project",
   "architectural_notes": [],
   "known_issues": [
-    "Build/update failed due to an internal configuration error; video was not added as expected"
+    "Deployment error occurred during launch; redeploy/build retry requested."
   ],
   "isFixRequest": true,
   "existing_features": [
     {
-      "id": "feature-add-a-clear-user-facing-way-to-add-a-real-video-to-the-work-video-section-by-supporting-local-video-file-upload-e-g-mp4-webm-and-playing-it-inline-with-standard-controls",
-      "title": "Add a clear, user-facing way to add a real video to the Work Video section by supporting local video file upload (e.g., .mp4/.webm) and playing it inline with standard controls.",
+      "id": "feature-investigate-the-reported-deployment-failure-and-implement-the-minimal-code-config-changes-needed-so-the-project-builds-and-deploys-successfully-to-the-internet-computer-using-the-documented-commands-dfx-generate-backend-pnpm-build-skip-bindings-dfx-deploy",
+      "title": "Investigate the reported deployment failure and implement the minimal code/config changes needed so the project builds and deploys successfully to the Internet Computer using the documented commands (dfx generate backend, pnpm build:skip-bindings, dfx deploy).",
       "reqIds": [
         "REQ-1"
       ],
       "version": 1
     },
     {
-      "id": "feature-make-the-default-work-video-montage-reliably-render-by-validating-default-asset-paths-and-adding-a-graceful-fallback-when-an-image-fails-to-load",
-      "title": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when an image fails to load.",
+      "id": "feature-add-adjust-developer-facing-deployment-troubleshooting-notes-in-frontend-publishing-md-to-reflect-the-actual-current-build-deploy-prerequisites-and-the-most-likely-failure-points-encountered-in-this-project-e-g-missing-static-assets-referenced-by-the-ui-unused-imports-causing-build-failure-mismatched-generated-bindings-use-english-text-only",
+      "title": "Add/adjust developer-facing deployment troubleshooting notes in `frontend/PUBLISHING.md` to reflect the actual current build/deploy prerequisites and the most likely failure points encountered in this project (e.g., missing static assets referenced by the UI, unused imports causing build failure, mismatched generated bindings). Use English text only.",
       "reqIds": [
         "REQ-2"
       ],
       "version": 1
-    },
-    {
-      "id": "feature-update-the-work-video-ui-so-it-is-obvious-what-content-is-being-shown-uploaded-video-vs-photo-montage-and-provide-a-simple-control-to-switch-clear-the-current-selection",
-      "title": "Update the Work Video UI so it is obvious what content is being shown (uploaded video vs. photo montage), and provide a simple control to switch/clear the current selection.",
-      "reqIds": [
-        "REQ-3"
-      ],
-      "version": 1
     }
   ],
-  "new_feature_requests": [
-    {
-      "id": "AR-1",
-      "summary": "Add the requested video to the project/update so it appears in the final output",
-      "reqIds": [],
-      "status": "pending"
-    }
-  ],
-  "projectName": "Ensure Work Video is actually added and visible (video upload + robust defaults)",
+  "new_feature_requests": [],
+  "projectName": "Retry deployment and resolve deployment error",
   "clarification_mode": "instant",
   "clarification_rounds": 0
 }

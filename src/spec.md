@@ -1,12 +1,11 @@
 # Specification
 
 ## Summary
-**Goal:** Make the Work Video section reliably show content by supporting local video upload with inline playback, and ensuring the default photo montage has robust fallbacks when assets fail to load.
+**Goal:** Resolve the current deployment failure so the project builds and deploys successfully to the Internet Computer using the documented commands, and update deployment troubleshooting notes.
 
 **Planned changes:**
-- Add a local video file picker in the Work Video section (e.g., .mp4/.webm) and render the selected file in an inline HTML5 video player with standard controls.
-- Add a clear control to remove/clear the uploaded video and revert back to the default montage/placeholder experience.
-- Improve the default montage reliability by validating referenced asset paths and adding an English fallback UI if montage images are missing or fail to load (no blank/black canvas; no crashes).
-- Update the Work Video UI labels so it’s obvious whether the user is viewing an uploaded video or the photo montage, while keeping the section responsive and consistent with existing styling.
+- Investigate and fix the minimal code/config issues preventing successful runs of `dfx generate backend`, `pnpm build:skip-bindings`, and `dfx deploy`.
+- Ensure the deployed frontend loads without a blank screen caused by runtime errors after deployment.
+- Update `frontend/PUBLISHING.md` with concise, English-only troubleshooting notes covering missing static assets, outdated generated bindings from `dfx generate backend`, and common `dfx deploy` failure checks.
 
-**User-visible outcome:** Users can upload and play a real work video directly on the page, clearly see whether they’re viewing an uploaded video or the montage, and if montage assets fail to load they see a helpful English fallback message instead of a broken/blank section.
+**User-visible outcome:** The site deploys successfully to the Internet Computer and loads correctly in a browser, and developers have clearer deployment troubleshooting guidance in `frontend/PUBLISHING.md`.

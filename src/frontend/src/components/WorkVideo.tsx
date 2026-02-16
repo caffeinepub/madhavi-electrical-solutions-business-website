@@ -228,7 +228,10 @@ export function WorkVideo() {
         setMontageError('Work video is not available yet. Please upload a video or add photos.');
       } else if (failedCount > 0) {
         setMontageError(null);
-        toast.warning(`${failedCount} image(s) failed to load and will be skipped.`);
+        // Only show warning if some images failed but not all
+        if (loadedCount > 0) {
+          console.warn(`${failedCount} image(s) failed to load and will be skipped.`);
+        }
       } else {
         setMontageError(null);
       }
@@ -243,7 +246,7 @@ export function WorkVideo() {
 
   // Load and cache current image
   useEffect(() => {
-    if (viewMode !== 'montage' || montageError) return;
+    if (viewMode !== 'montage' || montageError || loadedImagesCount === 0) return;
 
     const img = new Image();
     img.crossOrigin = 'anonymous';
@@ -261,11 +264,11 @@ export function WorkVideo() {
     return () => {
       currentImageRef.current = null;
     };
-  }, [currentIndex, activeImages, viewMode, montageError]);
+  }, [currentIndex, activeImages, viewMode, montageError, loadedImagesCount]);
 
   // Canvas rendering: static for reduced motion, animated otherwise
   useEffect(() => {
-    if (viewMode !== 'montage' || montageError) return;
+    if (viewMode !== 'montage' || montageError || loadedImagesCount === 0) return;
 
     const canvas = canvasRef.current;
     if (!canvas) return;
@@ -358,7 +361,7 @@ export function WorkVideo() {
         cancelAnimationFrame(animationFrameRef.current);
       }
     };
-  }, [currentIndex, prefersReducedMotion, viewMode, montageError]);
+  }, [currentIndex, prefersReducedMotion, viewMode, montageError, loadedImagesCount]);
 
   const handleDownload = async () => {
     if (!canvasRef.current) return;
@@ -426,7 +429,7 @@ export function WorkVideo() {
   }, []);
 
   return (
-    <section id="work-video" className="py-20 bg-industrial-light">
+    <section id="work-video" className="section-spacing bg-muted/20">
       <div className="container mx-auto px-4">
         <div className="text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold text-industrial-dark mb-4">
@@ -552,11 +555,11 @@ export function WorkVideo() {
                   />
                   <Button
                     onClick={() => document.getElementById('video-upload')?.click()}
-                    variant="default"
+                    variant="outline"
                     size="sm"
                   >
                     <Upload className="h-4 w-4 mr-2" />
-                    Choose Video
+                    Upload Video
                   </Button>
                   {uploadedVideo && (
                     <Button
@@ -570,33 +573,80 @@ export function WorkVideo() {
                   )}
                 </div>
               </div>
-
-              {uploadedVideo && (
-                <div className="p-3 bg-muted rounded-lg flex items-center gap-3">
-                  <Video className="h-5 w-5 text-primary" />
-                  <span className="flex-1 text-sm font-medium">{uploadedVideoName}</span>
-                  <span className="text-xs text-muted-foreground">Video ready</span>
-                </div>
-              )}
-
-              {!uploadedVideo && (
-                <p className="text-sm text-muted-foreground">
-                  Upload a video file to display it here. Supported formats: MP4, WebM, OGG, MOV
-                </p>
-              )}
             </div>
 
-            {/* Photo Editor */}
-            {viewMode === 'montage' && (
+            {/* Montage Controls */}
+            {viewMode === 'montage' && !montageError && loadedImagesCount > 0 && (
               <>
+                {/* Playback Controls */}
+                <div className="flex items-center justify-center gap-4">
+                  {!isPlaying ? (
+                    <Button onClick={play} size="lg">
+                      <Play className="h-5 w-5 mr-2" />
+                      Play
+                    </Button>
+                  ) : (
+                    <Button onClick={pause} size="lg" variant="secondary">
+                      <Pause className="h-5 w-5 mr-2" />
+                      Pause
+                    </Button>
+                  )}
+                  <Button onClick={restart} variant="outline" size="lg">
+                    <RotateCcw className="h-5 w-5 mr-2" />
+                    Restart
+                  </Button>
+                  {recordingSupported && (
+                    <Button
+                      onClick={handleDownload}
+                      disabled={isRecording}
+                      variant="default"
+                      size="lg"
+                    >
+                      <Download className="h-5 w-5 mr-2" />
+                      {isRecording ? 'Recording...' : 'Download Video'}
+                    </Button>
+                  )}
+                </div>
+
+                {/* Duration Controls */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="space-y-2">
+                    <Label htmlFor="seconds-per-photo">Seconds per Photo (0.1 - 10)</Label>
+                    <Input
+                      id="seconds-per-photo"
+                      type="number"
+                      min="0.1"
+                      max="10"
+                      step="0.1"
+                      value={secondsInput}
+                      onChange={(e) => handleSecondsChange(e.target.value)}
+                      onBlur={validateSeconds}
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <Label htmlFor="transition-ms">Transition Duration (ms, 0 - 2000)</Label>
+                    <Input
+                      id="transition-ms"
+                      type="number"
+                      min="0"
+                      max="2000"
+                      step="50"
+                      value={transitionInput}
+                      onChange={(e) => handleTransitionChange(e.target.value)}
+                      onBlur={validateTransition}
+                    />
+                  </div>
+                </div>
+
+                {/* Photo Upload Section */}
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-semibold">Montage Photos</h3>
-                    <div>
+                    <h3 className="text-lg font-semibold">Custom Photos</h3>
+                    <div className="flex gap-2">
                       <input
                         type="file"
                         id="photo-upload"
-                        accept="image/png,image/jpeg,image/jpg,image/webp,image/gif"
+                        accept="image/*"
                         multiple
                         onChange={handleFileUpload}
                         className="hidden"
@@ -613,16 +663,16 @@ export function WorkVideo() {
                   </div>
 
                   {customImages.length > 0 && (
-                    <div className="border rounded-lg p-4 max-h-48 overflow-y-auto space-y-2">
+                    <div className="space-y-2 max-h-64 overflow-y-auto border rounded-md p-4">
                       {customImages.map((img, index) => (
                         <div
                           key={img.id}
-                          className="flex items-center gap-3 p-2 bg-muted rounded hover:bg-muted/80 transition-colors"
+                          className="flex items-center gap-3 p-2 bg-muted rounded-md"
                         >
                           <img
                             src={img.url}
                             alt={img.name}
-                            className="w-12 h-12 object-cover rounded"
+                            className="h-12 w-12 object-cover rounded"
                           />
                           <span className="flex-1 text-sm truncate">{img.name}</span>
                           <div className="flex gap-1">
@@ -630,8 +680,8 @@ export function WorkVideo() {
                               onClick={() => handleMoveUp(index)}
                               disabled={index === 0}
                               variant="ghost"
-                              size="sm"
-                              className="h-8 w-8 p-0"
+                              size="icon"
+                              className="h-8 w-8"
                             >
                               <ChevronUp className="h-4 w-4" />
                             </Button>
@@ -639,16 +689,16 @@ export function WorkVideo() {
                               onClick={() => handleMoveDown(index)}
                               disabled={index === customImages.length - 1}
                               variant="ghost"
-                              size="sm"
-                              className="h-8 w-8 p-0"
+                              size="icon"
+                              className="h-8 w-8"
                             >
                               <ChevronDown className="h-4 w-4" />
                             </Button>
                             <Button
                               onClick={() => handleRemoveImage(img.id)}
                               variant="ghost"
-                              size="sm"
-                              className="h-8 w-8 p-0 text-destructive hover:text-destructive"
+                              size="icon"
+                              className="h-8 w-8 text-destructive"
                             >
                               <X className="h-4 w-4" />
                             </Button>
@@ -657,152 +707,11 @@ export function WorkVideo() {
                       ))}
                     </div>
                   )}
-
-                  {customImages.length === 0 && (
-                    <p className="text-sm text-muted-foreground">
-                      Using default work photos. Add your own to customize the montage.
-                    </p>
-                  )}
                 </div>
-
-                {/* Duration Controls */}
-                {!montageError && (
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                      <Label htmlFor="seconds-per-photo">Seconds per Photo</Label>
-                      <Input
-                        id="seconds-per-photo"
-                        type="number"
-                        min="0.1"
-                        max="10"
-                        step="0.1"
-                        value={secondsInput}
-                        onChange={(e) => handleSecondsChange(e.target.value)}
-                        onBlur={validateSeconds}
-                        className="w-full"
-                      />
-                      <p className="text-xs text-muted-foreground">Range: 0.1 - 10 seconds</p>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="transition-ms">Transition (ms)</Label>
-                      <Input
-                        id="transition-ms"
-                        type="number"
-                        min="0"
-                        max="2000"
-                        step="50"
-                        value={transitionInput}
-                        onChange={(e) => handleTransitionChange(e.target.value)}
-                        onBlur={validateTransition}
-                        className="w-full"
-                      />
-                      <p className="text-xs text-muted-foreground">Range: 0 - 2000 ms</p>
-                    </div>
-                  </div>
-                )}
-
-                {/* Playback Controls */}
-                {!montageError && (
-                  <>
-                    <div className="flex flex-wrap items-center justify-center gap-3">
-                      <Button
-                        onClick={isPlaying ? pause : play}
-                        variant="default"
-                        size="lg"
-                        className="min-w-[120px]"
-                      >
-                        {isPlaying ? (
-                          <>
-                            <Pause className="h-5 w-5 mr-2" />
-                            Pause
-                          </>
-                        ) : (
-                          <>
-                            <Play className="h-5 w-5 mr-2" />
-                            Play
-                          </>
-                        )}
-                      </Button>
-
-                      <Button
-                        onClick={restart}
-                        variant="outline"
-                        size="lg"
-                      >
-                        <RotateCcw className="h-5 w-5 mr-2" />
-                        Restart
-                      </Button>
-
-                      {recordingSupported ? (
-                        <Button
-                          onClick={handleDownload}
-                          variant="secondary"
-                          size="lg"
-                          disabled={isRecording || loadedImagesCount === 0}
-                        >
-                          <Download className="h-5 w-5 mr-2" />
-                          {isRecording ? 'Recording...' : 'Download'}
-                        </Button>
-                      ) : (
-                        <p className="text-sm text-muted-foreground">
-                          Video download not supported in this browser
-                        </p>
-                      )}
-                    </div>
-
-                    {/* Progress Indicator */}
-                    <div className="text-center text-sm text-muted-foreground">
-                      Photo {currentIndex + 1} of {activeImages.length}
-                    </div>
-                  </>
-                )}
               </>
             )}
           </div>
         </Card>
-
-        {/* Work GIFs Section */}
-        <div className="max-w-5xl mx-auto mt-12">
-          <h3 className="text-2xl font-bold text-industrial-dark mb-6 text-center">
-            Our Team at Work
-          </h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Walking GIF */}
-            <Card className="overflow-hidden">
-              <div className="p-6">
-                <h4 className="text-lg font-semibold text-industrial-dark mb-4 text-center">
-                  On the Move
-                </h4>
-                <div className="bg-muted rounded-lg overflow-hidden">
-                  <img
-                    src="/assets/generated/walking.dim_600x600.gif"
-                    alt="Electrician walking to job site with tools and equipment"
-                    className="w-full h-auto"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </Card>
-
-            {/* Working GIF */}
-            <Card className="overflow-hidden">
-              <div className="p-6">
-                <h4 className="text-lg font-semibold text-industrial-dark mb-4 text-center">
-                  Hands-On Work
-                </h4>
-                <div className="bg-muted rounded-lg overflow-hidden">
-                  <img
-                    src="/assets/generated/working.dim_600x600.gif"
-                    alt="Electrician performing electrical repair work with tools and wiring"
-                    className="w-full h-auto"
-                    loading="lazy"
-                  />
-                </div>
-              </div>
-            </Card>
-          </div>
-        </div>
       </div>
     </section>
   );

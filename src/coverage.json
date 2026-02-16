@@ -1,49 +1,43 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T14:44:17.096Z",
+  "generatedAt": "2026-02-16T10:32:04.123Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 3,
-    "implemented": 3,
+    "total": 2,
+    "implemented": 2,
     "items": [
       {
         "id": "REQ-1",
-        "summary": "Add a clear, user-facing way to add a real video to the Work Video section by supporting local video file upload (e.g., .mp4/.webm) and playing it inline with standard controls.",
+        "summary": "Investigate the reported deployment failure and implement the minimal code/config changes needed so the project builds and deploys successfully to the Internet Computer using the documented commands (dfx generate backend, pnpm build:skip-bindings, dfx deploy).",
         "status": "implemented",
         "plannedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/lib/workVideoPhotos.ts",
           "frontend/src/components/WorkVideo.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/components/Hero.tsx",
+          "frontend/src/components/Header.tsx",
+          "frontend/src/components/Footer.tsx",
+          "frontend/src/lib/workVideoPhotos.ts",
           "frontend/src/components/WorkVideo.tsx"
         ]
       },
       {
         "id": "REQ-2",
-        "summary": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when an image fails to load.",
+        "summary": "Add/adjust developer-facing deployment troubleshooting notes in `frontend/PUBLISHING.md` to reflect the actual current build/deploy prerequisites and the most likely failure points encountered in this project (e.g., missing static assets referenced by the UI, unused imports causing build failure, mismatched generated bindings). Use English text only.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/lib/workVideoPhotos.ts",
-          "frontend/src/components/WorkVideo.tsx",
-          "frontend/src/lib/montageRecorder.ts"
+          "frontend/PUBLISHING.md"
         ],
         "matchedFiles": [
-          "frontend/src/components/WorkVideo.tsx",
-          "frontend/src/lib/montageRecorder.ts"
-        ]
-      },
-      {
-        "id": "REQ-3",
-        "summary": "Update the Work Video UI so it is obvious what content is being shown (uploaded video vs. photo montage), and provide a simple control to switch/clear the current selection.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/WorkVideo.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/WorkVideo.tsx"
+          "frontend/PUBLISHING.md"
         ]
       }
     ]
@@ -53,8 +47,12 @@
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
+    "frontend/PUBLISHING.md",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/Hero.tsx",
     "frontend/src/components/WorkVideo.tsx",
-    "frontend/src/lib/montageRecorder.ts",
+    "frontend/src/lib/workVideoPhotos.ts",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

@@ -2,10 +2,14 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-add-a-clear-user-facing-way-to-add-a-real-video-to-the-work-video-section-by-supporting-local-video-file-upload-e-g-mp4-webm-and-playing-it-inline-with-standard-controls",
-      "featureTitle": "Add a clear, user-facing way to add a real video to the Work Video section by supporting local video file upload (e.g., .mp4/.webm) and playing it inline with standard controls.",
+      "featureId": "feature-investigate-the-reported-deployment-failure-and-implement-the-minimal-code-config-changes-needed-so-the-project-builds-and-deploys-successfully-to-the-internet-computer-using-the-documented-commands-dfx-generate-backend-pnpm-build-skip-bindings-dfx-deploy",
+      "featureTitle": "Investigate the reported deployment failure and implement the minimal code/config changes needed so the project builds and deploys successfully to the Internet Computer using the documented commands (dfx generate backend, pnpm build:skip-bindings, dfx deploy).",
       "files": [
-        "frontend/src/components/WorkVideo.tsx"
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/components/WorkVideo.tsx",
+        "frontend/src/lib/workVideoPhotos.ts"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -21,11 +25,10 @@
       "confidence": "high"
     },
     {
-      "featureId": "feature-make-the-default-work-video-montage-reliably-render-by-validating-default-asset-paths-and-adding-a-graceful-fallback-when-an-image-fails-to-load",
-      "featureTitle": "Make the default Work Video montage reliably render by validating default asset paths and adding a graceful fallback when an image fails to load.",
+      "featureId": "feature-add-adjust-developer-facing-deployment-troubleshooting-notes-in-frontend-publishing-md-to-reflect-the-actual-current-build-deploy-prerequisites-and-the-most-likely-failure-points-encountered-in-this-project-e-g-missing-static-assets-referenced-by-the-ui-unused-imports-causing-build-failure-mismatched-generated-bindings-use-english-text-only",
+      "featureTitle": "Add/adjust developer-facing deployment troubleshooting notes in `frontend/PUBLISHING.md` to reflect the actual current build/deploy prerequisites and the most likely failure points encountered in this project (e.g., missing static assets referenced by the UI, unused imports causing build failure, mismatched generated bindings). Use English text only.",
       "files": [
-        "frontend/src/components/WorkVideo.tsx",
-        "frontend/src/lib/montageRecorder.ts"
+        "frontend/PUBLISHING.md"
       ],
       "components": [
         "core-infrastructure@1.0.2",
@@ -37,25 +40,6 @@
       ],
       "testIds": [
         "REQ-2"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-update-the-work-video-ui-so-it-is-obvious-what-content-is-being-shown-uploaded-video-vs-photo-montage-and-provide-a-simple-control-to-switch-clear-the-current-selection",
-      "featureTitle": "Update the Work Video UI so it is obvious what content is being shown (uploaded video vs. photo montage), and provide a simple control to switch/clear the current selection.",
-      "files": [
-        "frontend/src/components/WorkVideo.tsx"
-      ],
-      "components": [
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "blob-storage@4.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-3"
       ],
       "confidence": "high"
     }

@@ -1,63 +1,79 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-14T14:44:17.093Z",
-  "summary": "The diff shows significant edits to WorkVideo.tsx introducing state for uploaded video, view mode, and montage error handling, plus enhancements to montageRecorder.ts for MediaRecorder support. However, because WorkVideo.tsx is truncated, key acceptance-criteria UI behaviors (file picker, inline <video controls>, clear/remove control, and explicit fallback rendering when images fail) cannot be confirmed from the provided evidence.",
+  "generatedAt": "2026-02-16T10:32:04.120Z",
+  "summary": "Diff focuses on frontend UI/content updates and an expanded publishing checklist, but does not show concrete fixes to the deployment failure (backend/config/build pipeline) and the publishing guide still lacks required troubleshooting guidance for bindings and deploy failures. Additionally, multiple new/expanded site sections/features appear to be introduced despite non-goals.",
   "missing_requirements": [
     {
       "id": "REQ-1",
-      "requirement": "Provide a user-facing local video upload in the Work Video section and play it inline with standard HTML5 video controls; allow clearing/removing to return to default montage/placeholder; all labels in English.",
-      "reason": "WorkVideo.tsx shows upload-related state and a handler start, but the diff is truncated before any evidence of an actual file input rendered in the UI, an inline <video> element with controls, or a clear/remove control that reverts to montage.",
+      "requirement": "Investigate the reported deployment failure and implement the minimal code/config changes needed so the project builds and deploys successfully to the Internet Computer using the documented commands (dfx generate backend, pnpm build:skip-bindings, dfx deploy).",
+      "reason": "The diff shows only frontend component/content changes and documentation edits; no backend (`backend/main.mo`) or deployment/build configuration changes are evidenced that would directly address a `dfx generate backend` / build / `dfx deploy` failure.",
       "evidence": [
-        "frontend/src/components/WorkVideo.tsx (truncated: shows uploadedVideo/uploadedVideoName state + handleVideoUpload start, but not the render output)"
+        "frontend/src/components/Footer.tsx",
+        "frontend/src/components/Header.tsx",
+        "frontend/src/components/Hero.tsx",
+        "frontend/src/components/WorkVideo.tsx",
+        "frontend/src/lib/workVideoPhotos.ts",
+        "frontend/PUBLISHING.md",
+        "frontend-file-summaries.txt"
       ]
     },
     {
       "id": "REQ-2",
-      "requirement": "Ensure default montage reliably renders by validating default asset paths and adding a graceful English fallback when montage images fail to load (no blank canvas, no crash); update WORK_PHOTOS or avoid relying on missing paths.",
-      "reason": "WorkVideo.tsx introduces montageError and loadedImagesCount state, but the diff does not show any actual onError image handling, fallback UI rendering, or any changes to WORK_PHOTOS itself. No evidence is present that missing images trigger the required English fallback state instead of a blank canvas.",
+      "requirement": "Add/adjust developer-facing deployment troubleshooting notes in frontend/PUBLISHING.md including: (1) how to identify missing static assets, (2) what to do if dfx generate backend outputs outdated bindings, and (3) what to check when dfx deploy fails. Use English text only.",
+      "reason": "`frontend/PUBLISHING.md` adds an asset checklist (covers missing static assets), but it does not include guidance on outdated generated bindings from `dfx generate backend`, nor does it include a troubleshooting section for diagnosing `dfx deploy` failures.",
       "evidence": [
-        "frontend/src/components/WorkVideo.tsx (truncated: montageError/loadedImagesCount present, but no shown fallback rendering or image onError wiring)",
-        "frontend/src/lib/workVideoPhotos (only imported; no diff shown)"
-      ]
-    },
-    {
-      "id": "REQ-3",
-      "requirement": "Make it obvious whether the user is viewing uploaded video vs photo montage and provide an explicit control to switch/clear the current selection; keep styling consistent/responsive.",
-      "reason": "WorkVideo.tsx defines a viewMode ('video' | 'montage'), but the diff does not show UI elements that indicate the current mode or provide an explicit clear/switch control. Responsiveness/styling compliance also cannot be verified from the truncated render code.",
-      "evidence": [
-        "frontend/src/components/WorkVideo.tsx (truncated: viewMode state exists, but no evidence of visible mode indicator or clear/switch UI)"
+        "frontend/PUBLISHING.md"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Montage recording/export via MediaRecorder with codec detection and robustness improvements.",
-      "reason": "The BuildRequest focuses on uploading and displaying a real video and improving montage fallback; it does not request adding/expanding montage recording functionality. The diff substantially modifies montageRecorder.ts to detect supported WebM codecs, initialize MediaRecorder, and record a canvas stream.",
+      "description": "Added/introduced a new \"Certificates\" section/component showing an Udyam Registration Certificate with view/download actions.",
+      "reason": "BuildRequest explicitly lists non-goals as \"Adding new product features or new sections to the website\"; this is a new site section not requested for deployment troubleshooting.",
       "evidence": [
-        "frontend/src/lib/montageRecorder.ts"
+        "frontend-file-summaries.txt"
       ]
     },
     {
-      "description": "User-adjustable montage timing controls (seconds per photo and transition duration) with validation and toasts.",
-      "reason": "The BuildRequest does not ask for montage duration/transition configuration UI. WorkVideo.tsx adds secondsPerPhoto/transitionMs inputs, validation, and toast error messages.",
+      "description": "Major \"Products\" section changes (38 product cards, English descriptions, price increases by 80%, filtering out Solar Power Kit products, WhatsApp inquiry/quote request behaviors).",
+      "reason": "Not requested by REQ-1/REQ-2 and conflicts with the non-goal of avoiding new product features/sections; also contains significant product/content changes unrelated to deployment fixes.",
       "evidence": [
-        "frontend/src/components/WorkVideo.tsx (truncated: secondsPerPhoto/transitionMs state, handleSecondsChange/validateSeconds, handleTransitionChange/validateTransition, toast usage)"
+        "frontend-file-summaries.txt"
       ]
     },
     {
-      "description": "Support for custom montage image sets (customImages) separate from default WORK_PHOTOS.",
-      "reason": "The BuildRequest only mentions validating default montage assets and providing fallback; it does not request an additional feature to supply custom montage photos. WorkVideo.tsx introduces customImages and selects activeImages based on custom vs default.",
+      "description": "Added/introduced a floating WhatsApp/Call CTA component that appears on scroll.",
+      "reason": "Not requested by REQ-1/REQ-2 and constitutes new UX functionality unrelated to deployment troubleshooting.",
       "evidence": [
-        "frontend/src/components/WorkVideo.tsx (truncated: customImages state and activeImages switching logic)"
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "WorkVideo feature work (video upload state, montage controls, recording utilities) while App summary indicates WorkVideo section removed.",
+      "reason": "Not requested by REQ-1/REQ-2; appears as feature work unrelated to deployment troubleshooting and may add additional build/runtime surface area.",
+      "evidence": [
+        "frontend/src/components/WorkVideo.tsx",
+        "frontend-file-summaries.txt"
+      ]
+    },
+    {
+      "description": "Branding/location configuration changes (e.g., centralized branding config exporting city \"Noida\" and tagline usage).",
+      "reason": "Not requested by REQ-1/REQ-2 and unrelated to fixing IC deployment errors.",
+      "evidence": [
+        "frontend-file-summaries.txt"
       ]
     }
   ],
-  "confidence": 0.66,
+  "confidence": 0.74,
   "changed_files": [
     "frontend-file-summaries.txt",
+    "frontend/PUBLISHING.md",
+    "frontend/src/components/Footer.tsx",
+    "frontend/src/components/Header.tsx",
+    "frontend/src/components/Hero.tsx",
     "frontend/src/components/WorkVideo.tsx",
-    "frontend/src/lib/montageRecorder.ts",
+    "frontend/src/lib/workVideoPhotos.ts",
     "project_state.json"
   ]
 }

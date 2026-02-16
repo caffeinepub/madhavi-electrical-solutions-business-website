@@ -47,7 +47,6 @@ export function Header() {
   const navItems = [
     { label: 'Home', id: 'home' },
     { label: 'Services', id: 'services' },
-    { label: 'Work Video', id: 'work-video' },
     { label: 'About Us', id: 'about' },
     { label: 'Contact', id: 'contact' }
   ];
@@ -114,7 +113,7 @@ export function Header() {
           {/* Logo and Business Name with Tagline */}
           <div className="flex items-center space-x-3 min-w-0">
             <img
-              src="/assets/Logo design for Madh.png"
+              src="/assets/generated/madhavi-logo-transparent.dim_200x200.png"
               alt="Madhavi Electrical Solutions"
               className="h-12 w-auto flex-shrink-0 sm:h-14"
             />
